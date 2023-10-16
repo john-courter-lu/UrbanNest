@@ -1,58 +1,93 @@
-import { useState } from "react";
-import { NavLink as RRNavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { Link as RRLink } from "react-router-dom";
 import {
-Button,
-Collapse,
-Nav,
-NavLink,
-NavItem,
-Navbar,
-NavbarBrand,
-NavbarToggler,
-} from "reactstrap";
+  Button,
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  Menu,
+  MenuItem,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { logout } from "../managers/authManager";
 
 export default function NavBar({ loggedInUser, setLoggedInUser }) {
-const [open, setOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
 
-const toggleNavbar = () => setOpen(!open);
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
 
-return (
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
     <div>
-    <Navbar color="light" light fixed="true" expand="lg">
-        <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
-        Urban Nest
-        </NavbarBrand>
-        {loggedInUser ? (
-        <>
-            <NavbarToggler onClick={toggleNavbar} />
-            <Collapse isOpen={open} navbar>
-            <Nav navbar></Nav>
-            </Collapse>
+      <AppBar position="static" color="primary">
+        <Toolbar>
+          <Typography variant="h6" component={RRLink} to="/" color="inherit">
+            🏙️Urban Nest
+          </Typography>
+          {loggedInUser ? (
+            <>
+              <IconButton
+                color="inherit"
+                aria-label="menu"
+                onClick={handleMenu}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={open}
+                onClose={handleClose}
+              >
+                <MenuItem
+                  component={RRLink}
+                  to="/profile"
+                  onClick={handleClose}
+                >
+                  <AccountCircleIcon sx={{ mr: 1 }} />
+                  Profile
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    handleClose();
+                    logout().then(() => {
+                      setLoggedInUser(null);
+                    });
+                  }}
+                >
+                  <AccountCircleIcon sx={{ mr: 1 }} />
+                  Logout
+                </MenuItem>
+              </Menu>
+            </>
+          ) : (
             <Button
-            color="primary"
-            onClick={(e) => {
-                e.preventDefault();
-                setOpen(false);
-                logout().then(() => {
-                setLoggedInUser(null);
-                setOpen(false);
-                });
-            }}
+              component={RRLink}
+              to="/login"
+              color="inherit"
+              variant="contained"
             >
-            Logout
+              Login
             </Button>
-        </>
-        ) : (
-        <Nav navbar>
-            <NavItem>
-            <NavLink tag={RRNavLink} to="/login">
-                <Button color="primary">Login</Button>
-            </NavLink>
-            </NavItem>
-        </Nav>
-        )}
-    </Navbar>
+          )}
+        </Toolbar>
+      </AppBar>
     </div>
-);
+  );
 }
