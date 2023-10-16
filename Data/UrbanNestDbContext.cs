@@ -1,16 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using HouseRules.Models;
+using UrbanNest.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace HouseRules.Data;
-public class HouseRulesDbContext : IdentityDbContext<IdentityUser>
+namespace UrbanNest.Data;
+public class UrbanNestDbContext : IdentityDbContext<IdentityUser>
 {
     private readonly IConfiguration _configuration;
 
     public DbSet<UserProfile> UserProfiles { get; set; }
 
-    public HouseRulesDbContext(DbContextOptions<HouseRulesDbContext> context, IConfiguration config) : base(context)
+    public UrbanNestDbContext(DbContextOptions<UrbanNestDbContext> context, IConfiguration config) : base(context)
     {
         _configuration = config;
     }

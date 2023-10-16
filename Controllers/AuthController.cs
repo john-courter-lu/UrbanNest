@@ -5,20 +5,20 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using System.Text;
-using HouseRules.Models;
-using HouseRules.Data;
+using UrbanNest.Models;
+using UrbanNest.Data;
 
-namespace HouseRules.Controllers;
+namespace UrbanNest.Controllers;
 
 
 [ApiController]
 [Route("api/[controller]")]
 public class AuthController : ControllerBase
 {
-    private HouseRulesDbContext _dbContext;
+    private UrbanNestDbContext _dbContext;
     private UserManager<IdentityUser> _userManager;
 
-    public AuthController(HouseRulesDbContext context, UserManager<IdentityUser> userManager)
+    public AuthController(UrbanNestDbContext context, UserManager<IdentityUser> userManager)
     {
         _dbContext = context;
         _userManager = userManager;

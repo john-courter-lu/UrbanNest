@@ -1,7 +1,13 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../managers/authManager";
-import { Button, FormFeedback, FormGroup, Input, Label } from "reactstrap";
+import {
+  Button,
+  TextField,
+  Typography,
+  Container,
+  Box,
+} from "@mui/material";
 
 export default function Login({ setLoggedInUser }) {
   const navigate = useNavigate();
@@ -22,40 +28,58 @@ export default function Login({ setLoggedInUser }) {
   };
 
   return (
-    <div className="container" style={{ maxWidth: "500px" }}>
-      <h3>Login</h3>
-      <FormGroup>
-        <Label>Email</Label>
-        <Input
-          invalid={failedLogin}
-          type="text"
-          value={email}
-          onChange={(e) => {
-            setFailedLogin(false);
-            setEmail(e.target.value);
-          }}
-        />
-      </FormGroup>
-      <FormGroup>
-        <Label>Password</Label>
-        <Input
-          invalid={failedLogin}
-          type="password"
-          value={password}
-          onChange={(e) => {
-            setFailedLogin(false);
-            setPassword(e.target.value);
-          }}
-        />
-        <FormFeedback>Login failed.</FormFeedback>
-      </FormGroup>
+    <Container component="main" maxWidth="sm" >
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          mt: 2, // Add margin to the top
+        }}>
+        <Typography variant="h5" sx={{ my: 1 }}>Login</Typography>
+        <form onSubmit={handleSubmit}>
+          <TextField
+            label="Email"
+            variant="outlined"
+            fullWidth
+            sx={{ my: 1 }}
+            error={failedLogin}
+            value={email}
+            onChange={(e) => {
+              setFailedLogin(false);
+              setEmail(e.target.value);
+            }}
+          />
+          <TextField
+            label="Password"
+            variant="outlined"
+            fullWidth
+            sx={{ my: 1 }}
+            type="password"
+            error={failedLogin}
+            value={password}
+            onChange={(e) => {
+              setFailedLogin(false);
+              setPassword(e.target.value);
+            }}
+            helperText={failedLogin && "Login failed."}
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            fullWidth
+            sx={{ my: 1, p: 2 }}
+            onClick={handleSubmit}
+          >
+            Login
+          </Button>
+        </form>
 
-      <Button color="primary" onClick={handleSubmit}>
-        Login
-      </Button>
-      <p>
-        Not signed up? Register <Link to="/register">here</Link>
-      </p>
-    </div>
+        <Box mt={2}>
+          <Typography>
+            Not signed up? Register <Link to="/register">here</Link>
+          </Typography>
+        </Box></Box>
+    </Container>
   );
 }

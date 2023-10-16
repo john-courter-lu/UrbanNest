@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
-using HouseRules.Data;
+using UrbanNest.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +18,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
     {
-        options.Cookie.Name = "HouseRulesLoginCookie";
+        options.Cookie.Name = "UrbanNestLoginCookie";
         options.Cookie.SameSite = SameSiteMode.Strict;
         options.Cookie.HttpOnly = true; //The cookie cannot be accessed through JS (protects against XSS)
         options.Cookie.MaxAge = new TimeSpan(7, 0, 0, 0); // cookie expires in a week regardless of activity
@@ -46,13 +46,13 @@ builder.Services.AddIdentityCore<IdentityUser>(config =>
                 config.Password.RequireUppercase = false;
             })
     .AddRoles<IdentityRole>()  //add the role service.  
-    .AddEntityFrameworkStores<HouseRulesDbContext>();
+    .AddEntityFrameworkStores<UrbanNestDbContext>();
 
 // allows passing datetimes without time zone data 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 // allows our api endpoints to access the database through Entity Framework Core
-builder.Services.AddNpgsql<HouseRulesDbContext>(builder.Configuration["HouseRulesDbConnectionString"]);
+builder.Services.AddNpgsql<UrbanNestDbContext>(builder.Configuration["UrbanNestDbConnectionString"]);
 
 
 var app = builder.Build();

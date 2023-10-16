@@ -1,4 +1,4 @@
-namespace HouseRules.Models;
+namespace UrbanNest.Models;
 
 public class Registration
 {
