@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 
-namespace HouseRules.Models;
+namespace UrbanNest.Models;
 
 public class UserProfile
 {
