@@ -7,6 +7,7 @@ import ApplicationViews from "./components/ApplicationViews";
 // imports or MUI and theme
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
+import Topbar from "./scenes/global/Topbar.js";
 
 
 function App() {
@@ -32,11 +33,14 @@ function App() {
       <ThemeProvider theme={theme}> {/* MUI function: using custom themes */}
         <CssBaseline /> {/* MUI function: return CSS to default */}
         <div className="app">
-          <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
-          <ApplicationViews
-            loggedInUser={loggedInUser}
-            setLoggedInUser={setLoggedInUser}
-          />
+          <main className="content">
+            <Topbar />
+            <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
+            <ApplicationViews
+              loggedInUser={loggedInUser}
+              setLoggedInUser={setLoggedInUser}
+            />
+          </main>
         </div>
       </ThemeProvider>
     </ColorModeContext.Provider>
