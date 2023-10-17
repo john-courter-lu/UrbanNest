@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./App.css";
+
 
 import { tryGetLoggedInUser } from "./managers/authManager";
 
@@ -22,13 +22,13 @@ function App() {
   }
 
   return (
-    <>
+    <div className="app">
       <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
       <ApplicationViews
         loggedInUser={loggedInUser}
         setLoggedInUser={setLoggedInUser}
       />
-    </>
+    </div>
   );
 }
 
