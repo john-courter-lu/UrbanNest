@@ -194,14 +194,14 @@ export const themeSettings = (mode) => {
 };
 
 // context for color mode: a trigger/toggle and useMode
-export const ColorModeContext = createContext({
+export const ColorModeContext = createContext({ // a react function
     toggleColorMode: () => { },
 });
 
 export const useMode = () => {
     const [mode, setMode] = useState("dark"); // default mode is dark
 
-    const colorMode = useMemo(
+    const colorMode = useMemo( // a react function
         () => ({
             toggleColorMode: () =>
                 setMode((prev) => (prev === "light" ? "dark" : "light")),
@@ -209,6 +209,6 @@ export const useMode = () => {
         []
     );
 
-    const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+    const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]); // a MUI function
     return [theme, colorMode];
 };
