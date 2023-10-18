@@ -37,7 +37,7 @@ public class UserProfile
 
     [DataType(DataType.Url)]
     [MaxLength(255)]
-    public string AvatarLocation { get; set; }
+    public string AvatarURL { get; set; }
 
     public string IdentityUserId { get; set; }
 
@@ -54,6 +54,7 @@ public class UserProfile
             return $"{FirstName} {LastName}";
         }
     }
+    
     public List<Investor> Investors { get; set; }
     public List<Agent> Agents { get; set; }
 }

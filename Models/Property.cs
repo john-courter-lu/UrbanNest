@@ -16,7 +16,7 @@ public class Property
     public string ZipCode { get; set; }
     public bool IsActive { get; set; }
     public bool IsRentOut { get; set; }
-    public string ImageLocation { get; set; }
+    public string ImageURL { get; set; }
     public int SquareFeet { get; set; }
     public int NumberOfBedroom { get; set; }
     public int NumberOfBathroom { get; set; }
