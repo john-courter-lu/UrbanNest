@@ -1,18 +1,20 @@
 // imports for login props, app structure: NavBar and ApplicationView
 import { useEffect, useState } from "react";
 import { tryGetLoggedInUser } from "./managers/authManager";
-import NavBar from "./components/NavBar";
 import ApplicationViews from "./components/ApplicationViews";
 
 // imports or MUI and theme
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Topbar from "./scenes/global/Topbar.js";
+import Sidebar from "./scenes/global/Sidebar.js";
 
 
 function App() {
-  // themes and sidebar related state
+  // theme related state
   const [theme, colorMode] = useMode();
+  // sidebar related state
+  const [isSidebar, setIsSidebar] = useState(true);
   // for loggedInUser cache
   const [loggedInUser, setLoggedInUser] = useState();
 
@@ -30,18 +32,27 @@ function App() {
 
   return (
     <ColorModeContext.Provider value={colorMode}>
+
       <ThemeProvider theme={theme}> {/* MUI function: using custom themes */}
         <CssBaseline /> {/* MUI function: return CSS to default */}
+
         <div className="app">
+
+          <Sidebar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} isSidebar={isSidebar} />
+
           <main className="content">
-            <Topbar />
-            <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
+
+            <Topbar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} setIsSidebar={setIsSidebar} />
+
             <ApplicationViews
               loggedInUser={loggedInUser}
               setLoggedInUser={setLoggedInUser}
             />
+
           </main>
+
         </div>
+
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
