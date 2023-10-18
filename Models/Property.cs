@@ -16,7 +16,11 @@ public class Property
     public string ZipCode { get; set; }
     public bool IsActive { get; set; }
     public bool IsRentOut { get; set; }
+
+    [DataType(DataType.Url)]
+    [MaxLength(255)]
     public string ImageURL { get; set; }
+    
     public int SquareFeet { get; set; }
     public int NumberOfBedroom { get; set; }
     public int NumberOfBathroom { get; set; }
