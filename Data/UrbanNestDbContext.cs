@@ -9,6 +9,13 @@ public class UrbanNestDbContext : IdentityDbContext<IdentityUser>
     private readonly IConfiguration _configuration;
 
     public DbSet<UserProfile> UserProfiles { get; set; }
+    public DbSet<Property> Properties { get; set; }
+    public DbSet<Models.Type> Types { get; set; }
+    public DbSet<Investor> Investors { get; set; }
+    public DbSet<Agent> Agents { get; set; }
+    public DbSet<Cashflow> Cashflows { get; set; }
+    public DbSet<Category> Categories { get; set; }
+    public DbSet<PropertyInvestor> PropertyInvestors { get; set; }
 
     public UrbanNestDbContext(DbContextOptions<UrbanNestDbContext> context, IConfiguration config) : base(context)
     {
@@ -30,7 +37,7 @@ public class UrbanNestDbContext : IdentityDbContext<IdentityUser>
         modelBuilder.Entity<IdentityUser>().HasData(new IdentityUser
         {
             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
-            UserName = "Administrator",
+            UserName = "adam.w",
             Email = "adam.welshman@gmail.com",
             PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
         });
