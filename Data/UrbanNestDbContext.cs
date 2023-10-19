@@ -185,8 +185,8 @@ public class UrbanNestDbContext : IdentityDbContext<IdentityUser>
             RoleId = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
             UserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f"
         });
-modelBuilder.Entity<UserProfile>().HasData(new UserProfile[]
-{
+        modelBuilder.Entity<UserProfile>().HasData(new UserProfile[]
+        {
     new UserProfile
     {
         Id = 1,
@@ -487,9 +487,72 @@ modelBuilder.Entity<UserProfile>().HasData(new UserProfile[]
         JoinedDate = new DateTime(2021, 3, 15),
         IsActive = true,
     },
-        });
-
+                });
 
         // Add data seeding here
+        modelBuilder.Entity<Agent>().HasData(new Agent[]
+{
+    new Agent
+    {
+        Id = 1,
+        RealEstateLicenseNumber = 98765432,
+        UserProfileId = 1, // Use the first UserProfile ID
+    },
+    new Agent
+    {
+        Id = 2,
+        RealEstateLicenseNumber = 56781234,
+        UserProfileId = 2, // Use the second UserProfile ID
+    },
+    new Agent
+    {
+        Id = 3,
+        RealEstateLicenseNumber = 12345678,
+        UserProfileId = 3, // Use the third UserProfile ID
+    },
+    new Agent
+    {
+        Id = 4,
+        RealEstateLicenseNumber = 87654321,
+        UserProfileId = 4, // Use the fourth UserProfile ID
+    },
+    new Agent
+    {
+        Id = 5,
+        RealEstateLicenseNumber = 54321678,
+        UserProfileId = 5, // Use the fifth UserProfile ID
+    },
+    new Agent
+    {
+        Id = 6,
+        RealEstateLicenseNumber = 34567812,
+        UserProfileId = 6, // Use the sixth UserProfile ID
+    },
+    new Agent
+    {
+        Id = 7,
+        RealEstateLicenseNumber = 21678345,
+        UserProfileId = 7, // Use the seventh UserProfile ID
+    },
+    new Agent
+    {
+        Id = 8,
+        RealEstateLicenseNumber = 16783456,
+        UserProfileId = 8, // Use the eighth UserProfile ID
+    },
+    new Agent
+    {
+        Id = 9,
+        RealEstateLicenseNumber = 67834561,
+        UserProfileId = 9, // Use the ninth UserProfile ID
+    },
+    new Agent
+    {
+        Id = 10,
+        RealEstateLicenseNumber = 78345612,
+        UserProfileId = 10, // Use the tenth UserProfile ID
+    },
+});
+
     }
 }
