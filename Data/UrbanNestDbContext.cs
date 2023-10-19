@@ -656,6 +656,181 @@ public class UrbanNestDbContext : IdentityDbContext<IdentityUser>
     }
         });
 
-    //data seeding: Properties
+        //data seeding: Properties
+        modelBuilder.Entity<Property>().HasData(new Property[]
+        {
+    new Property
+    {
+        Id = 1,
+        AgentId = 1,
+        Address = "123 Main St",
+        City = "Nashville",
+        State = "TN",
+        ZipCode = "37201",
+        IsActive = true,
+        IsRentOut = true,
+        ImageURL = "https://example.com/property1.jpg",
+        SquareFeet = 1500,
+        NumberOfBedroom = 2,
+        NumberOfBathroom = 2,
+        TypeId = 1
+    },
+    new Property
+    {
+        Id = 2,
+        AgentId = 2,
+        Address = "456 Elm St",
+        City = "Hermitage",
+        State = "TN",
+        ZipCode = "37076",
+        IsActive = true,
+        IsRentOut = true,
+        ImageURL = "https://example.com/property2.jpg",
+        SquareFeet = 1800,
+        NumberOfBedroom = 3,
+        NumberOfBathroom = 2,
+        TypeId = 2
+    },
+    // Property 3
+    new Property
+    {
+        Id = 3,
+        AgentId = 3,
+        Address = "789 Oak St",
+        City = "Mt Juliet",
+        State = "TN",
+        ZipCode = "37122",
+        IsActive = true,
+        IsRentOut = true,
+        ImageURL = "https://example.com/property3.jpg",
+        SquareFeet = 2000,
+        NumberOfBedroom = 4,
+        NumberOfBathroom = 3,
+        TypeId = 3
+    },
+    // Property 4
+    new Property
+    {
+        Id = 4,
+        AgentId = 4,
+        Address = "101 Pine St",
+        City = "Green Hill",
+        State = "TN",
+        ZipCode = "37138",
+        IsActive = true,
+        IsRentOut = true,
+        ImageURL = "https://example.com/property4.jpg",
+        SquareFeet = 1600,
+        NumberOfBedroom = 2,
+        NumberOfBathroom = 1,
+        TypeId = 4
+    },
+    // Property 5
+    new Property
+    {
+        Id = 5,
+        AgentId = 5,
+        Address = "321 Oak Ln",
+        City = "Franklin",
+        State = "TN",
+        ZipCode = "37064",
+        IsActive = true,
+        IsRentOut = true,
+        ImageURL = "https://example.com/property5.jpg",
+        SquareFeet = 2200,
+        NumberOfBedroom = 3,
+        NumberOfBathroom = 2,
+        TypeId = 5
+    },
+    // Property 6
+    new Property
+    {
+        Id = 6,
+        AgentId = 6,
+        Address = "456 Willow Dr",
+        City = "Nashville",
+        State = "TN",
+        ZipCode = "37209",
+        IsActive = true,
+        IsRentOut = true,
+        ImageURL = "https://example.com/property6.jpg",
+        SquareFeet = 1400,
+        NumberOfBedroom = 1,
+        NumberOfBathroom = 1,
+        TypeId = 6
+    },
+    // Property 7
+    new Property
+    {
+        Id = 7,
+        AgentId = 7,
+        Address = "789 Elm St",
+        City = "Hermitage",
+        State = "TN",
+        ZipCode = "37076",
+        IsActive = true,
+        IsRentOut = true,
+        ImageURL = "https://example.com/property7.jpg",
+        SquareFeet = 1800,
+        NumberOfBedroom = 3,
+        NumberOfBathroom = 2,
+        TypeId = 1
+    },
+    // Property 8
+    new Property
+    {
+        Id = 8,
+        AgentId = 8,
+        Address = "543 Birch Ave",
+        City = "Nashville",
+        State = "TN",
+        ZipCode = "37201",
+        IsActive = true,
+        IsRentOut = true,
+        ImageURL = "https://example.com/property8.jpg",
+        SquareFeet = 2500,
+        NumberOfBedroom = 4,
+        NumberOfBathroom = 2,
+        TypeId = 2
+    },
+    // Property 9
+    new Property
+    {
+        Id = 9,
+        AgentId = 9,
+        Address = "101 Cedar St",
+        City = "Mt Juliet",
+        State = "TN",
+        ZipCode = "37122",
+        IsActive = true,
+        IsRentOut = true,
+        ImageURL = "https://example.com/property9.jpg",
+        SquareFeet = 1800,
+        NumberOfBedroom = 3,
+        NumberOfBathroom = 2,
+        TypeId = 3
+    },
+    // Property 10
+    new Property
+    {
+        Id = 10,
+        AgentId = 10,
+        Address = "789 Oak St",
+        City = "Franklin",
+        State = "TN",
+        ZipCode = "37064",
+        IsActive = true,
+        IsRentOut = true,
+        ImageURL = "https://example.com/property10.jpg",
+        SquareFeet = 2000,
+        NumberOfBedroom = 4,
+        NumberOfBathroom = 3,
+        TypeId = 4
+    }
+        });
+
+// data seeding: PropertyInvestor
+
+
     }
 }
