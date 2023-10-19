@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using UrbanNest.Data;
@@ -11,9 +12,10 @@ using UrbanNest.Data;
 namespace HouseRules.Migrations
 {
     [DbContext(typeof(UrbanNestDbContext))]
-    partial class UrbanNestDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231019185534_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
