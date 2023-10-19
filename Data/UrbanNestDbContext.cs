@@ -829,7 +829,117 @@ public class UrbanNestDbContext : IdentityDbContext<IdentityUser>
     }
         });
 
-// data seeding: PropertyInvestor
+        // data seeding: PropertyInvestor
+        modelBuilder.Entity<PropertyInvestor>().HasData(new PropertyInvestor[]
+        {
+    // PropertyInvestor 1
+    new PropertyInvestor
+    {
+        Id = 1,
+        PropertyId = 1,
+        InvestorId = 1
+    },
+    // PropertyInvestor 2
+    new PropertyInvestor
+    {
+        Id = 2,
+        PropertyId = 2,
+        InvestorId = 2
+    },
+    // PropertyInvestor 3
+    new PropertyInvestor
+    {
+        Id = 3,
+        PropertyId = 3,
+        InvestorId = 3
+    },
+    // PropertyInvestor 4
+    new PropertyInvestor
+    {
+        Id = 4,
+        PropertyId = 4,
+        InvestorId = 4
+    },
+    // PropertyInvestor 5
+    new PropertyInvestor
+    {
+        Id = 5,
+        PropertyId = 5,
+        InvestorId = 5
+    },
+    // PropertyInvestor 6
+    new PropertyInvestor
+    {
+        Id = 6,
+        PropertyId = 6,
+        InvestorId = 6
+    },
+    // PropertyInvestor 7
+    new PropertyInvestor
+    {
+        Id = 7,
+        PropertyId = 7,
+        InvestorId = 7
+    },
+    // PropertyInvestor 8
+    new PropertyInvestor
+    {
+        Id = 8,
+        PropertyId = 8,
+        InvestorId = 8
+    },
+    // PropertyInvestor 9
+    new PropertyInvestor
+    {
+        Id = 9,
+        PropertyId = 9,
+        InvestorId = 9
+    },
+    // PropertyInvestor 10
+    new PropertyInvestor
+    {
+        Id = 10,
+        PropertyId = 10,
+        InvestorId = 10
+    },
+    // Additional combinations (One Investor can have multiple Properties; One Property can be invested by multiple Investors)
+    new PropertyInvestor
+    {
+        Id = 11,
+        PropertyId = 1,
+        InvestorId = 5
+    },
+    new PropertyInvestor
+    {
+        Id = 12,
+        PropertyId = 2,
+        InvestorId = 6
+    },
+    new PropertyInvestor
+    {
+        Id = 13,
+        PropertyId = 3,
+        InvestorId = 7
+    },
+    new PropertyInvestor
+    {
+        Id = 14,
+        PropertyId = 4,
+        InvestorId = 8
+    },
+    new PropertyInvestor
+    {
+        Id = 15,
+        PropertyId = 5,
+        InvestorId = 9
+    },
+    new PropertyInvestor
+    {
+        Id = 16,
+        PropertyId = 6,
+        InvestorId = 10
+    }
+        });
 
 
     }
