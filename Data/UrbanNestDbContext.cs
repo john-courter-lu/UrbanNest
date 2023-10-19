@@ -185,6 +185,7 @@ public class UrbanNestDbContext : IdentityDbContext<IdentityUser>
             RoleId = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
             UserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f"
         });
+        
         modelBuilder.Entity<UserProfile>().HasData(new UserProfile[]
         {
     new UserProfile
@@ -489,7 +490,7 @@ public class UrbanNestDbContext : IdentityDbContext<IdentityUser>
     },
                 });
 
-        // Add data seeding here
+        // data seeding  - Agent
         modelBuilder.Entity<Agent>().HasData(new Agent[]
 {
     new Agent
@@ -553,6 +554,71 @@ public class UrbanNestDbContext : IdentityDbContext<IdentityUser>
         UserProfileId = 10, // Use the tenth UserProfile ID
     },
 });
+
+        // data seeding: Investor
+        modelBuilder.Entity<Investor>().HasData(new Investor[]
+    {
+    new Investor
+    {
+        Id = 1,
+        Company = "Dream Home Investments",
+        UserProfileId = 11
+    },
+    new Investor
+    {
+        Id = 2,
+        Company = "Prime Property Holdings",
+        UserProfileId = 12
+    },
+    new Investor
+    {
+        Id = 3,
+        Company = "Prosperity Estates",
+        UserProfileId = 13
+    },
+    new Investor
+    {
+        Id = 4,
+        Company = "Urban Capital Ventures",
+        UserProfileId = 14
+    },
+    new Investor
+    {
+        Id = 5,
+        Company = "Golden Gate Realty Group",
+        UserProfileId = 15
+    },
+    new Investor
+    {
+        Id = 6,
+        Company = "Horizon Properties, Inc.",
+        UserProfileId = 16
+    },
+    new Investor
+    {
+        Id = 7,
+        Company = "Evergreen Investments",
+        UserProfileId = 17
+    },
+    new Investor
+    {
+        Id = 8,
+        Company = "Oasis Real Estate Partners",
+        UserProfileId = 18
+    },
+    new Investor
+    {
+        Id = 9,
+        Company = "Silver Key Realty Trust",
+        UserProfileId = 19
+    },
+    new Investor
+    {
+        Id = 10,
+        Company = "Liberty Land Investments",
+        UserProfileId = 20
+    },
+    });
 
     }
 }
