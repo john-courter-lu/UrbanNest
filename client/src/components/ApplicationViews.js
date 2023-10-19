@@ -2,6 +2,8 @@ import { Route, Routes } from "react-router-dom";
 import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
+import Investors from "../scenes/investors/index.js";
+import Agents from "../scenes/agents/index.js";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -21,6 +23,22 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
               <p>PathName1</p>
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="investors"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <Investors />
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="agents"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <Agents />
             </AuthorizedRoute>
           }
         />
