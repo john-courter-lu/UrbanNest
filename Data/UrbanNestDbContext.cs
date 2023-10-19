@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using UrbanNest.Models;
 using Microsoft.AspNetCore.Identity;
-using Type = UrbanNest.Models.Type;
+using Type = UrbanNest.Models.Type; // to avoid confict with System.Type
 
 namespace UrbanNest.Data;
 public class UrbanNestDbContext : IdentityDbContext<IdentityUser>
@@ -35,6 +35,7 @@ public class UrbanNestDbContext : IdentityDbContext<IdentityUser>
             NormalizedName = "admin"
         });
 
+        // data seeding: IdentityUser
         modelBuilder.Entity<IdentityUser>().HasData(new IdentityUser[]
         {
     new IdentityUser
@@ -179,13 +180,13 @@ public class UrbanNestDbContext : IdentityDbContext<IdentityUser>
     },
 });
 
-
         modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
         {
             RoleId = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
             UserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f"
         });
-        
+
+        // data seeding: UserProfile
         modelBuilder.Entity<UserProfile>().HasData(new UserProfile[]
         {
     new UserProfile
@@ -490,7 +491,7 @@ public class UrbanNestDbContext : IdentityDbContext<IdentityUser>
     },
                 });
 
-        // data seeding  - Agent
+        // data seeding: Agent
         modelBuilder.Entity<Agent>().HasData(new Agent[]
 {
     new Agent
@@ -620,5 +621,41 @@ public class UrbanNestDbContext : IdentityDbContext<IdentityUser>
     },
     });
 
+        // data seeding: Type
+        modelBuilder.Entity<Type>().HasData(new Type[]
+        {
+    new Type
+    {
+        Id = 1,
+        Name = "Condo"
+    },
+    new Type
+    {
+        Id = 2,
+        Name = "Single Family House"
+    },
+    new Type
+    {
+        Id = 3,
+        Name = "Apartment"
+    },
+    new Type
+    {
+        Id = 4,
+        Name = "Duplex"
+    },
+    new Type
+    {
+        Id = 5,
+        Name = "Townhouse"
+    },
+    new Type
+    {
+        Id = 6,
+        Name = "Multi-Family Home"
+    }
+        });
+
+    //data seeding: Properties
     }
 }
