@@ -1,11 +1,16 @@
-import { Box } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-import { mockDataContacts } from "../../data/mockData";
-import Header from "../../components/Header";
-import { useTheme } from "@mui/material";
+import Header from "../../components/Header.js";
+import { useEffect, useState } from "react";
+import { getAgents } from "../../managers/agentManager.js";
 
 const Agents = () => {
+
+    const [agentsData, setAgentsData] = useState([]);
+    useEffect(
+        () => { getAgents().then(setAgentsData) }, []
+    );
 
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
@@ -111,7 +116,7 @@ const Agents = () => {
                 }}
             >
                 <DataGrid
-                    rows={mockDataContacts}
+                    rows={agentsData}
                     columns={columns}
                     components={{ Toolbar: GridToolbar }}
                 />
