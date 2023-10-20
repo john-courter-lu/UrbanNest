@@ -1,11 +1,17 @@
-import { Box } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-import { mockDataContacts } from "../../data/mockData";
-import Header from "../../components/Header";
-import { useTheme } from "@mui/material";
+import Header from "../../components/Header.js";
+import { useEffect, useState } from "react";
+import { getInvestors } from "../../managers/investorManager.js";
 
 const Investors = () => {
+
+    const [investorsData, setInvestorsData] = useState([]);
+    useEffect(
+        () => { getInvestors().then(setInvestorsData) }, []
+    );
+
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
@@ -16,47 +22,59 @@ const Investors = () => {
             flex: 0.5
         },
         {
-            field: "registrarId",
-            headerName: "Registrar ID"
-        },
-        {
-            field: "name",
+            field: "userProfile.fullName",
             headerName: "Name",
             flex: 1,
             cellClassName: "name-column--cell",
+            valueGetter: params => params.row.userProfile.fullName,
         },
         {
-            field: "age",
-            headerName: "Age",
-            type: "number",
-            headerAlign: "left",
-            align: "left",
+            field: "company",
+            headerName: "Company",
+            flex: 1,
         },
         {
-            field: "phone",
+            field: "userProfile.phoneNumber",
             headerName: "Phone Number",
             flex: 1,
+            valueGetter: params => params.row.userProfile.phoneNumber,
         },
         {
             field: "email",
             headerName: "Email",
             flex: 1,
+            valueGetter: params => params.row.userProfile.identityUser.email,
         },
         {
             field: "address",
             headerName: "Address",
-            flex: 1,
+            flex: 1.5,
+            valueGetter: (params) => {
+                const { address, city, state, zipCode } = params.row.userProfile;
+                return `${address}, ${city}, ${state}, ${zipCode}`;
+            },
         },
         {
             field: "city",
             headerName: "City",
             flex: 1,
+            valueGetter: params => params.row.userProfile.city,
         },
         {
             field: "zipCode",
             headerName: "Zip Code",
             flex: 1,
+            valueGetter: params => params.row.userProfile.zipCode,
         },
+        {
+            field: "joinedDate",
+            headerName: "Member Since",
+            flex: 1,
+            valueGetter: params => params.row.userProfile.joinedDate,
+            valueFormatter: params => new Date(params.value).toLocaleDateString(),
+        },
+
+
     ];
 
     return (
@@ -98,7 +116,7 @@ const Investors = () => {
                 }}
             >
                 <DataGrid
-                    rows={mockDataContacts}
+                    rows={investorsData}
                     columns={columns}
                     components={{ Toolbar: GridToolbar }}
                 />

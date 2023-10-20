@@ -22,10 +22,6 @@ const Agents = () => {
             flex: 0.5
         },
         {
-            field: "realEstateLicenseNumber",
-            headerName: "License Number"
-        },
-        {
             field: "userProfile.fullName",
             headerName: "Name",
             flex: 1,
@@ -33,23 +29,26 @@ const Agents = () => {
             valueGetter: params => params.row.userProfile.fullName,
         },
         {
+            field: "realEstateLicenseNumber",
+            headerName: "License Number",
+            flex: 1,
+        },
+        {
             field: "userProfile.phoneNumber",
             headerName: "Phone Number",
             flex: 1,
             valueGetter: params => params.row.userProfile.phoneNumber,
         },
-
         {
             field: "email",
             headerName: "Email",
             flex: 1,
             valueGetter: params => params.row.userProfile.identityUser.email,
-
         },
         {
             field: "address",
             headerName: "Address",
-            flex: 2,
+            flex: 1.5,
             valueGetter: (params) => {
                 const { address, city, state, zipCode } = params.row.userProfile;
                 return `${address}, ${city}, ${state}, ${zipCode}`;
@@ -70,6 +69,7 @@ const Agents = () => {
         {
             field: "joinedDate",
             headerName: "Member Since",
+            flex: 1,
             valueGetter: params => params.row.userProfile.joinedDate,
             valueFormatter: params => new Date(params.value).toLocaleDateString(),
         },
