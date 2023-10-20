@@ -80,7 +80,7 @@ const Investors = () => {
     return (
         <Box m="20px">
             <Header
-                title="TEAM"
+                title="INVESTORS"
                 subtitle="List of Investors"
             />
             <Box
