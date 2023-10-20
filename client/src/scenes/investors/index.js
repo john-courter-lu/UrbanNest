@@ -5,8 +5,7 @@ import { mockDataContacts } from "../../data/mockData";
 import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
 
-const Agents = () => {
-
+const Investors = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
@@ -17,66 +16,54 @@ const Agents = () => {
             flex: 0.5
         },
         {
-            field: "realEstateLicenseNumber",
-            headerName: "License Number"
+            field: "registrarId",
+            headerName: "Registrar ID"
         },
         {
-            field: "userProfile.fullName",
+            field: "name",
             headerName: "Name",
             flex: 1,
             cellClassName: "name-column--cell",
-            valueGetter: params => params.row.userProfile.fullName,
         },
         {
-            field: "userProfile.phoneNumber",
+            field: "age",
+            headerName: "Age",
+            type: "number",
+            headerAlign: "left",
+            align: "left",
+        },
+        {
+            field: "phone",
             headerName: "Phone Number",
             flex: 1,
-            valueGetter: params => params.row.userProfile.phoneNumber,
         },
-
         {
             field: "email",
             headerName: "Email",
             flex: 1,
-            valueGetter: params => params.row.userProfile.identityUser.email,
-
         },
         {
             field: "address",
             headerName: "Address",
-            flex: 2,
-            valueGetter: (params) => {
-                const { address, city, state, zipCode } = params.row.userProfile;
-                return `${address}, ${city}, ${state}, ${zipCode}`;
-            },
+            flex: 1,
         },
         {
             field: "city",
             headerName: "City",
             flex: 1,
-            valueGetter: params => params.row.userProfile.city,
         },
         {
             field: "zipCode",
             headerName: "Zip Code",
             flex: 1,
-            valueGetter: params => params.row.userProfile.zipCode,
         },
-        {
-            field: "joinedDate",
-            headerName: "Member Since",
-            valueGetter: params => params.row.userProfile.joinedDate,
-            valueFormatter: params => new Date(params.value).toLocaleDateString(),
-        },
-
-
     ];
 
     return (
         <Box m="20px">
             <Header
-                title="TEAM"
-                subtitle="List of Agents"
+                title="INVESTORS"
+                subtitle="List of Investors"
             />
             <Box
                 m="40px 0 0 0"
@@ -120,4 +107,4 @@ const Agents = () => {
     );
 };
 
-export default Agents;
+export default Investors;
