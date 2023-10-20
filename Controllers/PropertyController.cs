@@ -18,6 +18,7 @@ public class PropertyController : ControllerBase
         _dbContext = context;
     }
 
+    // Get All Properties with Agent Info
     [HttpGet]
     [Authorize]
     public IActionResult Get()
@@ -51,7 +52,7 @@ public class PropertyController : ControllerBase
         return Ok(property);
     }
 
-    // Get Property Count 
+    // Get Active Property Count 
     [HttpGet("inventory")]
     [Authorize]
     public IActionResult Inventory()
