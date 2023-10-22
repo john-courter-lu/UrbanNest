@@ -5,6 +5,7 @@ import Register from "../scenes/auth/Register";
 import Investors from "../scenes/investors/index.js";
 import Agents from "../scenes/agents/index.js";
 import Properties from "../scenes/properties/index.js";
+import PropertyDetails from "../scenes/properties/PropertyDetails.js";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -53,10 +54,10 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             }
           />
           <Route
-            path="pathName2_subPath"
+            path=":propertyId"
             element={
               <AuthorizedRoute loggedInUser={loggedInUser}>
-                <p>PathName2_subPath</p>
+                <PropertyDetails />
               </AuthorizedRoute>
             }
           />
