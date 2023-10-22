@@ -6,6 +6,7 @@ public class Property
 {
     public int Id { get; set; }
     public int AgentId { get; set; }
+    public Agent Agent { get; set; }
     [Required]
     public string Address { get; set; }
     [Required]
@@ -20,7 +21,7 @@ public class Property
     [DataType(DataType.Url)]
     [MaxLength(255)]
     public string ImageURL { get; set; }
-    
+
     public int SquareFeet { get; set; }
     public int NumberOfBedroom { get; set; }
     public int NumberOfBathroom { get; set; }
