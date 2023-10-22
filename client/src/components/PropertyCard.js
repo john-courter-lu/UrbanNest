@@ -7,7 +7,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Stack from "@mui/material/Stack";
 import { useTheme } from "@mui/material";
-import { tokens } from "../../theme.js";
+import { tokens } from "../theme.js";
 
 const PropertyCard = ({ id, title, location, rent, photo, }) => {
 

@@ -6,8 +6,8 @@ import ApplicationViews from "./components/ApplicationViews";
 // imports or MUI and theme
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
-import Topbar from "./scenes/global/Topbar.js";
-import Sidebar from "./scenes/global/Sidebar.js";
+import Topbar from "./components/Topbar.js";
+import Sidebar from "./components/Sidebar.js";
 
 
 function App() {

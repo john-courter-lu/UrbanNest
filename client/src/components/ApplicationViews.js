@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import { AuthorizedRoute } from "./auth/AuthorizedRoute";
-import Login from "./auth/Login";
-import Register from "./auth/Register";
+import { AuthorizedRoute } from "./AuthorizedRoute";
+import Login from "../scenes/auth/Login";
+import Register from "../scenes/auth/Register";
 import Investors from "../scenes/investors/index.js";
 import Agents from "../scenes/agents/index.js";
 import Properties from "../scenes/properties/index.js";

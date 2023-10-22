@@ -1,5 +1,5 @@
 import { Button, Typography, Box } from "@mui/material";
-import PropertyCard from './propertyCard.js';
+import PropertyCard from '../../components/PropertyCard.js';
 import Header from '../../components/Header.js';
 import { tokens } from '../../theme.js';
 import { useTheme } from '@emotion/react';
