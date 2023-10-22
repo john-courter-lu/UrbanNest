@@ -1,16 +1,20 @@
-import * as React from 'react';
 import { Button, Typography, Box } from "@mui/material";
-import { mockDataProperties } from '../../data/mockData.js';
 import PropertyCard from './propertyCard.js';
 import Header from '../../components/Header.js';
-import { useTheme } from '@emotion/react';
 import { tokens } from '../../theme.js';
+import { useTheme } from '@emotion/react';
+import { useEffect, useState } from "react";
+import { getProperties } from '../../managers/propertyManager.js';
 
 export default function Properties() {
+
+    const [propertiesData, setPropertiesData] = useState([]);
+    useEffect(
+        () => { getProperties().then(setPropertiesData) }, []
+    );
+
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-
-    const propertys = mockDataProperties
 
     return (<>
         <Box m="20px">
@@ -26,7 +30,7 @@ export default function Properties() {
                 <Box
                     mt="20px"
                     sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
-                    {propertys?.map((property) => (
+                    {propertiesData?.map((property) => (
                         <PropertyCard
                             key={property.id}
                             id={property.id}
