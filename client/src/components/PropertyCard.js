@@ -31,14 +31,15 @@ const PropertyCard = ({ id, title, location, rent, photo, }) => {
             elevation={0.5}
         >
 
-            <CardMedia
-                component="img"
-                width="100%"
-                height={210}
-                image={photo}
-                alt="card image"
-                sx={{ borderRadius: "10px" }}
-            />
+            {photo &&
+                <CardMedia
+                    component="img"
+                    width="100%"
+                    height={210}
+                    image={photo}
+                    alt="card image"
+                    sx={{ borderRadius: "10px" }}
+                />}
 
             <CardContent
                 sx={{
