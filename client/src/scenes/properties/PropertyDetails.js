@@ -86,7 +86,7 @@ const PropertyDetails = ({loggedinUser}) => {
                                         id={property.id}
                                         title={`${property.numberOfBedroom} bd |  ${property.numberOfBathroom} ba | ${property.squareFeet.toLocaleString()} sqft `}
                                         location={`${property.address}, ${property.city}, ${property.state} ${property.zipCode}`}
-                                        rent={property.squareFeet}
+                                        type={property.type.name}
 
                                     />
                                 </Box>

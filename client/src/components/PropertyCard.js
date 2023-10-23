@@ -9,7 +9,7 @@ import Stack from "@mui/material/Stack";
 import { useTheme } from "@mui/material";
 import { tokens } from "../theme.js";
 
-const PropertyCard = ({ id, title, location, rent, photo, }) => {
+const PropertyCard = ({ id, title, location, type, photo, }) => {
 
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
@@ -78,7 +78,7 @@ const PropertyCard = ({ id, title, location, rent, photo, }) => {
                     height="fit-content"
                 >
                     <Typography fontSize={12} fontWeight={600} color="#6870fa">
-                        ${rent.toLocaleString()}
+                        {type}
                     </Typography>
                 </Box>
 

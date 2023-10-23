@@ -36,7 +36,7 @@ export default function Properties() {
                             id={property.id}
                             title={`${property.numberOfBedroom} bd |  ${property.numberOfBathroom} ba | ${property.squareFeet.toLocaleString()} sqft `}
                             location={`${property.address}, ${property.city}, ${property.state} ${property.zipCode}`}
-                            rent={property.squareFeet}
+                            type={property.type.name}
                             photo="https://a0.muscache.com/im/pictures/miso/Hosting-33256478/original/450166e1-8585-4384-a3b5-49fe4084ff52.jpeg?im_w=480"
                         />
                     ))}
