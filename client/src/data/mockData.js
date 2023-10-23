@@ -448,6 +448,9 @@ export const mockDataProperties = [
         "agent": {
             "id": 7,
             "realEstateLicenseNumber": 21678345,
+            "properties": [
+                null
+              ],
             "userProfileId": 7,
             "userProfile": {
                 "id": 7,

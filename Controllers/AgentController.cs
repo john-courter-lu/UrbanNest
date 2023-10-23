@@ -24,7 +24,8 @@ public class AgentController : ControllerBase
     {
         return Ok(_dbContext.Agents
          .Include(a => a.UserProfile)
-         .ThenInclude(up => up.IdentityUser)
+            .ThenInclude(up => up.IdentityUser)
+         .Include(a => a.Properties)
         
         .ToList());
     }
