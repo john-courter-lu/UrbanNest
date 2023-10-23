@@ -11,44 +11,31 @@ import Header from "../../components/Header.js";
 import PropertyCard from "../../components/PropertyCard.js";
 import { useTheme } from "@mui/material";
 import { tokens } from "../../theme.js";
-import { mockDataProperties } from "../../data/mockData.js";
+import { getPropertyById } from "../../managers/propertyManager.js";
 
 const PropertyDetails = ({ loggedinUser }) => {
     const navigate = useNavigate();
-    const { id } = useParams();
+    const { propertyId } = useParams(); 
+    // The name has to be the same as in the route of ApplicationView.
     const [user, setUser] = useState(null);
-    const [propertyDetails, setPropertyDetails] = useState(null);
+    const [property, setProperty] = useState(null);
 
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
-    const fetchUserData = async () => {
+    useEffect(() => {
+        // fetching property data
+        getPropertyById(propertyId).then(setProperty);
+
         // fetching user data
 
-    };
-
-    const fetchPropertyData = async (propertyId) => {
-        // fetching property data
-
-    };
-
-    useEffect(() => {
-        // loading user data
-        fetchUserData()
-            .then((userData) => {
-                setUser(userData);
-                return fetchPropertyData(id);
-            })
-            .then((propertyData) => {
-                setPropertyDetails(propertyData);
-            });
-    }, [id]);
+    }, []);
 
     const handleDeleteProperty = () => {
 
     };
 
-    const property = mockDataProperties[0]
+    if (!property) { return null; }
 
     return (
         <>
@@ -88,7 +75,7 @@ const PropertyDetails = ({ loggedinUser }) => {
                             <PropertyCard
                                 key={property.id}
                                 id={property.id}
-                                title={`${property.numberOfBedroom} bd |  ${property.numberOfBathroom} ba | ${property.squareFeet.toLocaleString()} sqft `}
+                                title={`${property.numberOfBedroom} bd |  ${property.numberOfBathroom} ba | ${property.squareFeet?.toLocaleString()} sqft `}
                                 location={`${property.address}, ${property.city}, ${property.state} ${property.zipCode}`}
                                 type={property.type.name}
 
@@ -156,7 +143,7 @@ const PropertyDetails = ({ loggedinUser }) => {
                                 {property?.agent?.properties?.length} Properties
                             </Typography>
                         </Stack>
-                      
+
 
 
 

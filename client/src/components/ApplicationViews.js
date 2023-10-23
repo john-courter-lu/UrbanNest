@@ -57,7 +57,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             path=":propertyId"
             element={
               <AuthorizedRoute loggedInUser={loggedInUser}>
-                <PropertyDetails />
+                <PropertyDetails loggedInUser={loggedInUser} />
               </AuthorizedRoute>
             }
           />
