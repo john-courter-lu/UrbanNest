@@ -40,6 +40,8 @@ public class PropertyController : ControllerBase
             .Include(p => p.Type)
             .Include(p => p.Agent)
                 .ThenInclude(a => a.UserProfile)
+            .Include(p => p.Agent)
+                .ThenInclude(a => a.Properties)
             .Include(p => p.PropertyInvestors)
 
             .SingleOrDefault(p => p.Id == id);

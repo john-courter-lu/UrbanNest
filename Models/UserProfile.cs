@@ -46,15 +46,7 @@ public class UserProfile
     [NotMapped]
     public List<string> Roles { get; set; }
 
+    // Calculated property:
+    public string FullName => $"{FirstName} {LastName}";
 
-    public string FullName
-    {
-        get
-        {
-            return $"{FirstName} {LastName}";
-        }
-    }
-    
-    public List<Investor> Investors { get; set; }
-    public List<Agent> Agents { get; set; }
 }

@@ -7,4 +7,5 @@ public class Agent
     public int RealEstateLicenseNumber { get; set; }
     public int UserProfileId { get; set; }
     public UserProfile UserProfile { get; set; }
+    public List<Property> Properties{ get; set; }
 }

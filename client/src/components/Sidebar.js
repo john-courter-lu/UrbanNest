@@ -1,4 +1,4 @@
-import { tokens } from "../../theme";
+import { tokens } from "../theme";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";

@@ -7,9 +7,9 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Stack from "@mui/material/Stack";
 import { useTheme } from "@mui/material";
-import { tokens } from "../../theme.js";
+import { tokens } from "../theme.js";
 
-const PropertyCard = ({ id, title, location, rent, photo, }) => {
+const PropertyCard = ({ id, title, location, type, photo, }) => {
 
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
@@ -17,7 +17,7 @@ const PropertyCard = ({ id, title, location, rent, photo, }) => {
     return (
         <Card
             component={Link}
-            to={`/properties/${id}`}
+            to={`${id}`}
             sx={{
                 maxWidth: "330px",
                 padding: "10px",
@@ -31,14 +31,15 @@ const PropertyCard = ({ id, title, location, rent, photo, }) => {
             elevation={0.5}
         >
 
-            <CardMedia
-                component="img"
-                width="100%"
-                height={210}
-                image={photo}
-                alt="card image"
-                sx={{ borderRadius: "10px" }}
-            />
+            {photo &&
+                <CardMedia
+                    component="img"
+                    width="100%"
+                    height={210}
+                    image={photo}
+                    alt="card image"
+                    sx={{ borderRadius: "10px" }}
+                />}
 
             <CardContent
                 sx={{
@@ -77,7 +78,7 @@ const PropertyCard = ({ id, title, location, rent, photo, }) => {
                     height="fit-content"
                 >
                     <Typography fontSize={12} fontWeight={600} color="#6870fa">
-                        ${rent.toLocaleString()}
+                        {type}
                     </Typography>
                 </Box>
 
