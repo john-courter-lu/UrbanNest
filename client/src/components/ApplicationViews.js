@@ -6,7 +6,7 @@ import Investors from "../scenes/investors/index.js";
 import Agents from "../scenes/agents/index.js";
 import Properties from "../scenes/properties/index.js";
 import PropertyDetails from "../scenes/properties/PropertyDetails.js";
-import { CreateProperty } from "../scenes/properties/CreateProperty.js";
+import CreateProperty from "../scenes/properties/CreateProperty.js";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -45,7 +45,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             </AuthorizedRoute>
           }
         />
-        
+
         <Route path="properties">
           <Route
             index
