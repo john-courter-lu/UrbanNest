@@ -28,7 +28,7 @@ const PropertyCard = ({ id, title, location, type, photo, }) => {
                 textDecoration: "none", // Remove underline
                 backgroundColor: colors.primary[400],
             }}
-            elevation={0.5}
+            elevation={1} // 0.5 is not available
         >
 
             {photo &&
