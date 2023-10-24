@@ -3,13 +3,17 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
 import { useEffect, useState } from "react";
 import { getTypes } from "../../managers/typeManager.js";
+import { getAgents } from "../../managers/agentManager.js";
+import { useNavigate } from "react-router-dom";
+import { createProperty } from "../../managers/propertyManager.js";
 
-const CreateProperty = () => {
+const CreateProperty = ({ loggedInUser }) => {
     const isNonMobile = useMediaQuery("(min-width:600px");
 
     const [hasError, setHasError] = useState(false);
     const [propertyTypes, setPropertyTypes] = useState([]);
     const [property, setProperty] = useState({
+        agentId: 1, // Will change later when agents data's retrieved
         address: "",
         city: "",
         state: "TN",
@@ -23,7 +27,28 @@ const CreateProperty = () => {
         typeId: 1, // Set a default type
     });
 
-    useEffect(() => { getTypes().then(setPropertyTypes) }, []);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        getTypes().then(setPropertyTypes);
+        getAgents()
+            .then((agentsArray) => { // directly use data from getAgents() instead of storing it in a state, because setAgents will be acync and will not work well even with .then()
+
+                // Set AgentId to the matching loggedinUser's Agent Id
+                const foundAgent = agentsArray.find(agent => agent.userProfileId === loggedInUser.id) // same as .filter()[0]
+
+                console.log(foundAgent)
+                // It will return undefined during the first load (when first clicking the Add Property button) if using .then(setAgents).then();
+
+                if (foundAgent) { // Make sure foundAgent is not undefined before setting it in state
+                    setProperty({
+                        ...property,
+                        agentId: foundAgent.id
+                    })
+                }
+
+            })
+    }, [loggedInUser]); // To ensure that the effect runs when loggedInUser changes.
 
     const handleBlur = (event) => {
         // Perform validation
@@ -45,7 +70,8 @@ const CreateProperty = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         // Handle form submission (send data to the server).
-        // Use the 'property' object to access form data.
+        console.log(property.agentId)
+        createProperty(property).then(navigate("/properties"))
     };
 
     return (
@@ -151,7 +177,7 @@ const CreateProperty = () => {
                         sx={{ gridColumn: "span 2" }}
                     >
                         {propertyTypes.map(pt => {
-                            return <MenuItem value={pt.id}>{pt.name}</MenuItem>
+                            return <MenuItem key={pt.id} value={pt.id}>{pt.name}</MenuItem>
                         })}
                     </TextField>
                 </Box>

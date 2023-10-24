@@ -108,8 +108,8 @@ public class PropertyController : ControllerBase
     "AgentId" has to be assigned, otherwise will be 0, and won't show up at api/Property or api/Property/{id} (will return 404)
 
     {
-    "Address": "569 Main St",
     "AgentId": 1, 
+    "Address": "569 Main St",
     "City": "Nashville",
     "State": "TN",
     "ZipCode": "37201",

@@ -67,7 +67,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             path="create"
             element={
               <AuthorizedRoute loggedInUser={loggedInUser}>
-                <CreateProperty />
+                <CreateProperty loggedInUser={loggedInUser} />
               </AuthorizedRoute>
             }
           />
