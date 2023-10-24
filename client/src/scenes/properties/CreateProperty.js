@@ -1,39 +1,14 @@
 import { Box, Button, TextField, MenuItem } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getTypes } from "../../managers/typeManager.js";
 
 const CreateProperty = () => {
     const isNonMobile = useMediaQuery("(min-width:600px");
 
     const [hasError, setHasError] = useState(false);
-    const [propertyType, setPropertyType] = useState([
-        {
-          "id": 1,
-          "name": "Condo"
-        },
-        {
-          "id": 2,
-          "name": "Single Family House"
-        },
-        {
-          "id": 3,
-          "name": "Apartment"
-        },
-        {
-          "id": 4,
-          "name": "Duplex"
-        },
-        {
-          "id": 5,
-          "name": "Townhouse"
-        },
-        {
-          "id": 6,
-          "name": "Multi-Family Home"
-        }
-      ]);
-    
+    const [propertyTypes, setPropertyTypes] = useState([]);
     const [property, setProperty] = useState({
         address: "",
         city: "",
@@ -47,6 +22,8 @@ const CreateProperty = () => {
         numberOfBathroom: 0,
         typeId: 1, // Set a default type
     });
+
+    useEffect(() => { getTypes().then(setPropertyTypes) }, []);
 
     const handleBlur = (event) => {
         // Perform validation
@@ -173,11 +150,9 @@ const CreateProperty = () => {
                         name="typeId"
                         sx={{ gridColumn: "span 2" }}
                     >
-                        <MenuItem value={1}>Type 1</MenuItem>
-                        <MenuItem value={2}>Type 2</MenuItem>
-                        <MenuItem value={3}>Type 3</MenuItem>
-                        <MenuItem value={4}>Type 4</MenuItem>
-                        <MenuItem value={5}>Type 5</MenuItem>
+                        {propertyTypes.map(pt => {
+                            return <MenuItem value={pt.id}>{pt.name}</MenuItem>
+                        })}
                     </TextField>
                 </Box>
 
