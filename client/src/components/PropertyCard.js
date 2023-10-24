@@ -17,7 +17,7 @@ const PropertyCard = ({ id, title, location, type, photo, }) => {
     return (
         <Card
             component={Link}
-            to={`${id}`}
+            to={`/properties/${id}`}
             sx={{
                 maxWidth: "330px",
                 padding: "10px",
@@ -28,7 +28,7 @@ const PropertyCard = ({ id, title, location, type, photo, }) => {
                 textDecoration: "none", // Remove underline
                 backgroundColor: colors.primary[400],
             }}
-            elevation={0.5}
+            elevation={1} // 0.5 is not available
         >
 
             {photo &&

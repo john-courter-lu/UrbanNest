@@ -1,10 +1,13 @@
-import { Button, Typography, Box } from "@mui/material";
+import { Button, Typography, Box, Stack } from "@mui/material";
 import PropertyCard from '../../components/PropertyCard.js';
 import Header from '../../components/Header.js';
+import CustomButton from "../../components/CustomButton.js";
 import { tokens } from '../../theme.js';
 import { useTheme } from '@emotion/react';
 import { useEffect, useState } from "react";
 import { getProperties } from '../../managers/propertyManager.js';
+import { useNavigate } from "react-router-dom";
+import Add from "@mui/icons-material/Add";
 
 export default function Properties() {
 
@@ -13,6 +16,7 @@ export default function Properties() {
         () => { getProperties().then(setPropertiesData) }, []
     );
 
+    const navigate = useNavigate();
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
@@ -22,6 +26,22 @@ export default function Properties() {
                 title="PROPERTIES"
                 subtitle="List of Properties"
             />
+
+            <Stack
+                direction="row-reverse"
+                mr={8}
+                //justifyContent="space-between"
+                //alignItems="center"
+            >
+                <CustomButton
+                    title="Add Property"
+                    handleClick={() => navigate("/properties/create")}
+                    backgroundColor="#475be8"
+                    color="#fcfcfc"
+                    icon={<Add />}
+                />
+            </Stack>
+
             <Box
                 m="40px 0 0 0"
                 height="75vh"
