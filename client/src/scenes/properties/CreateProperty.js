@@ -7,7 +7,33 @@ const CreateProperty = () => {
     const isNonMobile = useMediaQuery("(min-width:600px");
 
     const [hasError, setHasError] = useState(false);
-
+    const [propertyType, setPropertyType] = useState([
+        {
+          "id": 1,
+          "name": "Condo"
+        },
+        {
+          "id": 2,
+          "name": "Single Family House"
+        },
+        {
+          "id": 3,
+          "name": "Apartment"
+        },
+        {
+          "id": 4,
+          "name": "Duplex"
+        },
+        {
+          "id": 5,
+          "name": "Townhouse"
+        },
+        {
+          "id": 6,
+          "name": "Multi-Family Home"
+        }
+      ]);
+    
     const [property, setProperty] = useState({
         address: "",
         city: "",
