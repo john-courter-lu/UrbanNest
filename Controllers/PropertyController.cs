@@ -70,7 +70,7 @@ public class PropertyController : ControllerBase
         return Ok(inventory);
     }
 
-    // post a new property
+    // Post a new property
     [HttpPost] // /api/property/
     [Authorize]
     public IActionResult CreateProperty(Property property)
@@ -123,7 +123,7 @@ public class PropertyController : ControllerBase
 
      */
 
-    // delete a property
+    // Delete a property
     [HttpDelete("{id}")]
     [Authorize]
     public IActionResult DeleteProperty(int id)
@@ -140,5 +140,49 @@ public class PropertyController : ControllerBase
         _dbContext.SaveChanges();
         return NoContent();
     }
+
+    // This endpoint should allow updating the basic info columns of the Property table 
+    [HttpPut("{id}")] // /api/property/{id}
+    [Authorize]
+    public IActionResult UpdateProperty(int id, [FromBody] Property updatedProperty)
+    {
+        Property property = _dbContext.Properties.SingleOrDefault(c => c.Id == id);
+
+        if (property == null)
+        {
+            return NotFound();
+        }
+        else if (property.Id != updatedProperty.Id)
+        {
+            return BadRequest("updatedProperty has the wrong Id");
+        }
+
+        property.SquareFeet = updatedProperty.SquareFeet;
+        property.NumberOfBedroom = updatedProperty.NumberOfBedroom;
+        property.NumberOfBathroom = updatedProperty.NumberOfBathroom;
+
+        _dbContext.SaveChanges();
+
+        return NoContent();
+    }
+
+    // JSON body for testing : only specific column will be updated.
+    /* 
+
+    {
+    "Id": 21,
+    "AgentId": 1, 
+    "Address": "569 Main St",
+    "City": "Nashville",
+    "State": "TN",
+    "ZipCode": "37201",
+    "isActive": true,
+    "SquareFeet": 1500,
+    "NumberOfBedroom": 3,
+    "NumberOfBathroom": 2,
+    "TypeId": 2
+    }
+
+     */
 
 }
