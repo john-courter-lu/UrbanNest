@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import { useEffect, useState } from "react";
 import { getTypes } from "../../managers/typeManager.js";
 import { useNavigate, useParams } from "react-router-dom";
-import { createProperty, getPropertyById } from "../../managers/propertyManager.js";
+import { getPropertyById, updateProperty } from "../../managers/propertyManager.js";
 
 const EditProperty = ({ loggedInUser }) => {
     const isNonMobile = useMediaQuery("(min-width:600px");
@@ -42,8 +42,8 @@ const EditProperty = ({ loggedInUser }) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         // Handle form submission (send data to the server).
-        console.log(property.agentId)
-        createProperty(property).then(navigate("/properties"))
+        updateProperty(propertyId, property)
+            .then(console.log(`new property: ${property.squareFeet}`))
     };
 
     if (!property) { return null; }
