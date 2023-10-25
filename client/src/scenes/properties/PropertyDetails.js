@@ -9,13 +9,13 @@ import Phone from "@mui/icons-material/Phone";
 import Place from "@mui/icons-material/Place";
 import Header from "../../components/Header.js";
 import PropertyCard from "../../components/PropertyCard.js";
-import { useTheme } from "@mui/material";
+import { Avatar, useTheme } from "@mui/material";
 import { tokens } from "../../theme.js";
 import { getPropertyById } from "../../managers/propertyManager.js";
 
 const PropertyDetails = ({ loggedinUser }) => {
     const navigate = useNavigate();
-    const { propertyId } = useParams(); 
+    const { propertyId } = useParams();
     // The name has to be the same as in the route of ApplicationView.
     const [user, setUser] = useState(null);
     const [property, setProperty] = useState(null);
@@ -102,18 +102,10 @@ const PropertyDetails = ({ loggedinUser }) => {
                             borderRadius={2}
                         >
 
-                            <img
-                                src={
-                                    property?.agent?.userProfile?.avatarURL
-                                    || "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png"
-                                }
-                                alt="avatar"
-                                width={45}
-                                height={45}
-                                style={{
-                                    borderRadius: "100%",
-                                    objectFit: "cover",
-                                }}
+                            <Avatar
+                                sx={{ bgcolor: colors.blueAccent[400], width: 56, height: 56 }}
+                                alt={property.agent.userProfile.firstName}
+                                src={property.agent.userProfile.avatarURL}
                             />
 
                             <Stack mt="15px">
