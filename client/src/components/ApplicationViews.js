@@ -7,6 +7,7 @@ import Agents from "../scenes/agents/index.js";
 import Properties from "../scenes/properties/index.js";
 import PropertyDetails from "../scenes/properties/PropertyDetails.js";
 import CreateProperty from "../scenes/properties/CreateProperty.js";
+import EditProperty from "../scenes/properties/EditProperty.js";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -68,6 +69,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             element={
               <AuthorizedRoute loggedInUser={loggedInUser}>
                 <CreateProperty loggedInUser={loggedInUser} />
+              </AuthorizedRoute>
+            }
+          />
+          <Route
+            path=":propertyId/edit"
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <EditProperty loggedInUser={loggedInUser} />
               </AuthorizedRoute>
             }
           />
