@@ -3,22 +3,22 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
 import { useEffect, useState } from "react";
 import { getTypes } from "../../managers/typeManager.js";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getPropertyById, updateProperty } from "../../managers/propertyManager.js";
 import Notification from "../../components/Notification.js";
 
-const EditProperty = ({ loggedInUser }) => {
+const EditProperty = () => {
     const isNonMobile = useMediaQuery("(min-width:600px");
 
     const { propertyId } = useParams();
 
     const [property, setProperty] = useState(null);
     const [propertyTypes, setPropertyTypes] = useState([]);
-    
+
     // For form validation
     const [hasError, setHasError] = useState(false);
     // For notification
-    const [notificationMessage,setNotificationMessage] =useState('')
+    const [notificationMessage, setNotificationMessage] = useState('')
 
     useEffect(() => {
         getTypes().then(setPropertyTypes);
