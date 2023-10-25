@@ -24,6 +24,7 @@ public class PropertyController : ControllerBase
     public IActionResult Get()
     {
         return Ok(_dbContext.Properties
+                    .Where(property => property.IsActive) // filter out non-active properties
                     .Include(p => p.Type)
                     .Include(p => p.Agent) // will not show Properties whose AgentId is 0
                         .ThenInclude(a => a.UserProfile)
@@ -48,7 +49,7 @@ public class PropertyController : ControllerBase
                     .ThenInclude(a => a.UserProfile)
             .SingleOrDefault(p => p.Id == id);
 
-        if (property == null)
+        if (property == null || property.IsActive == false) //filter out non-active property, too
         {
             return NotFound();
         }
@@ -122,5 +123,22 @@ public class PropertyController : ControllerBase
 
      */
 
+    // delete a property
+    [HttpDelete("{id}")]
+    [Authorize]
+    public IActionResult DeleteProperty(int id)
+    {
+        Property propertyToDelete = _dbContext.Properties.SingleOrDefault(c => c.Id == id);
+
+        if (propertyToDelete == null)
+        {
+            return NotFound();
+        }
+
+        propertyToDelete.IsActive = false;
+
+        _dbContext.SaveChanges();
+        return NoContent();
+    }
 
 }
