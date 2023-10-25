@@ -1,9 +1,11 @@
 import Place from "@mui/icons-material/Place";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { Box, Stack, Card, CardMedia, CardContent, Menu, MenuItem, IconButton, Typography, useTheme } from '@mui/material';
+import { Box, Stack, Card, CardMedia, CardContent, Menu, MenuItem, IconButton, Typography, useTheme, Dialog } from '@mui/material';
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import { tokens } from "../theme.js";
+import DeleteConfirmation from './DeleteConfirmation'; // Import your confirmation dialog
+import Notification from './Notification'; // Import your notification component
 
 
 const PropertyCard = ({ id, title, location, type, photo, }) => {
@@ -11,14 +13,43 @@ const PropertyCard = ({ id, title, location, type, photo, }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
+    // For MoreVertIcon's menu
     const [menuAnchor, setMenuAnchor] = useState(null);
 
+    // For DeleteConfirmation and Notification
+    const [isDeleteDialogOpen, setDeleteDialogOpen] = useState(false);
+    const [notificationMessage, setNotificationMessage] = useState('');
+
+    // Handle MoreVertIcon's menu
     const handleMenuOpen = (event) => {
         setMenuAnchor(event.currentTarget);
     };
 
     const handleMenuClose = () => {
         setMenuAnchor(null);
+    };
+
+    // Handle Delete Dialog
+    const openDeleteDialog = () => {
+        setDeleteDialogOpen(true);
+    };
+
+    const closeDeleteDialog = () => {
+        setDeleteDialogOpen(false);
+    };
+
+    // Handle Delete
+    const handleDelete = () => {
+        // Perform the deletion (e.g., an API call)
+        // Replace this with your actual data deletion function
+        // For now, just log a message
+        console.log('XXX is deleted');
+
+        // Display a notification
+        setNotificationMessage('XXX is deleted');
+
+        // Close the delete dialog
+        closeDeleteDialog();
     };
 
     return (
@@ -94,10 +125,15 @@ const PropertyCard = ({ id, title, location, type, photo, }) => {
 
                     <Menu anchorEl={menuAnchor} open={Boolean(menuAnchor)} onClose={handleMenuClose}>
                         <MenuItem onClick={handleMenuClose}>Edit</MenuItem>
-                        <MenuItem onClick={handleMenuClose}>Delete</MenuItem>
+                        <MenuItem onClick={openDeleteDialog}>Delete</MenuItem>
                     </Menu>
                 </Stack>
             </CardContent>
+            
+            {/* Child Components: */}
+            <DeleteConfirmation open={isDeleteDialogOpen} handleClose={closeDeleteDialog} handleDelete={handleDelete} />
+            <Notification message={notificationMessage} onClose={() => setNotificationMessage('')} />
+
         </Card>
     );
 };
