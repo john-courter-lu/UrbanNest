@@ -1,5 +1,5 @@
 import React from 'react';
-import { Snackbar, SnackbarContent } from '@mui/material';
+import { Button, Slide, Snackbar, SnackbarContent } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
@@ -13,14 +13,21 @@ export default function Notification({ message, onClose }) {
             open={!!message}
             autoHideDuration={3000}
             onClose={onClose}
+            TransitionComponent={(props) => <Slide {...props} direction="left" />}
         >
-            
+
             {/* <SnackbarContent message={message} /> */}
             {/* This is the way to show vanilla notifications */}
 
-            <Alert severity="success" onClose={onClose} sx={{ width: '100%' }}>
+            <Alert severity="success" onClose={onClose} sx={{ width: '100%' }}
+                action={
+                    <Button color="inherit" size="small">
+                        UNDO
+                    </Button>
+                }
+            >
                 {message}
             </Alert>
-        </Snackbar>
+        </Snackbar >
     );
 }
