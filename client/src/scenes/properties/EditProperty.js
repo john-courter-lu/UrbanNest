@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { getTypes } from "../../managers/typeManager.js";
 import { useNavigate, useParams } from "react-router-dom";
 import { getPropertyById, updateProperty } from "../../managers/propertyManager.js";
+import Notification from "../../components/Notification.js";
 
 const EditProperty = ({ loggedInUser }) => {
     const isNonMobile = useMediaQuery("(min-width:600px");
@@ -12,10 +13,12 @@ const EditProperty = ({ loggedInUser }) => {
     const { propertyId } = useParams();
 
     const [property, setProperty] = useState(null);
-    const [hasError, setHasError] = useState(false);
     const [propertyTypes, setPropertyTypes] = useState([]);
-
-    const navigate = useNavigate();
+    
+    // For form validation
+    const [hasError, setHasError] = useState(false);
+    // For notification
+    const [notificationMessage,setNotificationMessage] =useState('')
 
     useEffect(() => {
         getTypes().then(setPropertyTypes);
@@ -43,7 +46,7 @@ const EditProperty = ({ loggedInUser }) => {
         event.preventDefault();
         // Handle form submission (send data to the server).
         updateProperty(propertyId, property)
-            .then(console.log(`new property: ${property.squareFeet}`))
+            .then(setNotificationMessage('Property was updated successfully!'))
     };
 
     if (!property) { return null; }
@@ -167,6 +170,8 @@ const EditProperty = ({ loggedInUser }) => {
                     </Button>
                 </Box>
             </form>
+
+            <Notification message={notificationMessage} onClose={() => setNotificationMessage('')} />
         </Box>
     );
 };
