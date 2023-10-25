@@ -24,6 +24,9 @@ const PropertyCard = ({ id, title, location, type, photo, }) => {
     // For Handling Delete and Setting the card invisible
     const [isVisible, setIsVisible] = useState(true);
 
+    // For Navigation to Edit View 
+    const navigate = useNavigate();
+
     // Handle MoreVertIcon's menu
     const handleMenuOpen = (event) => {
         setMenuAnchor(event.currentTarget);
@@ -130,8 +133,14 @@ const PropertyCard = ({ id, title, location, type, photo, }) => {
                         </IconButton>
 
                         <Menu anchorEl={menuAnchor} open={Boolean(menuAnchor)} onClose={handleMenuClose}>
-                            <MenuItem onClick={handleMenuClose}>Edit</MenuItem>
-                            <MenuItem onClick={openDeleteDialog}>Delete</MenuItem>
+                            <MenuItem
+                                onClick={() => { navigate(`/properties/${id}/edit`) }}>
+                                Edit
+                            </MenuItem>
+                            <MenuItem
+                                onClick={openDeleteDialog}>
+                                Delete
+                            </MenuItem>
                         </Menu>
                     </Stack>
                 </CardContent>
