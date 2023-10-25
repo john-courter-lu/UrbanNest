@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
-import { Box, IconButton, Typography, useTheme } from "@mui/material";
+import { Avatar, Box, IconButton, Typography, useTheme } from "@mui/material";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
@@ -89,12 +89,10 @@ const Sidebar = ({ loggedInUser }) => {
                     {!isCollapsed && (
                         <Box mb="25px">
                             <Box display="flex" justifyContent="center" alignItems="center">
-                                <img
-                                    alt="user-profile-img"
-                                    width="100px"
-                                    height="100px"
-                                    src={`../../assets/user.png`}
-                                    style={{ cursor: "pointer", borderRadius: "50%" }}
+                                <Avatar
+                                    sx={{ bgcolor: colors.blueAccent[400], width: 56, height: 56 }}
+                                    alt={loggedInUser.firstName}
+                                    src={loggedInUser.avatarURL}
                                 />
                             </Box>
                             <Box textAlign="center">
@@ -102,12 +100,12 @@ const Sidebar = ({ loggedInUser }) => {
                                     variant="h2"
                                     color={colors.grey[100]}
                                     fontWeight="bold"
-                                    sx={{ m: "10px 0 0 0" }}
+                                    sx={{ m: "10px 0 " }}
                                 >
-                                    Adam Welshman
+                                    {loggedInUser.fullName}
                                 </Typography>
                                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                                    Admin
+                                    {loggedInUser.email}
                                 </Typography>
                             </Box>
                         </Box>
