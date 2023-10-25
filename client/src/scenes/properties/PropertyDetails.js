@@ -9,9 +9,10 @@ import Phone from "@mui/icons-material/Phone";
 import Place from "@mui/icons-material/Place";
 import Header from "../../components/Header.js";
 import PropertyCard from "../../components/PropertyCard.js";
-import { Avatar, useTheme } from "@mui/material";
+import { Avatar, IconButton, Menu, MenuItem, useTheme } from "@mui/material";
 import { tokens } from "../../theme.js";
 import { getPropertyById } from "../../managers/propertyManager.js";
+import MoreVertIcon from "@mui/icons-material/MoreVert.js";
 
 const PropertyDetails = ({ loggedinUser }) => {
     const navigate = useNavigate();
@@ -31,6 +32,18 @@ const PropertyDetails = ({ loggedinUser }) => {
 
     }, []);
 
+    // For Agent's More Vert Icon's Menu
+    const [menuAnchor, setMenuAnchor] = useState(null);
+
+    const handleMenuOpen = (event) => {
+        setMenuAnchor(event.currentTarget);
+    };
+
+    const handleMenuClose = () => {
+        setMenuAnchor(null);
+    };
+
+    // Delete
     const handleDeleteProperty = () => {
 
     };
@@ -100,7 +113,20 @@ const PropertyDetails = ({ loggedinUser }) => {
                             textAlign="center"
                             border="1px solid #E4E4E4"
                             borderRadius={2}
+                            position="relative"
                         >
+
+                            <IconButton
+                                onClick={handleMenuOpen}
+                                style={{ position: 'absolute', top: 8, right: 8, backgroundColor: 'transparent' }}
+                            >
+                                <MoreVertIcon />
+                            </IconButton>
+
+                            <Menu anchorEl={menuAnchor} open={Boolean(menuAnchor)} onClose={handleMenuClose}>
+                                <MenuItem onClick={handleMenuClose}>Reassign</MenuItem>
+                                
+                            </Menu>
 
                             <Avatar
                                 sx={{ bgcolor: colors.blueAccent[400], width: 56, height: 56 }}
@@ -135,6 +161,7 @@ const PropertyDetails = ({ loggedinUser }) => {
                                 {property?.agent?.properties?.length} Properties
                             </Typography>
                         </Stack>
+
 
 
 
