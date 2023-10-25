@@ -3,52 +3,24 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
 import { useEffect, useState } from "react";
 import { getTypes } from "../../managers/typeManager.js";
-import { getAgents } from "../../managers/agentManager.js";
-import { useNavigate } from "react-router-dom";
-import { createProperty } from "../../managers/propertyManager.js";
+import { useNavigate, useParams } from "react-router-dom";
+import { createProperty, getPropertyById } from "../../managers/propertyManager.js";
 
 const EditProperty = ({ loggedInUser }) => {
     const isNonMobile = useMediaQuery("(min-width:600px");
 
+    const { propertyId } = useParams();
+
+    const [property, setProperty] = useState(null);
     const [hasError, setHasError] = useState(false);
     const [propertyTypes, setPropertyTypes] = useState([]);
-    const [property, setProperty] = useState({
-        agentId: 1, // Will change later when agents data's retrieved
-        address: "",
-        city: "",
-        state: "TN",
-        zipCode: "",
-        isActive: true,
-        isRentOut: false,
-        imageURL: "",
-        squareFeet: 0,
-        numberOfBedroom: 0,
-        numberOfBathroom: 0,
-        typeId: 1, // Set a default type
-    });
 
     const navigate = useNavigate();
 
     useEffect(() => {
         getTypes().then(setPropertyTypes);
-        getAgents()
-            .then((agentsArray) => { // directly use data from getAgents() instead of storing it in a state, because setAgents will be acync and will not work well even with .then()
-
-                // Set AgentId to the matching loggedinUser's Agent Id
-                const foundAgent = agentsArray.find(agent => agent.userProfileId === loggedInUser.id) // same as .filter()[0]
-
-                console.log(foundAgent)
-                // It will return undefined during the first load (when first clicking the Add Property button) if using .then(setAgents).then();
-
-                if (foundAgent) { // Make sure foundAgent is not undefined before setting it in state
-                    setProperty({
-                        ...property,
-                        agentId: foundAgent.id
-                    })
-                }
-
-            })
-    }, [loggedInUser]); // To ensure that the effect runs when loggedInUser changes.
+        getPropertyById(propertyId).then(setProperty);
+    }, []);
 
     const handleBlur = (event) => {
         // Perform validation
@@ -73,6 +45,8 @@ const EditProperty = ({ loggedInUser }) => {
         console.log(property.agentId)
         createProperty(property).then(navigate("/properties"))
     };
+
+    if (!property) { return null; }
 
     return (
         <Box m="20px">
