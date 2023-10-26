@@ -1,9 +1,14 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Select, MenuItem, autocompleteClasses, FormHelperText, InputLabel, FormControl } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { mockDataContacts } from '../../data/mockData.js';
 
 export default function AssignAgent({ open, onClose, onAgentChange, currentAgent, }) {
 
     const [selectedAgent, setSelectedAgent] = useState('');
+    const [agentsData, setAgentsData] = useState([]);
+
+    useEffect(() => { setAgentsData(mockDataContacts) }, []);
+
 
     const handleAssign = () => {
         // Pass the selected agent to the parent component
@@ -16,7 +21,7 @@ export default function AssignAgent({ open, onClose, onAgentChange, currentAgent
             <DialogTitle sx={{ width: "fit-content", mx: "auto", my: 1 }}>Assign A New Agent </DialogTitle>
 
             <DialogContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '50vh' }} >
-                <DialogContentText sx={{ my: 2 }}>Current Agent: {currentAgent} </DialogContentText>
+                <DialogContentText sx={{ my: 2 }}>Current Agent: {currentAgent.userProfile.fullName} </DialogContentText>
 
                 <FormControl sx={{ m: 1, minWidth: 250 }}>
                     <InputLabel >Select a New Agent</InputLabel> {/* it decides the actual words for the placeholder and in the outlined box */}
@@ -27,10 +32,10 @@ export default function AssignAgent({ open, onClose, onAgentChange, currentAgent
                         onChange={(e) => setSelectedAgent(e.target.value)}
 
                     >
-                        <MenuItem value="Red">Red</MenuItem>
-                        <MenuItem value="Green">Green</MenuItem>
-                        <MenuItem value="Blue">Blue</MenuItem>
-                        {/* Add more agent options */}
+                        {agentsData.filter(a=>a.id!==currentAgent.id).map((a) => {
+                            return <MenuItem key={a.id} value={a.id}>{a.userProfile.fullName}</MenuItem>
+                        })}
+
                     </Select>
                 </FormControl>
 

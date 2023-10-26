@@ -29,7 +29,7 @@ const PropertyDetails = ({ loggedinUser }) => {
 
     // For AssignAgent
     const [isAssignDialogOpen, setAssignDialogOpen] = useState(false);
-    const [currentAgent, setCurrentAgent] = useState('Red');
+    const [currentAgent, setCurrentAgent] = useState([]);
 
     useEffect(() => {
         // fetching property data
@@ -122,7 +122,7 @@ const PropertyDetails = ({ loggedinUser }) => {
                         gap="20px"
                     >
                         <Stack
-                            width="100%"
+                            width="max-content" // It makes sure every Stack child component (name, address, etc) show up in one line, not wrap
                             p={2}
                             direction="column"
                             justifyContent="center"
@@ -133,6 +133,7 @@ const PropertyDetails = ({ loggedinUser }) => {
                             position="relative"
                         >
 
+                            {/* IconButton on the top right of the Stack */}
                             <IconButton
                                 onClick={handleMenuOpen}
                                 style={{ position: 'absolute', top: 8, right: 8, backgroundColor: 'transparent' }}
@@ -140,10 +141,12 @@ const PropertyDetails = ({ loggedinUser }) => {
                                 <MoreVertIcon />
                             </IconButton>
 
+                            {/* Hidden Menu from MoreVertIcon */}
                             <Menu anchorEl={menuAnchor} open={Boolean(menuAnchor)} onClose={handleMenuClose}>
                                 <MenuItem onClick={openAssignDialog}>Reassign the Agent</MenuItem>
                             </Menu>
 
+                            {/* Child Component */}
                             <AssignAgent
                                 open={isAssignDialogOpen}
                                 onClose={closeAssignDialog}
