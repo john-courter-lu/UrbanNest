@@ -49,14 +49,6 @@ const PropertyDetails = ({ loggedinUser }) => {
         setMenuAnchor(null);
     };
 
-    // For AssignAgent
-    const handleAgentChange = (newAgentId) => {
-        setProperty({
-            ...property,
-            agentId: newAgentId
-        })
-    };
-
     const openAssignDialog = () => {
         setAssignDialogOpen(true);
         setMenuAnchor(null); // Close the Menu
@@ -153,7 +145,7 @@ const PropertyDetails = ({ loggedinUser }) => {
                                 open={isAssignDialogOpen}
                                 onClose={closeAssignDialog}
                                 property={property}
-                                onAgentChange={handleAgentChange}
+                                setProperty={setProperty}
                             />
 
                             <Avatar
