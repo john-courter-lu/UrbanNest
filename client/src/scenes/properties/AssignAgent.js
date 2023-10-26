@@ -2,7 +2,7 @@ import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Dialog
 import { useEffect, useState } from 'react';
 import { mockDataContacts } from '../../data/mockData.js';
 
-export default function AssignAgent({ open, onClose, onAgentChange, currentAgent, }) {
+export default function AssignAgent({ open, onClose, onAgentChange, property, }) {
 
     const [selectedAgent, setSelectedAgent] = useState('');
     const [agentsData, setAgentsData] = useState([]);
@@ -21,7 +21,7 @@ export default function AssignAgent({ open, onClose, onAgentChange, currentAgent
             <DialogTitle sx={{ width: "fit-content", mx: "auto", my: 1 }}>Assign A New Agent </DialogTitle>
 
             <DialogContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '50vh' }} >
-                <DialogContentText sx={{ my: 2 }}>Current Agent: {currentAgent.userProfile.fullName} </DialogContentText>
+                <DialogContentText sx={{ my: 2 }}>Current Agent: {property.agent.userProfile.fullName} </DialogContentText>
 
                 <FormControl sx={{ m: 1, minWidth: 250 }}>
                     <InputLabel >Select a New Agent</InputLabel> {/* it decides the actual words for the placeholder and in the outlined box */}
@@ -32,7 +32,7 @@ export default function AssignAgent({ open, onClose, onAgentChange, currentAgent
                         onChange={(e) => setSelectedAgent(e.target.value)}
 
                     >
-                        {agentsData.filter(a=>a.id!==currentAgent.id).map((a) => {
+                        {agentsData.filter(a=>a.id!==property.agent.id).map((a) => {
                             return <MenuItem key={a.id} value={a.id}>{a.userProfile.fullName}</MenuItem>
                         })}
 

@@ -29,8 +29,7 @@ const PropertyDetails = ({ loggedinUser }) => {
 
     // For AssignAgent
     const [isAssignDialogOpen, setAssignDialogOpen] = useState(false);
-    const [currentAgent, setCurrentAgent] = useState([]);
-
+ 
     useEffect(() => {
         // fetching property data
         getPropertyById(propertyId).then(setProperty);
@@ -51,8 +50,11 @@ const PropertyDetails = ({ loggedinUser }) => {
     };
 
     // For AssignAgent
-    const handleAgentChange = (newAgent) => {
-        setCurrentAgent(newAgent);
+    const handleAgentChange = (newAgentId) => {
+        setProperty({
+            ...property,
+            agentId: newAgentId
+        })
     };
 
     const openAssignDialog = () => {
@@ -150,7 +152,7 @@ const PropertyDetails = ({ loggedinUser }) => {
                             <AssignAgent
                                 open={isAssignDialogOpen}
                                 onClose={closeAssignDialog}
-                                currentAgent={currentAgent}
+                                property={property}
                                 onAgentChange={handleAgentChange}
                             />
 
