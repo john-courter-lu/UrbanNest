@@ -9,7 +9,7 @@ import Phone from "@mui/icons-material/Phone";
 import Place from "@mui/icons-material/Place";
 import Header from "../../components/Header.js";
 import PropertyCard from "../../components/PropertyCard.js";
-import { Avatar, IconButton, Menu, MenuItem, useTheme } from "@mui/material";
+import { Avatar, CardHeader, IconButton, Menu, MenuItem, useTheme } from "@mui/material";
 import { tokens } from "../../theme.js";
 import { getPropertyById } from "../../managers/propertyManager.js";
 import MoreVertIcon from "@mui/icons-material/MoreVert.js";
@@ -29,7 +29,7 @@ const PropertyDetails = ({ loggedinUser }) => {
 
     // For AssignAgent
     const [isAssignDialogOpen, setAssignDialogOpen] = useState(false);
- 
+
     useEffect(() => {
         // fetching property data
         getPropertyById(propertyId).then(setProperty);
@@ -110,13 +110,13 @@ const PropertyDetails = ({ loggedinUser }) => {
                     <Box
                         width="100%"
                         flex={1}
-                        maxWidth={326}
+                        maxWidth={300}
                         display="flex"
                         flexDirection="column"
                         gap="20px"
                     >
                         <Stack
-                            width="max-content" // It makes sure every Stack child component (name, address, etc) show up in one line, not wrap
+                            width="100%"
                             p={2}
                             direction="column"
                             justifyContent="center"
@@ -163,7 +163,7 @@ const PropertyDetails = ({ loggedinUser }) => {
                                 </Typography>
                             </Stack>
 
-                            <Stack mt="15px" direction="row" alignItems="center" gap={1}>
+                            <Stack mt="15px" direction="row" alignItems="center" gap={1} width="max-content">{/* // It makes sure every Stack child component (name, address, etc) show up in one line, not wrap */}
                                 <Phone sx={{ color: "#808191" }} />
                                 <Typography fontSize={14} fontWeight={400} color="#808191">
                                     {property?.agent?.userProfile?.phoneNumber}
@@ -180,6 +180,36 @@ const PropertyDetails = ({ loggedinUser }) => {
                             <Typography mt={1} fontSize={16} fontWeight={600} color="#11142D">
                                 {property?.agent?.properties?.length} Properties
                             </Typography>
+                        </Stack>
+
+                        {/* For Investors Stacks */}
+                        <Stack
+                            width="100%"
+                            p={2}
+                            direction="column"
+                            justifyContent="center"
+                            alignItems="center"
+                            textAlign="left" /* For the tile and subheader */
+                            border="1px solid #E4E4E4"
+                            borderRadius={2}
+                            position="relative"
+                        >
+                            {property.propertyInvestors.map(propertyInvestor => (
+                                <CardHeader
+                                    key={propertyInvestor.id} // .map() in React requires key
+                                    avatar={
+                                        <Avatar
+                                            sx={{ bgcolor: colors.blueAccent[400], width: 48, height: 48 }}
+                                            alt={property.agent.userProfile.firstName}
+                                            src={property.agent.userProfile.avatarURL}
+                                        />
+                                    }
+                                    title={propertyInvestor.investor.userProfile.fullName}
+                                    subheader={propertyInvestor.investor.company}
+                                />
+                            ))
+
+                            }
                         </Stack>
 
 
