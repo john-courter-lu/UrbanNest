@@ -160,6 +160,7 @@ public class PropertyController : ControllerBase
         property.SquareFeet = updatedProperty.SquareFeet;
         property.NumberOfBedroom = updatedProperty.NumberOfBedroom;
         property.NumberOfBathroom = updatedProperty.NumberOfBathroom;
+        property.AgentId = updatedProperty.AgentId;
 
         _dbContext.SaveChanges();
 
@@ -171,7 +172,7 @@ public class PropertyController : ControllerBase
 
     {
     "Id": 21,
-    "AgentId": 1, 
+    "AgentId": 5, 
     "Address": "569 Main St",
     "City": "Nashville",
     "State": "TN",
