@@ -1,7 +1,7 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Select, MenuItem, autocompleteClasses, FormHelperText, InputLabel, FormControl } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { mockDataContacts } from '../../data/mockData.js';
-import { updateProperty } from '../../managers/propertyManager.js';
+import { getPropertyById, updateProperty } from '../../managers/propertyManager.js';
 
 export default function AssignAgent({ open, onClose, property, setProperty }) {
 
@@ -18,10 +18,18 @@ export default function AssignAgent({ open, onClose, property, setProperty }) {
     };
 
     const handleAssign = () => {
-        // Pass the selected agent to the parent component
-        //updateProperty(property);
-        console.log(property.agentId)
+
         onClose();
+
+        // Connect to the API to update
+        updateProperty(property.id, property).then(
+
+            // then the Agent Stack need to be updated.
+            () => {
+                getPropertyById(property.id).then(setProperty)
+            }
+        )
+
     };
 
     return (
