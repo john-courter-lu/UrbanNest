@@ -13,16 +13,23 @@ import { Avatar, IconButton, Menu, MenuItem, useTheme } from "@mui/material";
 import { tokens } from "../../theme.js";
 import { getPropertyById } from "../../managers/propertyManager.js";
 import MoreVertIcon from "@mui/icons-material/MoreVert.js";
+import AssignAgent from "./AssignAgent.js";
 
 const PropertyDetails = ({ loggedinUser }) => {
     const navigate = useNavigate();
+
     const { propertyId } = useParams();
     // The name has to be the same as in the route of ApplicationView.
+
     const [user, setUser] = useState(null);
     const [property, setProperty] = useState(null);
 
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+
+    // For AssignAgent
+    const [isAssignDialogOpen, setAssignDialogOpen] = useState(false);
+    const [currentAgent, setCurrentAgent] = useState('Red');
 
     useEffect(() => {
         // fetching property data
@@ -43,11 +50,21 @@ const PropertyDetails = ({ loggedinUser }) => {
         setMenuAnchor(null);
     };
 
-    // Delete
-    const handleDeleteProperty = () => {
-
+    // For AssignAgent
+    const handleAgentChange = (newAgent) => {
+        setCurrentAgent(newAgent);
     };
 
+    const openAssignDialog = () => {
+        setAssignDialogOpen(true);
+        setMenuAnchor(null); // Close the Menu
+    };
+
+    const closeAssignDialog = () => {
+        setAssignDialogOpen(false);
+    };
+
+    // Return 
     if (!property) { return null; }
 
     return (
@@ -124,9 +141,15 @@ const PropertyDetails = ({ loggedinUser }) => {
                             </IconButton>
 
                             <Menu anchorEl={menuAnchor} open={Boolean(menuAnchor)} onClose={handleMenuClose}>
-                                <MenuItem onClick={handleMenuClose}>Reassign</MenuItem>
-                                
+                                <MenuItem onClick={openAssignDialog}>Reassign the Agent</MenuItem>
                             </Menu>
+
+                            <AssignAgent
+                                open={isAssignDialogOpen}
+                                onClose={closeAssignDialog}
+                                currentAgent={currentAgent}
+                                onAgentChange={handleAgentChange}
+                            />
 
                             <Avatar
                                 sx={{ bgcolor: colors.blueAccent[400], width: 56, height: 56 }}
