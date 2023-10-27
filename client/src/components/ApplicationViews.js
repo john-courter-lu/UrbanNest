@@ -42,7 +42,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           path="agents"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-              <Agents />
+              <Agents loggedInUser={loggedInUser}/>
             </AuthorizedRoute>
           }
         />

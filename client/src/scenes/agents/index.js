@@ -5,7 +5,7 @@ import Header from "../../components/Header.js";
 import { useEffect, useState } from "react";
 import { getAgents } from "../../managers/agentManager.js";
 
-const Agents = () => {
+const Agents = ({ loggedInUser }) => {
 
     const [agentsData, setAgentsData] = useState([]);
     useEffect(
@@ -22,7 +22,7 @@ const Agents = () => {
             flex: 0.5
         },
         {
-            field: "userProfile.fullName",
+            field: "fullName",
             headerName: "Name",
             flex: 1,
             cellClassName: "name-column--cell",
@@ -34,7 +34,7 @@ const Agents = () => {
             flex: 1,
         },
         {
-            field: "userProfile.phoneNumber",
+            field: "phoneNumber",
             headerName: "Phone Number",
             flex: 1,
             valueGetter: params => params.row.userProfile.phoneNumber,
@@ -76,6 +76,15 @@ const Agents = () => {
 
 
     ];
+
+    if (loggedInUser.id === 2) {
+        columns.unshift({
+            field: "isActive",
+            headerName: "IsActive",
+            flex: 1,
+            valueGetter: params => params.row.userProfile.isActive,
+        })
+    }
 
     return (
         <Box m="20px">
