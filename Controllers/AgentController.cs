@@ -51,6 +51,12 @@ public class AgentController : ControllerBase
 
         foundUserProfile.IsActive = !foundUserProfile.IsActive;
 
+        // Update the JoinedDate to newly joined date when reactivating
+        if (foundUserProfile.IsActive)
+        {
+            foundUserProfile.JoinedDate = DateTime.Today;
+        }
+
         _dbContext.SaveChanges();
 
         return NoContent();

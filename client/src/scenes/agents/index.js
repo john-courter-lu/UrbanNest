@@ -109,7 +109,10 @@ const Agents = ({ loggedInUser }) => {
                             ...agentData,
                             userProfile: {
                                 ...agentData.userProfile,
+                                // Update the active status in the UI
                                 isActive: !agentData.userProfile.isActive,
+                                // Update the joined Date in the UI
+                                joinedDate: !agentData.userProfile.isActive ? new Date() : agentData.userProfile.joinedDate
                             },
                         }
                         : agentData
