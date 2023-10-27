@@ -4,6 +4,7 @@ import { tokens } from "../../theme";
 import Header from "../../components/Header.js";
 import { useEffect, useState } from "react";
 import { deactivateAgent, getAgents } from "../../managers/agentManager.js";
+import Notification from "../../components/Notification.js";
 
 const Agents = ({ loggedInUser }) => {
 
@@ -11,6 +12,9 @@ const Agents = ({ loggedInUser }) => {
     useEffect(
         () => { getAgents().then(setAgentsData) }, []
     );
+
+    // For notification
+    const [notificationMessage, setNotificationMessage] = useState('')
 
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
@@ -80,11 +84,11 @@ const Agents = ({ loggedInUser }) => {
     if (loggedInUser.id === 2) {
         columns.unshift({
             field: 'deactivate',
-            headerName: 'Deactivate',
-            flex: 1,
+            headerName: 'Active Status',
+            flex: 0.5,
             renderCell: (params) => (
                 <Switch
-                    checked={!params.row.userProfile.isActive}
+                    checked={params.row.userProfile.isActive}
                     onChange={() => handleDeactivate(params.row.id)}
                     color="primary"
                 />
@@ -93,9 +97,11 @@ const Agents = ({ loggedInUser }) => {
     }
 
     const handleDeactivate = (id) => {
+
         // Update the data source  
         deactivateAgent(id).then(
             () => {
+
                 // Update the state with the updatedAgentsData
                 const updatedAgentsData = agentsData.map((agentData) =>
                     agentData.id === id
@@ -108,7 +114,14 @@ const Agents = ({ loggedInUser }) => {
                         }
                         : agentData
                 );
+
                 setAgentsData(updatedAgentsData);
+
+                // Set the notification message after a brief delay (Important: because state is updating).
+                setTimeout(() => {
+                    setNotificationMessage('Agent status was changed successfully!');
+                }, 300);
+
             }
         )
 
@@ -159,6 +172,7 @@ const Agents = ({ loggedInUser }) => {
                     components={{ Toolbar: GridToolbar }}
                 />
             </Box>
+            <Notification message={notificationMessage} onClose={() => setNotificationMessage('')} />
         </Box>
     );
 };
