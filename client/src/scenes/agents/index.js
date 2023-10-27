@@ -3,7 +3,7 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import Header from "../../components/Header.js";
 import { useEffect, useState } from "react";
-import { getAgents } from "../../managers/agentManager.js";
+import { deactivateAgent, getAgents } from "../../managers/agentManager.js";
 
 const Agents = ({ loggedInUser }) => {
 
@@ -94,20 +94,24 @@ const Agents = ({ loggedInUser }) => {
 
     const handleDeactivate = (id) => {
         // Update the data source  
+        deactivateAgent(id).then(
+            () => {
+                // Update the state with the updatedAgentsData
+                const updatedAgentsData = agentsData.map((agentData) =>
+                    agentData.id === id
+                        ? {
+                            ...agentData,
+                            userProfile: {
+                                ...agentData.userProfile,
+                                isActive: !agentData.userProfile.isActive,
+                            },
+                        }
+                        : agentData
+                );
+                setAgentsData(updatedAgentsData);
+            }
+        )
 
-        // Update the state with the updatedAgentsData
-        const updatedAgentsData = agentsData.map((agentData) =>
-            agentData.id === id
-                ? {
-                    ...agentData,
-                    userProfile: {
-                        ...agentData.userProfile,
-                        isActive: !agentData.userProfile.isActive,
-                    },
-                }
-                : agentData
-        );
-        setAgentsData(updatedAgentsData);
     };
 
 
