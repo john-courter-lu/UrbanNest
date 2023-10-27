@@ -119,10 +119,10 @@ const PropertyCard = ({ id, title, location, type, photo, }) => {
                         px={1.5}
                         py={0.5}
                         borderRadius={1}
-                        bgcolor={colors.primary[400]}
+                        bgcolor="#6870fa"
                         height="fit-content"
                     >
-                        <Typography fontSize={12} fontWeight={600} color="#6870fa">
+                        <Typography fontSize={12} fontWeight={600} color={colors.primary[400]}>
                             {type}
                         </Typography>
                     </Box>
