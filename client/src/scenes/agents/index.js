@@ -1,4 +1,4 @@
-import { Box, useTheme } from "@mui/material";
+import { Box, Switch, useTheme } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import Header from "../../components/Header.js";
@@ -79,12 +79,27 @@ const Agents = ({ loggedInUser }) => {
 
     if (loggedInUser.id === 2) {
         columns.unshift({
-            field: "isActive",
-            headerName: "IsActive",
+            field: 'deactivate',
+            headerName: 'Deactivate',
             flex: 1,
-            valueGetter: params => params.row.userProfile.isActive,
+            renderCell: (params) => (
+                <Switch
+                    checked={!params.row.userProfile.isActive}
+                    onChange={() => handleDeactivate(params.row.id)}
+                    color="primary"
+                />
+            ),
         })
     }
+
+    const handleDeactivate = (id) => {
+        // const updatedRows = rows.map((row) =>
+        //   row.id === id ? { ...row, email: 'N/A', deactivate: !row.deactivate } : row
+        // );
+        // Update the state or data source with the updatedRows
+        // For example, in a state management system or using setState
+        // setRows(updatedRows);
+    };
 
     return (
         <Box m="20px">
