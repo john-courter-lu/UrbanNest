@@ -81,7 +81,7 @@ public class PropertyController : ControllerBase
             return BadRequest("Invalid property data.");
         }
 
-        // Further validation to check if a property with the same name already exists
+        // Further validation to check if a property with the same address already exists
         var existingProperty = _dbContext.Properties.FirstOrDefault(c => c.Address == property.Address);
         if (existingProperty != null)
         {
@@ -110,17 +110,26 @@ public class PropertyController : ControllerBase
 
     {
     "AgentId": 1, 
-    "Address": "569 Main St",
-    "City": "Nashville",
+    "Address": "569 Investor St",
+    "City": "Franklin",
     "State": "TN",
     "ZipCode": "37201",
     "isActive": true,
     "SquareFeet": 1500,
     "NumberOfBedroom": 3,
     "NumberOfBathroom": 2,
-    "TypeId": 2
+    "TypeId": 4,
+    "propertyInvestors": [
+        {
+            "investorId": 1
+        },
+        {
+            "investorId": 2
+        }
+      ]
     }
-
+    
+ 
      */
 
     // Delete a property
