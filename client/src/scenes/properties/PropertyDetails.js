@@ -186,8 +186,8 @@ const PropertyDetails = ({ loggedinUser }) => {
                         <Stack
                             width="100%"
                             p={2}
-                            border="1px solid #E4E4E4"
-                            borderRadius={2}                            
+                            //border="1px solid #E4E4E4"
+                            //borderRadius={2}                            
                         >
                             {property.propertyInvestors.map(propertyInvestor => (
                                 <CardHeader

@@ -1,16 +1,20 @@
-import { Box, useTheme } from "@mui/material";
+import { Box, Switch, useTheme } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import Header from "../../components/Header.js";
 import { useEffect, useState } from "react";
-import { getAgents } from "../../managers/agentManager.js";
+import { deactivateAgent, getAgents } from "../../managers/agentManager.js";
+import Notification from "../../components/Notification.js";
 
-const Agents = () => {
+const Agents = ({ loggedInUser }) => {
 
     const [agentsData, setAgentsData] = useState([]);
     useEffect(
         () => { getAgents().then(setAgentsData) }, []
     );
+
+    // For notification
+    const [notificationMessage, setNotificationMessage] = useState('')
 
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
@@ -22,7 +26,7 @@ const Agents = () => {
             flex: 0.5
         },
         {
-            field: "userProfile.fullName",
+            field: "fullName",
             headerName: "Name",
             flex: 1,
             cellClassName: "name-column--cell",
@@ -34,7 +38,7 @@ const Agents = () => {
             flex: 1,
         },
         {
-            field: "userProfile.phoneNumber",
+            field: "phoneNumber",
             headerName: "Phone Number",
             flex: 1,
             valueGetter: params => params.row.userProfile.phoneNumber,
@@ -76,6 +80,56 @@ const Agents = () => {
 
 
     ];
+
+    if (loggedInUser.id === 2) {
+        columns.unshift({
+            field: 'deactivate',
+            headerName: 'Active Status',
+            flex: 0.5,
+            renderCell: (params) => (
+                <Switch
+                    checked={params.row.userProfile.isActive}
+                    onChange={() => handleDeactivate(params.row.id)}
+                    color="primary"
+                />
+            ),
+        })
+    }
+
+    const handleDeactivate = (id) => {
+
+        // Update the data source  
+        deactivateAgent(id).then(
+            () => {
+
+                // Update the state with the updatedAgentsData
+                const updatedAgentsData = agentsData.map((agentData) =>
+                    agentData.id === id
+                        ? {
+                            ...agentData,
+                            userProfile: {
+                                ...agentData.userProfile,
+                                // Update the active status in the UI
+                                isActive: !agentData.userProfile.isActive,
+                                // Update the joined Date in the UI
+                                joinedDate: !agentData.userProfile.isActive ? new Date() : agentData.userProfile.joinedDate
+                            },
+                        }
+                        : agentData
+                );
+
+                setAgentsData(updatedAgentsData);
+
+                // Set the notification message after a brief delay (Important: because state is updating).
+                setTimeout(() => {
+                    setNotificationMessage('Agent status was changed successfully!');
+                }, 300);
+
+            }
+        )
+
+    };
+
 
     return (
         <Box m="20px">
@@ -121,6 +175,7 @@ const Agents = () => {
                     components={{ Toolbar: GridToolbar }}
                 />
             </Box>
+            <Notification message={notificationMessage} onClose={() => setNotificationMessage('')} />
         </Box>
     );
 };

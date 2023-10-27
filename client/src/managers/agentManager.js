@@ -21,13 +21,11 @@ export const updateAgent = (agentId, updatedAgent) => {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedAgent)
-
     })
 };
 
-export const deleteAgent = (id) => {
-    return fetch(`${_apiUrl}/${id}`, {
-        method: "DELETE"
-    });
+export const deactivateAgent = (agentId) => {
+    return fetch(`${_apiUrl}/deactivate/${agentId}`, {
+        method: "PUT",
+    })
 };
-
