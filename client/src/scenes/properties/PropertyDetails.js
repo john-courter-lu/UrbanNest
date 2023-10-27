@@ -155,29 +155,29 @@ const PropertyDetails = ({ loggedinUser }) => {
                             />
 
                             <Stack mt="15px">
-                                <Typography fontSize={18} fontWeight={600} color="#11142D">
+                                <Typography fontSize={18} fontWeight={600} color={colors.greenAccent[300]}>
                                     {property?.agent?.userProfile?.fullName}
                                 </Typography>
-                                <Typography mt="5px" fontSize={14} fontWeight={400} color="#808191">
+                                <Typography mt="5px" >
                                     Agent
                                 </Typography>
                             </Stack>
 
                             <Stack mt="15px" direction="row" alignItems="center" gap={1} width="max-content">{/* // It makes sure every Stack child component (name, address, etc) show up in one line, not wrap */}
                                 <Phone sx={{ color: "#808191" }} />
-                                <Typography fontSize={14} fontWeight={400} color="#808191">
+                                <Typography >
                                     {property?.agent?.userProfile?.phoneNumber}
                                 </Typography>
                             </Stack>
 
                             <Stack mt="15px" direction="row" alignItems="center" gap={1}>
                                 <Place sx={{ color: "#808191" }} />
-                                <Typography fontSize={14} fontWeight={400} color="#808191">
+                                <Typography >
                                     {`${property?.agent?.userProfile?.city}, TN `}
                                 </Typography>
                             </Stack>
 
-                            <Typography mt={1} fontSize={16} fontWeight={600} color="#11142D">
+                            <Typography mt={1} fontSize={16} fontWeight={600} color={colors.greenAccent[300]}>
                                 {property?.agent?.properties?.length} Properties
                             </Typography>
                         </Stack>
@@ -186,13 +186,8 @@ const PropertyDetails = ({ loggedinUser }) => {
                         <Stack
                             width="100%"
                             p={2}
-                            direction="column"
-                            justifyContent="center"
-                            alignItems="center"
-                            textAlign="left" /* For the tile and subheader */
                             border="1px solid #E4E4E4"
-                            borderRadius={2}
-                            position="relative"
+                            borderRadius={2}                            
                         >
                             {property.propertyInvestors.map(propertyInvestor => (
                                 <CardHeader
@@ -204,7 +199,17 @@ const PropertyDetails = ({ loggedinUser }) => {
                                             src={property.agent.userProfile.avatarURL}
                                         />
                                     }
-                                    title={propertyInvestor.investor.userProfile.fullName}
+                                    title={
+                                        <div>
+                                            <span style={{ color: colors.greenAccent[300] }}>
+                                                {propertyInvestor.investor.userProfile.fullName}
+                                            </span>
+
+                                            <span style={{ backgroundColor: colors.grey[700], borderRadius: '4px', padding: '2px 6px', marginLeft: '8px' }}>
+                                                Investor
+                                            </span>
+                                        </div>
+                                    }
                                     subheader={propertyInvestor.investor.company}
                                 />
                             ))

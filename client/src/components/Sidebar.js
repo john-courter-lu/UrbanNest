@@ -90,7 +90,7 @@ const Sidebar = ({ loggedInUser }) => {
                         <Box mb="25px">
                             <Box display="flex" justifyContent="center" alignItems="center">
                                 <Avatar
-                                    sx={{ bgcolor: colors.blueAccent[400], width: 56, height: 56 }}
+                                    sx={{ bgcolor: colors.blueAccent[400], width: 72, height: 72 }}
                                     alt={loggedInUser.firstName}
                                     src={loggedInUser.avatarURL}
                                 />
