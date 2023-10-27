@@ -93,13 +93,23 @@ const Agents = ({ loggedInUser }) => {
     }
 
     const handleDeactivate = (id) => {
-        // const updatedRows = rows.map((row) =>
-        //   row.id === id ? { ...row, email: 'N/A', deactivate: !row.deactivate } : row
-        // );
-        // Update the state or data source with the updatedRows
-        // For example, in a state management system or using setState
-        // setRows(updatedRows);
+        // Update the data source  
+
+        // Update the state with the updatedAgentsData
+        const updatedAgentsData = agentsData.map((agentData) =>
+            agentData.id === id
+                ? {
+                    ...agentData,
+                    userProfile: {
+                        ...agentData.userProfile,
+                        isActive: !agentData.userProfile.isActive,
+                    },
+                }
+                : agentData
+        );
+        setAgentsData(updatedAgentsData);
     };
+
 
     return (
         <Box m="20px">
