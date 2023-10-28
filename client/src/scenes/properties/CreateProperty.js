@@ -1,9 +1,10 @@
-import { Box, Button, TextField, MenuItem } from "@mui/material";
+import { Box, Button, TextField, MenuItem, FormControl, InputLabel, Select, Checkbox, ListItemText } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
 import { useEffect, useState } from "react";
 import { getTypes } from "../../managers/typeManager.js";
 import { getAgents } from "../../managers/agentManager.js";
+import { getInvestors } from "../../managers/investorManager.js";
 import { useNavigate } from "react-router-dom";
 import { createProperty } from "../../managers/propertyManager.js";
 
@@ -12,6 +13,7 @@ const CreateProperty = ({ loggedInUser }) => {
 
     const [hasError, setHasError] = useState(false);
     const [propertyTypes, setPropertyTypes] = useState([]);
+    const [investors, setInvestors] = useState([]);
     const [property, setProperty] = useState({
         agentId: 1, // Will change later when agents data's retrieved
         address: "",
@@ -25,19 +27,21 @@ const CreateProperty = ({ loggedInUser }) => {
         numberOfBedroom: 0,
         numberOfBathroom: 0,
         typeId: 1, // Set a default type
+        propertyInvestors: []
     });
 
     const navigate = useNavigate();
 
     useEffect(() => {
         getTypes().then(setPropertyTypes);
+        getInvestors().then(setInvestors);
         getAgents()
             .then((agentsArray) => { // directly use data from getAgents() instead of storing it in a state, because setAgents will be acync and will not work well even with .then()
 
                 // Set AgentId to the matching loggedinUser's Agent Id
                 const foundAgent = agentsArray.find(agent => agent.userProfileId === loggedInUser.id) // same as .filter()[0]
 
-                console.log(foundAgent)
+                // console.log(foundAgent)
                 // It will return undefined during the first load (when first clicking the Add Property button) if using .then(setAgents).then();
 
                 if (foundAgent) { // Make sure foundAgent is not undefined before setting it in state
@@ -67,10 +71,21 @@ const CreateProperty = ({ loggedInUser }) => {
         });
     };
 
+    const handleInvestorChange = (event) => {
+        const selectedInvestorIds = event.target.value;
+        setProperty((prevProperty) => ({
+            ...prevProperty,
+            propertyInvestors: selectedInvestorIds.map(id => ({ investorId: id }))
+        }));
+    };
+
+    useEffect(() => {
+        console.log(property.propertyInvestors);
+    }, [property])
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Handle form submission (send data to the server).
-        console.log(property.agentId)
+        // Handle form submission (send data to the server).        
         createProperty(property).then(navigate("/properties"))
     };
 
@@ -180,6 +195,25 @@ const CreateProperty = ({ loggedInUser }) => {
                             return <MenuItem key={pt.id} value={pt.id}>{pt.name}</MenuItem>
                         })}
                     </TextField>
+
+                    <FormControl sx={{ gridColumn: "span 2" }}>
+                        <InputLabel>Investors</InputLabel>
+                        <Select
+                            label="Investors"
+                            multiple
+                            value={property.propertyInvestors.map((pi) => pi.investorId)}
+                            onChange={handleInvestorChange}
+                            renderValue={(selected) => selected.join(', ')}
+                        >
+                            {investors.map((investor) => (
+                                <MenuItem key={investor.id} value={investor.id}>
+                                    <Checkbox checked={property.propertyInvestors.some((pi) => pi.investorId === investor.id)} />
+                                    <ListItemText primary={investor.userProfile.fullName} />
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
+
                 </Box>
 
                 <Box display="flex" justifyContent="end" mt="20px">
