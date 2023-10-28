@@ -1,4 +1,4 @@
-import { Box, Button, TextField, MenuItem, FormControl, InputLabel, Select, Checkbox, ListItemText } from "@mui/material";
+import { Box, Button, TextField, MenuItem, FormControl, InputLabel, Select, Checkbox, ListItemText, Input } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
 import { useEffect, useState } from "react";
@@ -79,9 +79,11 @@ const CreateProperty = ({ loggedInUser }) => {
         }));
     };
 
-    useEffect(() => {
-        console.log(property.propertyInvestors);
-    }, [property])
+    /* For testing purpose */
+
+    // useEffect(() => {
+    //     console.log(property.propertyInvestors);
+    // }, [property])
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -203,7 +205,14 @@ const CreateProperty = ({ loggedInUser }) => {
                             multiple
                             value={property.propertyInvestors.map((pi) => pi.investorId)}
                             onChange={handleInvestorChange}
-                            renderValue={(selected) => selected.join(', ')}
+                            // input={<Input />} 
+                            // The above code is only good for single select and no checkbox, we need ```renderValue``` here
+                            renderValue={(selectedIdValue) => selectedIdValue.map(
+                                (id) => {
+                                    const foundInvestor = investors.find((investor) => investor.id === id)
+                                    return foundInvestor.userProfile.fullName
+                                })
+                                .join(', ')}
                         >
                             {investors.map((investor) => (
                                 <MenuItem key={investor.id} value={investor.id}>
