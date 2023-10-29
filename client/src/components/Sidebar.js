@@ -6,8 +6,8 @@ import "react-pro-sidebar/dist/css/styles.css";
 import { Avatar, Box, IconButton, Typography, useTheme } from "@mui/material";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
-import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
+import HomeWorkOutlinedIcon from '@mui/icons-material/HomeWorkOutlined';
+import ImportContactsOutlinedIcon from '@mui/icons-material/ImportContactsOutlined';
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
@@ -124,14 +124,14 @@ const Sidebar = ({ loggedInUser }) => {
                         <Item
                             title="Properties"
                             to="/properties"
-                            icon={<ReceiptOutlinedIcon />}
+                            icon={<HomeWorkOutlinedIcon />}
                             selected={selected}
                             setSelected={setSelected}
                         />
                         <Item
                             title="Investors"
                             to="/investors"
-                            icon={<ContactsOutlinedIcon />}
+                            icon={<ImportContactsOutlinedIcon />}
                             selected={selected}
                             setSelected={setSelected}
                         />
@@ -154,7 +154,7 @@ const Sidebar = ({ loggedInUser }) => {
 
                         {/* My Profile */}
                         <Item
-                            title="Profile"
+                            title="My Profile"
                             to="/profile"
                             icon={<PersonOutlinedIcon />}
                             selected={selected}
