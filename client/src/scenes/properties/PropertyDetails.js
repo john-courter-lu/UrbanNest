@@ -89,9 +89,10 @@ const PropertyDetails = ({ loggedinUser }) => {
                         textAlign="left"
                     >
                         <img
-                            src="https://a0.muscache.com/im/pictures/miso/Hosting-33256478/original/450166e1-8585-4384-a3b5-49fe4084ff52.jpeg?im_w=480"
+                            src="https://a0.muscache.com/im/pictures/miso/Hosting-33256478/original/450166e1-8585-4384-a3b5-49fe4084ff52.jpeg?im_w=960"
                             alt="property_details-img"
-                            //width={480}
+                            width="100%"
+                            height={480}
                             style={{ objectFit: "cover", borderRadius: "10px" }}
                             className="property_details-img"
                         />
@@ -110,7 +111,7 @@ const PropertyDetails = ({ loggedinUser }) => {
                     <Box
                         width="100%"
                         flex={1}
-                        maxWidth={300}
+                        maxWidth={320}
                         display="flex"
                         flexDirection="column"
                         gap="20px"
