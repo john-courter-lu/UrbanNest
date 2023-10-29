@@ -100,7 +100,7 @@ const PropertyDetails = ({ loggedinUser }) => {
                             <PropertyCard
                                 key={property.id}
                                 id={property.id}
-                                
+
                                 title={`${property.numberOfBedroom} bd |  ${property.numberOfBathroom} ba | ${property.squareFeet?.toLocaleString()} sqft `}
                                 location={`${property.address}, ${property.city}, ${property.state} ${property.zipCode}`}
                                 type={property.type.name}
@@ -161,7 +161,7 @@ const PropertyDetails = ({ loggedinUser }) => {
                                 <Typography fontSize={18} fontWeight={600} color={colors.greenAccent[300]}>
                                     {property?.agent?.userProfile?.fullName}
                                 </Typography>
-                                <Typography mt="5px" >
+                                <Typography style={{ backgroundColor: colors.primary[300], borderRadius: '4px', padding: '2px auto', margin: '5px 16px' }}>
                                     Agent
                                 </Typography>
                             </Stack>
@@ -175,7 +175,7 @@ const PropertyDetails = ({ loggedinUser }) => {
 
                             <Stack mt="15px" direction="row" alignItems="center" gap={1}>
                                 <Place sx={{ color: "#808191" }} />
-                                <Typography >
+                                <Typography  >
                                     {`${property?.agent?.userProfile?.city}, TN `}
                                 </Typography>
                             </Stack>
@@ -189,8 +189,8 @@ const PropertyDetails = ({ loggedinUser }) => {
                         <Stack
                             width="100%"
                             p={2}
-                        //border="1px solid #E4E4E4"
-                        //borderRadius={2}                            
+                            border="1px solid #E4E4E4"
+                            borderRadius={2}
                         >
                             {property.propertyInvestors.map(propertyInvestor => (
                                 <CardHeader
@@ -208,7 +208,7 @@ const PropertyDetails = ({ loggedinUser }) => {
                                                 {propertyInvestor.investor.userProfile.fullName}
                                             </span>
 
-                                            <span style={{ backgroundColor: colors.grey[700], borderRadius: '4px', padding: '2px 6px', marginLeft: '8px' }}>
+                                            <span style={{ backgroundColor: colors.primary[300], borderRadius: '4px', padding: '2px 6px', marginLeft: '8px' }}>
                                                 Investor
                                             </span>
                                         </div>

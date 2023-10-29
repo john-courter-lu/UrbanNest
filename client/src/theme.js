@@ -76,9 +76,9 @@ export const tokens = (mode) => ({  // tokens for colors
             primary: {
                 100: "#040509",
                 200: "#080b12",
-                300: "#0c101b",
+                300: "#a3a3a3",
                 400: "#f2f0f0", // manually changed
-                500: "#141b2d",
+                500: "#fcfcfc", // light gray, manually changed
                 600: "#1F2A40",
                 700: "#727681",
                 800: "#a1a4ab",

@@ -71,7 +71,7 @@ const PropertyCard = ({ id, title, location, type, photo, cardWidth }) => {
                     },
                     backgroundColor: colors.primary[400],
                 }}
-                elevation={1} // 0.5 is not available
+                elevation={1} // 0.5 is not available; elevation will create shade for the backgroundColor
             >
 
                 {photo &&
@@ -119,10 +119,10 @@ const PropertyCard = ({ id, title, location, type, photo, cardWidth }) => {
                         px={1.5}
                         py={0.5}
                         borderRadius={1}
-                        bgcolor="#6870fa"
+                        bgcolor={colors.primary[400]}
                         height="fit-content"
                     >
-                        <Typography fontSize={12} fontWeight={600} color={colors.primary[400]}>
+                        <Typography fontSize={12} fontWeight={600} color={colors.grey[100]}>
                             {type}
                         </Typography>
                     </Box>
