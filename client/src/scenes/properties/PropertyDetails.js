@@ -152,10 +152,10 @@ const PropertyDetails = ({ loggedinUser }) => {
                             />
 
                             <Avatar
-                                sx={{ bgcolor: colors.blueAccent[400], width: 56, height: 56 }}
+                                sx={{ bgcolor: colors.blueAccent[300], width: 56, height: 56 }}
                                 alt={property.agent.userProfile.firstName}
                                 src={property.agent.userProfile.avatarURL}
-                            />
+                            >{property.agent.userProfile.firstName[0]}</Avatar>
 
                             <Stack mt="15px">
                                 <Typography fontSize={18} fontWeight={600} color={colors.greenAccent[300]}>
@@ -197,10 +197,10 @@ const PropertyDetails = ({ loggedinUser }) => {
                                     key={propertyInvestor.id} // .map() in React requires key
                                     avatar={
                                         <Avatar
-                                            sx={{ bgcolor: colors.blueAccent[400], width: 48, height: 48 }}
-                                            alt={property.agent.userProfile.firstName}
-                                            src={property.agent.userProfile.avatarURL}
-                                        />
+                                            sx={{ bgcolor: colors.blueAccent[600], width: 48, height: 48 }}
+                                            alt={propertyInvestor.investor.userProfile.fullName}
+                                            src={propertyInvestor.investor.userProfile.avatarURL}
+                                        > {propertyInvestor.investor.userProfile.fullName[0]} </Avatar>
                                     }
                                     title={
                                         <div>
