@@ -69,7 +69,7 @@ const PropertyCard = ({ id, title, location, type, photo, cardWidth }) => {
                     "&:hover": {
                         boxShadow: `0 4px 20px 2px ${colors.primary[300]}`
                     },
-                    backgroundColor: colors.primary[500],
+                    backgroundColor: colors.primary[400],
                 }}
                 elevation={1} // 0.5 is not available
             >

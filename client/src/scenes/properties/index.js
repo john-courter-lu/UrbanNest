@@ -27,13 +27,19 @@ export default function Properties() {
             />
 
             <Box display="flex" justifyContent="end" mt="20px" mr={16}>
-                <Button color="secondary" variant="contained"
+                <Button variant="contained"
                     onClick={() => navigate("/properties/create")}
                     sx={{
                         padding: "10px 15px",
                         minWidth: 130,
                         fontWeight: 600,
                         gap: "10px",
+                        backgroundColor: colors.blueAccent[700],
+                        color: colors.primary[100],
+                        "&:hover": {
+                            opacity: 0.9,
+                            backgroundColor: colors.blueAccent[700],
+                        },
                     }}>
                     <Add />
                     Create New Property
