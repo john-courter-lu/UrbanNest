@@ -120,7 +120,7 @@ const PropertyDetails = ({ loggedinUser }) => {
                     >
                         <Stack
                             width="100%"
-                            p={2}
+                            p={4}
                             direction="column"
                             justifyContent="center"
                             alignItems="center"
@@ -168,14 +168,14 @@ const PropertyDetails = ({ loggedinUser }) => {
 
                             <Stack mt="15px" direction="row" alignItems="center" gap={1} width="max-content">{/* // It makes sure every Stack child component (name, address, etc) show up in one line, not wrap */}
                                 <Phone sx={{ color: "#808191" }} />
-                                <Typography >
+                                <Typography color={colors.primary[100]}  >
                                     {property?.agent?.userProfile?.phoneNumber}
                                 </Typography>
                             </Stack>
 
                             <Stack mt="15px" direction="row" alignItems="center" gap={1}>
                                 <Place sx={{ color: "#808191" }} />
-                                <Typography  >
+                                <Typography color={colors.primary[100]} >
                                     {`${property?.agent?.userProfile?.city}, TN `}
                                 </Typography>
                             </Stack>
