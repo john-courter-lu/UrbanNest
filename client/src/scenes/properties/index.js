@@ -1,7 +1,6 @@
 import { Button, Typography, Box, Stack } from "@mui/material";
 import PropertyCard from '../../components/PropertyCard.js';
 import Header from '../../components/Header.js';
-import CustomButton from "../../components/CustomButton.js";
 import { tokens } from '../../theme.js';
 import { useTheme } from '@emotion/react';
 import { useEffect, useState } from "react";
@@ -27,20 +26,20 @@ export default function Properties() {
                 subtitle="List of Properties"
             />
 
-            <Stack
-                direction="row-reverse"
-                mr={8}
-                //justifyContent="space-between"
-                //alignItems="center"
-            >
-                <CustomButton
-                    title="Add Property"
-                    handleClick={() => navigate("/properties/create")}
-                    backgroundColor="#475be8"
-                    color="#fcfcfc"
-                    icon={<Add />}
-                />
-            </Stack>
+            <Box display="flex" justifyContent="end" mt="20px" mr={16}>
+                <Button color="secondary" variant="contained"
+                    onClick={() => navigate("/properties/create")}
+                    sx={{
+                        padding: "10px 15px",
+                        minWidth: 130,
+                        fontWeight: 600,
+                        gap: "10px",
+                    }}>
+                    <Add />
+                    Create New Property
+                </Button>
+            </Box>
+
 
             <Box
                 m="40px 0 0 0"
