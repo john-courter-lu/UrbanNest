@@ -9,7 +9,7 @@ import Notification from './Notification'; // Import notification component
 import { deleteProperty } from "../managers/propertyManager.js";
 
 
-const PropertyCard = ({ id, title, location, type, photo, }) => {
+const PropertyCard = ({ id, title, location, type, photo, cardWidth }) => {
 
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
@@ -64,12 +64,12 @@ const PropertyCard = ({ id, title, location, type, photo, }) => {
         <>
             {isVisible && <Card
                 sx={{
-                    width: "480px",
+                    width: cardWidth || "480px", // if no cardWidth passed, then default "480px"
                     padding: "10px",
                     "&:hover": {
                         boxShadow: `0 4px 20px 2px ${colors.primary[300]}`
                     },
-                    backgroundColor: colors.primary[400],
+                    backgroundColor: colors.primary[500],
                 }}
                 elevation={1} // 0.5 is not available
             >
@@ -132,6 +132,7 @@ const PropertyCard = ({ id, title, location, type, photo, }) => {
                             <MoreVertIcon />
                         </IconButton>
 
+                        {/* Hidden Menu */}
                         <Menu anchorEl={menuAnchor} open={Boolean(menuAnchor)} onClose={handleMenuClose}>
                             <MenuItem
                                 onClick={() => { navigate(`/properties/${id}/edit`) }}>

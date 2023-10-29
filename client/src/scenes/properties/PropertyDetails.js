@@ -94,16 +94,18 @@ const PropertyDetails = ({ loggedinUser }) => {
                             width="100%"
                             height={480}
                             style={{ objectFit: "cover", borderRadius: "10px" }}
-                            className="property_details-img"
+
                         />
                         <Box mt="15px" width="100%" sx={{ display: "flex" }}>
                             <PropertyCard
                                 key={property.id}
                                 id={property.id}
+                                
                                 title={`${property.numberOfBedroom} bd |  ${property.numberOfBathroom} ba | ${property.squareFeet?.toLocaleString()} sqft `}
                                 location={`${property.address}, ${property.city}, ${property.state} ${property.zipCode}`}
                                 type={property.type.name}
 
+                                cardWidth={"100%"}
                             />
                         </Box>
                     </Box>
@@ -187,8 +189,8 @@ const PropertyDetails = ({ loggedinUser }) => {
                         <Stack
                             width="100%"
                             p={2}
-                            //border="1px solid #E4E4E4"
-                            //borderRadius={2}                            
+                        //border="1px solid #E4E4E4"
+                        //borderRadius={2}                            
                         >
                             {property.propertyInvestors.map(propertyInvestor => (
                                 <CardHeader
