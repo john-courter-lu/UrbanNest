@@ -18,10 +18,13 @@ body {
   width: 100%;
 }
 
-.content {
+.main{
   flex-grow: 1;
-  height: 100%;
+}
+
+.content {
   overflow: auto; /* Enable scrolling for the content */
+  height: 100%; /* Enable scrolling when content's overflowing height-wise */
 }
 
 /* Sidebar */
