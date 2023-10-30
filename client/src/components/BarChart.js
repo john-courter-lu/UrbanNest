@@ -39,9 +39,9 @@ const BarChart = ({ isDashboard = false }) => {
           },
         },
       }}
-      keys={["hot dog", "burger", "sandwich", "kebab", "fries", "donut"]}
-      indexBy="month"
-      margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+      keys={["Rent", "Repair Service Fees", "Maintenance Fees", "Leasing Fees", "Late Fees"]}
+      indexBy="Month"
+      margin={{ top: 50, right: 160, bottom: 50, left: 60 }}
       padding={0.3}
       valueScale={{ type: "linear" }}
       indexScale={{ type: "band", round: true }}
@@ -76,7 +76,7 @@ const BarChart = ({ isDashboard = false }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "month", // changed
+        legend: isDashboard ? undefined : "Month", // changed
         legendPosition: "middle",
         legendOffset: 32,
       }}
@@ -84,7 +84,7 @@ const BarChart = ({ isDashboard = false }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "food", // changed
+        legend: isDashboard ? undefined : "Revenue", // changed
         legendPosition: "middle",
         legendOffset: -40,
       }}
@@ -121,7 +121,7 @@ const BarChart = ({ isDashboard = false }) => {
       ]}
       role="application"
       ariaLabel="Revenue bar chart"
-      barAriaLabel={e => e.id + ": " + e.formattedValue + " in month: " + e.indexValue}
+      barAriaLabel={e => e.id + ": " + e.formattedValue + " in Month: " + e.indexValue}
     />
   );
 };
