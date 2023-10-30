@@ -8,6 +8,7 @@ import Properties from "../scenes/properties/index.js";
 import PropertyDetails from "../scenes/properties/PropertyDetails.js";
 import CreateProperty from "../scenes/properties/CreateProperty.js";
 import EditProperty from "../scenes/properties/EditProperty.js";
+import Bar from "../scenes/bar-chart/index.js";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -42,7 +43,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           path="agents"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-              <Agents loggedInUser={loggedInUser}/>
+              <Agents loggedInUser={loggedInUser} />
             </AuthorizedRoute>
           }
         />
@@ -83,10 +84,10 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
         </Route>
 
         <Route
-          path="pathName3_AdminOnly"
+          path="bar"
           element={
             <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
-              <p>PathName3_AdminOnly</p>
+              <Bar />
             </AuthorizedRoute>
           }
         />
