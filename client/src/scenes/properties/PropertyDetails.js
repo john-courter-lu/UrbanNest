@@ -89,7 +89,7 @@ const PropertyDetails = ({ loggedinUser }) => {
                         textAlign="left"
                     >
                         <img
-                            src="https://a0.muscache.com/im/pictures/miso/Hosting-33256478/original/450166e1-8585-4384-a3b5-49fe4084ff52.jpeg?im_w=960"
+                            src={property.imageURL||"https://a0.muscache.com/im/pictures/miso/Hosting-33256478/original/450166e1-8585-4384-a3b5-49fe4084ff52.jpeg?im_w=1200"}
                             alt="property_details-img"
                             width="100%"
                             height={480}
@@ -161,7 +161,7 @@ const PropertyDetails = ({ loggedinUser }) => {
                                 <Typography fontSize={18} fontWeight={600} color={colors.greenAccent[300]}>
                                     {property?.agent?.userProfile?.fullName}
                                 </Typography>
-                                <Typography style={{ backgroundColor: colors.primary[300], borderRadius: '4px', padding: '2px auto', margin: '5px 16px' }}>
+                                <Typography style={{ backgroundColor: colors.primary[300], borderRadius: '4px', padding: '4px auto', margin: '6px 16px 0 16px' }}>
                                     Agent
                                 </Typography>
                             </Stack>
