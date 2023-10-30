@@ -19,7 +19,8 @@ const Topbar = ({ loggedInUser, setLoggedInUser }) => {
     if (!loggedInUser) { return null };
 
     return (
-        <Box display="flex" justifyContent="space-between" p={2}>
+        <Box display="flex" justifyContent="space-between" p={2} >
+
             {/* SEARCH BAR */}
             <Box
                 display="flex"
@@ -34,6 +35,7 @@ const Topbar = ({ loggedInUser, setLoggedInUser }) => {
 
             {/* ICONS */}
             <Box display="flex">
+
                 <IconButton onClick={colorMode.toggleColorMode}>
                     {theme.palette.mode === "dark" ? (
                         <DarkModeOutlinedIcon />
@@ -41,6 +43,7 @@ const Topbar = ({ loggedInUser, setLoggedInUser }) => {
                         <LightModeOutlinedIcon />
                     )}
                 </IconButton>
+
                 <IconButton>
                     <NotificationsOutlinedIcon />
                 </IconButton>
@@ -50,6 +53,7 @@ const Topbar = ({ loggedInUser, setLoggedInUser }) => {
                 <IconButton>
                     <PersonOutlinedIcon />
                 </IconButton>
+
                 <IconButton
                     onClick={(e) => {
                         e.preventDefault();
@@ -60,6 +64,7 @@ const Topbar = ({ loggedInUser, setLoggedInUser }) => {
                 >
                     <LogoutIcon />
                 </IconButton>
+
             </Box>
         </Box>
     );

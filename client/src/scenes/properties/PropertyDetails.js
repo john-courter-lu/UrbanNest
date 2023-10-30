@@ -89,20 +89,23 @@ const PropertyDetails = ({ loggedinUser }) => {
                         textAlign="left"
                     >
                         <img
-                            src="https://a0.muscache.com/im/pictures/miso/Hosting-33256478/original/450166e1-8585-4384-a3b5-49fe4084ff52.jpeg?im_w=480"
+                            src={property.imageURL||"https://a0.muscache.com/im/pictures/miso/Hosting-33256478/original/450166e1-8585-4384-a3b5-49fe4084ff52.jpeg?im_w=1200"}
                             alt="property_details-img"
-                            //width={480}
+                            width="100%"
+                            height={480}
                             style={{ objectFit: "cover", borderRadius: "10px" }}
-                            className="property_details-img"
+
                         />
                         <Box mt="15px" width="100%" sx={{ display: "flex" }}>
                             <PropertyCard
                                 key={property.id}
                                 id={property.id}
+
                                 title={`${property.numberOfBedroom} bd |  ${property.numberOfBathroom} ba | ${property.squareFeet?.toLocaleString()} sqft `}
                                 location={`${property.address}, ${property.city}, ${property.state} ${property.zipCode}`}
                                 type={property.type.name}
 
+                                cardWidth={"100%"}
                             />
                         </Box>
                     </Box>
@@ -110,14 +113,14 @@ const PropertyDetails = ({ loggedinUser }) => {
                     <Box
                         width="100%"
                         flex={1}
-                        maxWidth={300}
+                        maxWidth={320}
                         display="flex"
                         flexDirection="column"
                         gap="20px"
                     >
                         <Stack
                             width="100%"
-                            p={2}
+                            p={4}
                             direction="column"
                             justifyContent="center"
                             alignItems="center"
@@ -149,30 +152,30 @@ const PropertyDetails = ({ loggedinUser }) => {
                             />
 
                             <Avatar
-                                sx={{ bgcolor: colors.blueAccent[400], width: 56, height: 56 }}
+                                sx={{ bgcolor: colors.blueAccent[300], width: 56, height: 56 }}
                                 alt={property.agent.userProfile.firstName}
                                 src={property.agent.userProfile.avatarURL}
-                            />
+                            >{property.agent.userProfile.firstName[0]}</Avatar>
 
                             <Stack mt="15px">
                                 <Typography fontSize={18} fontWeight={600} color={colors.greenAccent[300]}>
                                     {property?.agent?.userProfile?.fullName}
                                 </Typography>
-                                <Typography mt="5px" >
+                                <Typography style={{ backgroundColor: colors.primary[300], borderRadius: '4px', padding: '4px auto', margin: '6px 16px 0 16px' }}>
                                     Agent
                                 </Typography>
                             </Stack>
 
                             <Stack mt="15px" direction="row" alignItems="center" gap={1} width="max-content">{/* // It makes sure every Stack child component (name, address, etc) show up in one line, not wrap */}
                                 <Phone sx={{ color: "#808191" }} />
-                                <Typography >
+                                <Typography color={colors.primary[100]}  >
                                     {property?.agent?.userProfile?.phoneNumber}
                                 </Typography>
                             </Stack>
 
                             <Stack mt="15px" direction="row" alignItems="center" gap={1}>
                                 <Place sx={{ color: "#808191" }} />
-                                <Typography >
+                                <Typography color={colors.primary[100]} >
                                     {`${property?.agent?.userProfile?.city}, TN `}
                                 </Typography>
                             </Stack>
@@ -186,18 +189,18 @@ const PropertyDetails = ({ loggedinUser }) => {
                         <Stack
                             width="100%"
                             p={2}
-                            //border="1px solid #E4E4E4"
-                            //borderRadius={2}                            
+                            border="1px solid #E4E4E4"
+                            borderRadius={2}
                         >
                             {property.propertyInvestors.map(propertyInvestor => (
                                 <CardHeader
                                     key={propertyInvestor.id} // .map() in React requires key
                                     avatar={
                                         <Avatar
-                                            sx={{ bgcolor: colors.blueAccent[400], width: 48, height: 48 }}
-                                            alt={property.agent.userProfile.firstName}
-                                            src={property.agent.userProfile.avatarURL}
-                                        />
+                                            sx={{ bgcolor: colors.blueAccent[600], width: 48, height: 48 }}
+                                            alt={propertyInvestor.investor.userProfile.fullName}
+                                            src={propertyInvestor.investor.userProfile.avatarURL}
+                                        > {propertyInvestor.investor.userProfile.fullName[0]} </Avatar>
                                     }
                                     title={
                                         <div>
@@ -205,7 +208,7 @@ const PropertyDetails = ({ loggedinUser }) => {
                                                 {propertyInvestor.investor.userProfile.fullName}
                                             </span>
 
-                                            <span style={{ backgroundColor: colors.grey[700], borderRadius: '4px', padding: '2px 6px', marginLeft: '8px' }}>
+                                            <span style={{ backgroundColor: colors.primary[300], borderRadius: '4px', padding: '2px 6px', marginLeft: '8px' }}>
                                                 Investor
                                             </span>
                                         </div>

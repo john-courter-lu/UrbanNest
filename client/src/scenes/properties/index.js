@@ -1,7 +1,6 @@
 import { Button, Typography, Box, Stack } from "@mui/material";
 import PropertyCard from '../../components/PropertyCard.js';
 import Header from '../../components/Header.js';
-import CustomButton from "../../components/CustomButton.js";
 import { tokens } from '../../theme.js';
 import { useTheme } from '@emotion/react';
 import { useEffect, useState } from "react";
@@ -27,20 +26,26 @@ export default function Properties() {
                 subtitle="List of Properties"
             />
 
-            <Stack
-                direction="row-reverse"
-                mr={8}
-                //justifyContent="space-between"
-                //alignItems="center"
-            >
-                <CustomButton
-                    title="Add Property"
-                    handleClick={() => navigate("/properties/create")}
-                    backgroundColor="#475be8"
-                    color="#fcfcfc"
-                    icon={<Add />}
-                />
-            </Stack>
+            <Box display="flex" justifyContent="end" mt="20px" mr={16}>
+                <Button variant="contained"
+                    onClick={() => navigate("/properties/create")}
+                    sx={{
+                        padding: "10px 15px",
+                        minWidth: 130,
+                        fontWeight: 600,
+                        gap: "10px",
+                        backgroundColor: colors.blueAccent[700],
+                        color: colors.primary[100],
+                        "&:hover": {
+                            opacity: 0.9,
+                            backgroundColor: colors.blueAccent[700],
+                        },
+                    }}>
+                    <Add />
+                    Create New Property
+                </Button>
+            </Box>
+
 
             <Box
                 m="40px 0 0 0"
@@ -57,7 +62,7 @@ export default function Properties() {
                             title={`${property.numberOfBedroom} bd |  ${property.numberOfBathroom} ba | ${property.squareFeet.toLocaleString()} sqft `}
                             location={`${property.address}, ${property.city}, ${property.state} ${property.zipCode}`}
                             type={property.type.name}
-                            photo="https://a0.muscache.com/im/pictures/miso/Hosting-33256478/original/450166e1-8585-4384-a3b5-49fe4084ff52.jpeg?im_w=480"
+                            photo={property.imageURL||"https://a0.muscache.com/im/pictures/miso/Hosting-33256478/original/450166e1-8585-4384-a3b5-49fe4084ff52.jpeg?im_w=720"}
                         />
                     ))}
                 </Box>
