@@ -450,7 +450,7 @@ export const mockDataProperties = [
             "realEstateLicenseNumber": 21678345,
             "properties": [
                 null
-              ],
+            ],
             "userProfileId": 7,
             "userProfile": {
                 "id": 7,
@@ -944,5 +944,113 @@ export const mockDataProperties = [
         "cashflows": null,
         "propertyInvestors": null,
         "investors": null
+    }
+]
+
+export const mockBarData = [
+    {
+        "month": "April",
+        "hot dog": 94,
+        "hot dogColor": "hsl(228, 70%, 50%)",
+        "burger": 61,
+        "burgerColor": "hsl(171, 70%, 50%)",
+        "sandwich": 72,
+        "sandwichColor": "hsl(203, 70%, 50%)",
+        "kebab": 98,
+        "kebabColor": "hsl(308, 70%, 50%)",
+        "fries": 79,
+        "friesColor": "hsl(303, 70%, 50%)",
+        "donut": 1,
+        "donutColor": "hsl(330, 70%, 50%)"
+    },
+    {
+        "month": "May",
+        "hot dog": 50,
+        "hot dogColor": "hsl(167, 70%, 50%)",
+        "burger": 90,
+        "burgerColor": "hsl(176, 70%, 50%)",
+        "sandwich": 80,
+        "sandwichColor": "hsl(318, 70%, 50%)",
+        "kebab": 149,
+        "kebabColor": "hsl(106, 70%, 50%)",
+        "fries": 187,
+        "friesColor": "hsl(251, 70%, 50%)",
+        "donut": 188,
+        "donutColor": "hsl(275, 70%, 50%)"
+    },
+    {
+        "month": "June",
+        "hot dog": 76,
+        "hot dogColor": "hsl(328, 70%, 50%)",
+        "burger": 195,
+        "burgerColor": "hsl(102, 70%, 50%)",
+        "sandwich": 88,
+        "sandwichColor": "hsl(130, 70%, 50%)",
+        "kebab": 198,
+        "kebabColor": "hsl(298, 70%, 50%)",
+        "fries": 95,
+        "friesColor": "hsl(275, 70%, 50%)",
+        "donut": 49,
+        "donutColor": "hsl(133, 70%, 50%)"
+    },
+    {
+        "month": "July",
+        "hot dog": 179,
+        "hot dogColor": "hsl(305, 70%, 50%)",
+        "burger": 169,
+        "burgerColor": "hsl(295, 70%, 50%)",
+        "sandwich": 51,
+        "sandwichColor": "hsl(244, 70%, 50%)",
+        "kebab": 87,
+        "kebabColor": "hsl(282, 70%, 50%)",
+        "fries": 25,
+        "friesColor": "hsl(18, 70%, 50%)",
+        "donut": 74,
+        "donutColor": "hsl(18, 70%, 50%)"
+    },
+    {
+        "month": "August",
+        "hot dog": 165,
+        "hot dogColor": "hsl(12, 70%, 50%)",
+        "burger": 97,
+        "burgerColor": "hsl(333, 70%, 50%)",
+        "sandwich": 161,
+        "sandwichColor": "hsl(40, 70%, 50%)",
+        "kebab": 109,
+        "kebabColor": "hsl(125, 70%, 50%)",
+        "fries": 10,
+        "friesColor": "hsl(111, 70%, 50%)",
+        "donut": 166,
+        "donutColor": "hsl(86, 70%, 50%)"
+    },
+    {
+        "month": "September",
+        "hot dog": 128,
+        "hot dogColor": "hsl(273, 70%, 50%)",
+        "burger": 0,
+        "burgerColor": "hsl(155, 70%, 50%)",
+        "sandwich": 155,
+        "sandwichColor": "hsl(87, 70%, 50%)",
+        "kebab": 65,
+        "kebabColor": "hsl(355, 70%, 50%)",
+        "fries": 89,
+        "friesColor": "hsl(67, 70%, 50%)",
+        "donut": 70,
+        "donutColor": "hsl(263, 70%, 50%)"
+    },
+    {
+        "month": "October",
+        "hot dog": 63,
+        "hot dogColor": "hsl(353, 70%, 50%)",
+        "burger": 160,
+        "burgerColor": "hsl(55, 70%, 50%)",
+        "sandwich": 75,
+        "sandwichColor": "hsl(234, 70%, 50%)",
+        "kebab": 7,
+        "kebabColor": "hsl(320, 70%, 50%)",
+        "fries": 47,
+        "friesColor": "hsl(16, 70%, 50%)",
+        "donut": 69,
+        "donutColor": "hsl(306, 70%, 50%)"
     }
 ]
