@@ -40,14 +40,16 @@ function App() {
 
           <Sidebar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} isSidebar={isSidebar} />
 
-          <main className="content">
+          <main>
 
             <Topbar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} setIsSidebar={setIsSidebar} />
 
-            <ApplicationViews
-              loggedInUser={loggedInUser}
-              setLoggedInUser={setLoggedInUser}
-            />
+            <div className="content">
+              <ApplicationViews
+                loggedInUser={loggedInUser}
+                setLoggedInUser={setLoggedInUser}
+              />
+            </div>
 
           </main>
 

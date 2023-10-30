@@ -1,21 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap");
 
-html,
-body,
-#root,
-.app,
-.content {
+html, body, #root {
   height: 100%;
-  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: "Source Sans Pro", sans-serif;
+  overflow: hidden; /* Prevent scrollbars on the body */
 }
 
 .app {
   display: flex;
   position: relative;
+  height: 100%;
+  width: 100%;
 }
 
-/* NavBar */
+.content {
+  flex-grow: 1;
+  height: 100%;
+  overflow: auto; /* Enable scrolling for the content */
+}
+
+/* Sidebar */
 ::-webkit-scrollbar {
   width: 10px;
 }
