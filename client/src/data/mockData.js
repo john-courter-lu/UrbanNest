@@ -450,7 +450,7 @@ export const mockDataProperties = [
             "realEstateLicenseNumber": 21678345,
             "properties": [
                 null
-              ],
+            ],
             "userProfileId": 7,
             "userProfile": {
                 "id": 7,
@@ -944,5 +944,99 @@ export const mockDataProperties = [
         "cashflows": null,
         "propertyInvestors": null,
         "investors": null
+    }
+]
+
+export const mockBarData = [
+    {
+        "Month": "April",
+        "Rent": 40,
+        "RentColor": "hsl(228, 70%, 50%)",
+        "Leasing Fees": 1,
+        "Leasing FeesColor": "hsl(171, 70%, 50%)",
+        "Maintenance Fees": 3,
+        "Maintenance FeesColor": "hsl(203, 70%, 50%)",
+        "Repair Service Fees": 5,
+        "Repair Service FeesColor": "hsl(303, 70%, 50%)",
+        "Late Fees": 1,
+        "Late FeesColor": "hsl(330, 70%, 50%)"
+    },
+    {
+        "Month": "May",
+        "Rent": 40.5,
+        "RentColor": "hsl(167, 70%, 50%)",
+        "Leasing Fees": 0.95,
+        "Leasing FeesColor": "hsl(176, 70%, 50%)",
+        "Maintenance Fees": 4.3,
+        "Maintenance FeesColor": "hsl(318, 70%, 50%)",
+        "Repair Service Fees": 5.2,
+        "Repair Service FeesColor": "hsl(251, 70%, 50%)",
+        "Late Fees": 1.1,
+        "Late FeesColor": "hsl(275, 70%, 50%)"
+    },
+    {
+        "Month": "June",
+        "Rent": 38,
+        "RentColor": "hsl(328, 70%, 50%)",
+        "Leasing Fees": 1.05,
+        "Leasing FeesColor": "hsl(102, 70%, 50%)",
+        "Maintenance Fees": 5.9,
+        "Maintenance FeesColor": "hsl(130, 70%, 50%)",
+        "Repair Service Fees": 4.8,
+        "Repair Service FeesColor": "hsl(275, 70%, 50%)",
+        "Late Fees": 0.9,
+        "Late FeesColor": "hsl(133, 70%, 50%)"
+    },
+    {
+        "Month": "July",
+        "Rent": 36,
+        "RentColor": "hsl(305, 70%, 50%)",
+        "Leasing Fees": 1,
+        "Leasing FeesColor": "hsl(295, 70%, 50%)",
+        "Maintenance Fees": 6,
+        "Maintenance FeesColor": "hsl(244, 70%, 50%)",
+        "Repair Service Fees": 10,
+        "Repair Service FeesColor": "hsl(18, 70%, 50%)",
+        "Late Fees": 1,
+        "Late FeesColor": "hsl(330, 70%, 50%)"
+    },
+    {
+        "Month": "August",
+        "Rent": 36.5,
+        "RentColor": "hsl(12, 70%, 50%)",
+        "Leasing Fees": 0.95,
+        "Leasing FeesColor": "hsl(333, 70%, 50%)",
+        "Maintenance Fees": 6.1,
+        "Maintenance FeesColor": "hsl(40, 70%, 50%)",
+        "Repair Service Fees": 9.2,
+        "Repair Service FeesColor": "hsl(251, 70%, 50%)",
+        "Late Fees": 1.1,
+        "Late FeesColor": "hsl(275, 70%, 50%)"
+    },
+    {
+        "Month": "September",
+        "Rent": 37,
+        "RentColor": "hsl(273, 70%, 50%)",
+        "Leasing Fees": 1.05,
+        "Leasing FeesColor": "hsl(102, 70%, 50%)",
+        "Maintenance Fees": 5.9,
+        "Maintenance FeesColor": "hsl(130, 70%, 50%)",
+        "Repair Service Fees": 4.8,
+        "Repair Service FeesColor": "hsl(275, 70%, 50%)",
+        "Late Fees": 0.9,
+        "Late FeesColor": "hsl(133, 70%, 50%)"
+    },
+    {
+        "Month": "October",
+        "Rent": 40,
+        "RentColor": "hsl(305, 70%, 50%)",
+        "Leasing Fees": 1,
+        "Leasing FeesColor": "hsl(295, 70%, 50%)",
+        "Maintenance Fees": 5.2,
+        "Maintenance FeesColor": "hsl(244, 70%, 50%)",
+        "Repair Service Fees": 5,
+        "Repair Service FeesColor": "hsl(18, 70%, 50%)",
+        "Late Fees": 1,
+        "Late FeesColor": "hsl(330, 70%, 50%)"
     }
 ]
