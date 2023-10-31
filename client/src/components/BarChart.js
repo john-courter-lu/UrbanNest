@@ -45,27 +45,7 @@ const BarChart = ({ isDashboard = false }) => {
       padding={0.3}
       valueScale={{ type: "linear" }}
       indexScale={{ type: "band", round: true }}
-      colors={{ scheme: "nivo" }}
-      defs={[
-        {
-          id: "dots",
-          type: "patternDots",
-          background: "inherit",
-          color: "#38bcb2",
-          size: 4,
-          padding: 1,
-          stagger: true,
-        },
-        {
-          id: "lines",
-          type: "patternLines",
-          background: "inherit",
-          color: "#eed312",
-          rotation: -45,
-          lineWidth: 6,
-          spacing: 10,
-        },
-      ]}
+      colors={{ scheme:  'accent' }}
       borderColor={{
         from: "color",
         modifiers: [["darker", "1.6"]],
@@ -89,11 +69,12 @@ const BarChart = ({ isDashboard = false }) => {
         legendOffset: -40,
       }}
       enableLabel={true} // the numbers 
+      label={d => `$${d.value}k`}
       labelSkipWidth={12}
       labelSkipHeight={12}
       labelTextColor={{
         from: "color",
-        modifiers: [["darker", 1.6]],
+        modifiers: [["darker", 2.8]],
       }}
       legends={[
         {
@@ -119,6 +100,8 @@ const BarChart = ({ isDashboard = false }) => {
           ],
         },
       ]}
+      isInteractive={true}
+      tooltip={()=>{}}
       role="application"
       ariaLabel="Revenue bar chart"
       barAriaLabel={e => e.id + ": " + e.formattedValue + " in Month: " + e.indexValue}
