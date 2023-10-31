@@ -17,6 +17,8 @@ function App() {
   const [isSidebar, setIsSidebar] = useState(true);
   // for loggedInUser cache
   const [loggedInUser, setLoggedInUser] = useState();
+  // for search bar's functionality in Topbar
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     // user will be null if not authenticated
@@ -42,12 +44,13 @@ function App() {
 
           <main className="main">
 
-            <Topbar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} setIsSidebar={setIsSidebar} />
+            <Topbar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} setIsSidebar={setIsSidebar} setSearchTerm={setSearchTerm} />
 
             <div className="content">
               <ApplicationViews
                 loggedInUser={loggedInUser}
                 setLoggedInUser={setLoggedInUser}
+                searchTerm={searchTerm}
               />
             </div>
 

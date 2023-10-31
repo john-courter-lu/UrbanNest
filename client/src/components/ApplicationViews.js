@@ -11,7 +11,7 @@ import EditProperty from "../scenes/properties/EditProperty.js";
 import Bar from "../scenes/bar-chart/index.js";
 
 
-export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
+export default function ApplicationViews({ loggedInUser, setLoggedInUser, searchTerm }) {
   return (
     <Routes>
       <Route path="/">
@@ -52,8 +52,8 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           <Route
             index
             element={
-              <AuthorizedRoute loggedInUser={loggedInUser}>
-                <Properties />
+              <AuthorizedRoute loggedInUser={loggedInUser} searchTerm={searchTerm}>
+                <Properties searchTerm={searchTerm} />
               </AuthorizedRoute>
             }
           />
