@@ -55,8 +55,11 @@ export default function Properties({ searchTerm }) {
                 <Box
                     mt="20px"
                     sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
-                    {propertiesData?.filter(pd =>
-                        pd.city.toLowerCase().includes(searchTerm.toLowerCase()))
+                    {propertiesData?.filter(pd => // search property by addresss, city, type name, and agent name
+                        pd.address.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        pd.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        pd.type.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        pd.agent.userProfile.fullName.toLowerCase().includes(searchTerm.toLowerCase()))
                         .map((property) => (
                             <PropertyCard
                                 key={property.id}
