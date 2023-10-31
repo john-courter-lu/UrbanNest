@@ -9,6 +9,7 @@ import PropertyDetails from "../scenes/properties/PropertyDetails.js";
 import CreateProperty from "../scenes/properties/CreateProperty.js";
 import EditProperty from "../scenes/properties/EditProperty.js";
 import Bar from "../scenes/bar-chart/index.js";
+import Dashboard from "../scenes/dashboard/index.js";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser, searchTerm }) {
@@ -19,7 +20,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser, search
           index
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-              <p>PathName1</p>
+              <Dashboard />
             </AuthorizedRoute>
           }
         />
