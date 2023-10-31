@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap");
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -18,13 +20,13 @@ body {
   width: 100%;
 }
 
-.main{
+.main {
   flex-grow: 1;
 }
 
 .content {
   overflow: auto; /* Enable scrolling for the content */
-  height: 100%; /* Enable scrolling when content's overflowing height-wise */
+  height: 89%; /* Enable scrolling when content's overflowing height-wise */
 }
 
 /* Sidebar */

@@ -21,57 +21,55 @@ export default function Properties({ searchTerm }) {
 
     return (<>
         <Box m="20px">
-            <Header
-                title="PROPERTIES"
-                subtitle="List of Properties"
-            />
 
-            <Box display="flex" justifyContent="end" mt="20px" mr={16}>
-                <Button variant="contained"
-                    onClick={() => navigate("/properties/create")}
-                    sx={{
-                        padding: "10px 15px",
-                        minWidth: 130,
-                        fontWeight: 600,
-                        gap: "10px",
-                        backgroundColor: colors.blueAccent[700],
-                        color: colors.primary[100],
-                        "&:hover": {
-                            opacity: 0.9,
+            {/* HEADER */}
+            <Box display="flex" justifyContent="space-between" alignItems="center">
+                <Header
+                    title="PROPERTIES"
+                    subtitle="List of Properties"
+                />
+
+                <Box marginRight={16}>
+                    <Button
+                        onClick={() => navigate("/properties/create")}
+                        sx={{
                             backgroundColor: colors.blueAccent[700],
-                        },
-                    }}>
-                    <Add />
-                    Create New Property
-                </Button>
-            </Box>
-
-
-            <Box
-                m="40px 0 0 0"
-                height="75vh"
-                sx={{}}>
-
-                <Box
-                    mt="20px"
-                    sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
-                    {propertiesData?.filter(pd => // search property by addresss, city, type name, and agent name
-                        pd.address.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                        pd.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                        pd.type.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                        pd.agent.userProfile.fullName.toLowerCase().includes(searchTerm.toLowerCase()))
-                        .map((property) => (
-                            <PropertyCard
-                                key={property.id}
-                                id={property.id}
-                                title={`${property.numberOfBedroom} bd |  ${property.numberOfBathroom} ba | ${property.squareFeet.toLocaleString()} sqft `}
-                                location={`${property.address}, ${property.city}, ${property.state} ${property.zipCode}`}
-                                type={property.type.name}
-                                photo={property.imageURL || "https://a0.muscache.com/im/pictures/miso/Hosting-33256478/original/450166e1-8585-4384-a3b5-49fe4084ff52.jpeg?im_w=720"}
-                            />
-                        ))}
+                            color: colors.grey[100],
+                            fontSize: "14px",
+                            fontWeight: "bold",
+                            padding: "10px 20px",
+                            "&:hover": {
+                                opacity: 0.9,
+                                backgroundColor: colors.blueAccent[700],
+                            },
+                        }}
+                    >
+                        <Add sx={{ mr: "10px" }} />
+                        Create New Property
+                    </Button>
                 </Box>
             </Box>
+
+            {/* Property List Cards */}
+            <Box
+                sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
+                {propertiesData?.filter(pd => // search property by addresss, city, type name, and agent name
+                    pd.address.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    pd.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    pd.type.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    pd.agent.userProfile.fullName.toLowerCase().includes(searchTerm.toLowerCase()))
+                    .map((property) => (
+                        <PropertyCard
+                            key={property.id}
+                            id={property.id}
+                            title={`${property.numberOfBedroom} bd |  ${property.numberOfBathroom} ba | ${property.squareFeet.toLocaleString()} sqft `}
+                            location={`${property.address}, ${property.city}, ${property.state} ${property.zipCode}`}
+                            type={property.type.name}
+                            photo={property.imageURL || "https://a0.muscache.com/im/pictures/miso/Hosting-33256478/original/450166e1-8585-4384-a3b5-49fe4084ff52.jpeg?im_w=720"}
+                        />
+                    ))}
+            </Box>
+
         </Box>
     </>)
 }
