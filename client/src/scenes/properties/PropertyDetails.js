@@ -9,13 +9,13 @@ import Phone from "@mui/icons-material/Phone";
 import Place from "@mui/icons-material/Place";
 import Header from "../../components/Header.js";
 import PropertyCard from "../../components/PropertyCard.js";
-import { Avatar, CardHeader, IconButton, Menu, MenuItem, useTheme } from "@mui/material";
+import { Avatar, Button, CardHeader, IconButton, Menu, MenuItem, useTheme } from "@mui/material";
 import { tokens } from "../../theme.js";
 import { getPropertyById } from "../../managers/propertyManager.js";
 import MoreVertIcon from "@mui/icons-material/MoreVert.js";
 import AssignAgent from "./AssignAgent.js";
 
-const PropertyDetails = ({ loggedinUser }) => {
+const PropertyDetails = ({ loggedinUser, setSearchTerm }) => {
     const navigate = useNavigate();
 
     const { propertyId } = useParams();
@@ -33,6 +33,7 @@ const PropertyDetails = ({ loggedinUser }) => {
     useEffect(() => {
         // fetching property data
         getPropertyById(propertyId).then(setProperty);
+        // set
 
         // fetching user data
 
@@ -89,7 +90,7 @@ const PropertyDetails = ({ loggedinUser }) => {
                         textAlign="left"
                     >
                         <img
-                            src={property.imageURL||"https://a0.muscache.com/im/pictures/miso/Hosting-33256478/original/450166e1-8585-4384-a3b5-49fe4084ff52.jpeg?im_w=1200"}
+                            src={property.imageURL || "https://a0.muscache.com/im/pictures/miso/Hosting-33256478/original/450166e1-8585-4384-a3b5-49fe4084ff52.jpeg?im_w=1200"}
                             alt="property_details-img"
                             width="100%"
                             height={480}
@@ -180,9 +181,18 @@ const PropertyDetails = ({ loggedinUser }) => {
                                 </Typography>
                             </Stack>
 
-                            <Typography mt={1} fontSize={16} fontWeight={600} color={colors.greenAccent[300]}>
-                                {property?.agent?.properties?.length} Properties
-                            </Typography>
+                            {/* Number of Property and Link to Property Results  */}
+                            <Button
+                                sx={{ margin: 1, textTransform: 'none' }}
+                                onClick={() => {
+                                    setSearchTerm(property?.agent?.userProfile?.fullName);
+                                    navigate("/properties")
+                                }}
+                            >
+                                <Typography fontSize={16} fontWeight={600} color={colors.greenAccent[300]}>
+                                    {property?.agent?.properties?.length} {property?.agent?.properties?.length === 1 ? "Property" : "Properties"}
+                                </Typography>
+                            </Button>
                         </Stack>
 
                         {/* For Investors Stacks */}

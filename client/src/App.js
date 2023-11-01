@@ -44,13 +44,19 @@ function App() {
 
           <main className="main">
 
-            <Topbar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} setIsSidebar={setIsSidebar} setSearchTerm={setSearchTerm} />
+            <Topbar
+              loggedInUser={loggedInUser}
+              setLoggedInUser={setLoggedInUser}
+              setIsSidebar={setIsSidebar}
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm} />
 
             <div className="content">
               <ApplicationViews
                 loggedInUser={loggedInUser}
                 setLoggedInUser={setLoggedInUser}
                 searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
               />
             </div>
 

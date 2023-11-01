@@ -12,7 +12,7 @@ import Bar from "../scenes/bar-chart/index.js";
 import Dashboard from "../scenes/dashboard/index.js";
 
 
-export default function ApplicationViews({ loggedInUser, setLoggedInUser, searchTerm }) {
+export default function ApplicationViews({ loggedInUser, setLoggedInUser, searchTerm, setSearchTerm }) {
   return (
     <Routes>
       <Route path="/">
@@ -61,8 +61,8 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser, search
           <Route
             path=":propertyId"
             element={
-              <AuthorizedRoute loggedInUser={loggedInUser}>
-                <PropertyDetails loggedInUser={loggedInUser} />
+              <AuthorizedRoute loggedInUser={loggedInUser} setSearchTerm={setSearchTerm}>
+                <PropertyDetails loggedInUser={loggedInUser} setSearchTerm={setSearchTerm} />
               </AuthorizedRoute>
             }
           />
