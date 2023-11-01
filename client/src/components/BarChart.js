@@ -41,15 +41,19 @@ const BarChart = ({ isDashboard = false }) => {
       }}
       keys={["Rent", "Repair Service Fees", "Maintenance Fees", "Leasing Fees", "Late Fees"]}
       indexBy="Month"
-      margin={{ top: 50, right: 160, bottom: 50, left: 60 }}
-      padding={0.3}
+      groupMode={isDashboard ? 'grouped' : 'stacked'} // the main style
+      margin={{ top: 50, right: 160, bottom: 50, left: 80 }}
+      padding={isDashboard ? 0.1 : 0.3}
       valueScale={{ type: "linear" }}
       indexScale={{ type: "band", round: true }}
-      colors={{ scheme:  'accent' }}
+      colors={{ scheme: 'accent' }}
       borderColor={{
         from: "color",
         modifiers: [["darker", "1.6"]],
       }}
+      /* GRID & AXES */
+      enableGridY={isDashboard ? false : true}
+      gridYValues={[35, 40, 45, 50]} // specify values; // not working: gridYValues={(values) => values.filter((value) => value !== 0)}
       axisTop={null}
       axisRight={null}
       axisBottom={{
@@ -64,18 +68,21 @@ const BarChart = ({ isDashboard = false }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "Revenue (k)", // changed
+        legend: isDashboard ? undefined : "Revenue", // changed
         legendPosition: "middle",
-        legendOffset: -40,
+        legendOffset: -60,
+        format: (value) => { if (value % 10 !== 0) { return "" } else if (value !== 0) { return `$${value}k` } } //formatted tick value, skip formating 0, and only keep tens.
       }}
-      enableLabel={true} // the numbers 
-      label={d => `$${d.value}k`}
+      /* LABELS */
+      enableLabel={isDashboard ? false : true} // the numbers on the bar
+      label={d => `$${d.value}k`} // fomatted value
       labelSkipWidth={12}
       labelSkipHeight={12}
       labelTextColor={{
         from: "color",
         modifiers: [["darker", 2.8]],
       }}
+      /* LEGENDS */
       legends={[
         {
           dataFrom: "keys",
@@ -101,7 +108,7 @@ const BarChart = ({ isDashboard = false }) => {
         },
       ]}
       isInteractive={true}
-      tooltip={()=>{}}
+      tooltip={() => { }}
       role="application"
       ariaLabel="Revenue bar chart"
       barAriaLabel={e => e.id + ": " + e.formattedValue + " in Month: " + e.indexValue}
