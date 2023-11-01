@@ -10,6 +10,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import LogoutIcon from '@mui/icons-material/Logout';
+import ClearIcon from '@mui/icons-material/Clear';
 
 const Topbar = ({ loggedInUser, setLoggedInUser, searchTerm, setSearchTerm }) => {
     const theme = useTheme();
@@ -19,25 +20,36 @@ const Topbar = ({ loggedInUser, setLoggedInUser, searchTerm, setSearchTerm }) =>
     if (!loggedInUser) { return null };
 
     return (
-        <Box display="flex" justifyContent="space-between" p={2} >
+        <Box display="flex" justifyContent="space-between" py={2} px={3} >
 
             {/* SEARCH BAR */}
             <Box
                 display="flex"
                 backgroundColor={colors.primary[400]}
                 borderRadius="3px"
+                width="250px" // So it doesn't depend on the rendering of ClearIcon
             >
+                <IconButton sx={{ p: 1 }}>
+                    <SearchIcon />
+                </IconButton>
                 <InputBase
-                    sx={{ ml: 2, flex: 1 }}
+                    sx={{ flex: 1 }}
                     placeholder="Search"
                     value={searchTerm} // If searchTerm is changed somewhere else, like when "2 Properties" is clicked in the Agent Stack, the InputBase will show the text. Otherwise, it'll be empty.
                     onChange={(e) => {
                         setSearchTerm(e.target.value)
                     }}
                 />
-                <IconButton type="button" sx={{ p: 1 }}>
-                    <SearchIcon />
-                </IconButton>
+                {searchTerm && ( //Clear Icon 
+                    <IconButton
+                        sx={{ p: 1 }}
+                        onClick={() => {
+                            setSearchTerm('');
+                        }}>
+                        <ClearIcon />
+                    </IconButton>
+                )}
+
             </Box>
 
             {/* ICONS */}
