@@ -7,9 +7,10 @@ import Delete from "@mui/icons-material/Delete";
 import Edit from "@mui/icons-material/Edit";
 import Phone from "@mui/icons-material/Phone";
 import Place from "@mui/icons-material/Place";
+import Email from '@mui/icons-material/Email';
 import Header from "../../components/Header.js";
 import PropertyCard from "../../components/PropertyCard.js";
-import { Avatar, Button, CardHeader, IconButton, Menu, MenuItem, useTheme } from "@mui/material";
+import { Avatar, Button, CardHeader, IconButton, Menu, MenuItem, Tooltip, useTheme } from "@mui/material";
 import { tokens } from "../../theme.js";
 import { getPropertyById } from "../../managers/propertyManager.js";
 import MoreVertIcon from "@mui/icons-material/MoreVert.js";
@@ -203,6 +204,7 @@ const PropertyDetails = ({ loggedinUser, setSearchTerm }) => {
                             borderRadius={2}
                         >
                             {property.propertyInvestors.map(propertyInvestor => (
+
                                 <CardHeader
                                     key={propertyInvestor.id} // .map() in React requires key
                                     avatar={
@@ -213,18 +215,45 @@ const PropertyDetails = ({ loggedinUser, setSearchTerm }) => {
                                         > {propertyInvestor.investor.userProfile.fullName[0]} </Avatar>
                                     }
                                     title={
-                                        <div>
-                                            <span style={{ color: colors.greenAccent[300] }}>
-                                                {propertyInvestor.investor.userProfile.fullName}
-                                            </span>
+                                        <Tooltip
+                                            arrow
+                                            sx={{ transform: 'translateX(6px)' }}
+                                            placement="left"
+                                            title={
+                                                <Stack gap={0.5}>
+                                                    <Stack direction="row" alignItems="center" gap={1} >
+                                                        <Email
+                                                            sx={{
+                                                                fontSize: 14,
+                                                                color: colors.grey[100],
+                                                            }} />
+                                                        {propertyInvestor.investor.userProfile.fullName}
+                                                    </Stack>
+                                                    <Stack direction="row" alignItems="center" gap={1}>
+                                                        <Phone
+                                                            sx={{
+                                                                fontSize: 14,
+                                                                color: colors.grey[100],
+                                                            }} />
+                                                        {propertyInvestor.investor.userProfile.fullName}
+                                                    </Stack>
+                                                </Stack>
+                                            }
+                                        >
+                                            <div>
+                                                <span style={{ color: colors.greenAccent[300] }}>
+                                                    {propertyInvestor.investor.userProfile.fullName}
+                                                </span>
 
-                                            <span style={{ backgroundColor: colors.primary[300], borderRadius: '4px', padding: '2px 6px', marginLeft: '8px' }}>
-                                                Investor
-                                            </span>
-                                        </div>
+
+                                                <span style={{ backgroundColor: colors.primary[300], borderRadius: '4px', padding: '2px 6px', marginLeft: '8px' }}>
+                                                    Investor
+                                                </span>
+                                            </div></Tooltip>
                                     }
                                     subheader={propertyInvestor.investor.company}
                                 />
+
                             ))
 
                             }
