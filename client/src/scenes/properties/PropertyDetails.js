@@ -220,22 +220,30 @@ const PropertyDetails = ({ loggedinUser, setSearchTerm }) => {
                                             sx={{ transform: 'translateX(6px)' }}
                                             placement="left"
                                             title={
-                                                <Stack gap={0.5}>
+                                                <Stack gap={1} p={0.5} fontSize={12}>
                                                     <Stack direction="row" alignItems="center" gap={1} >
                                                         <Email
                                                             sx={{
-                                                                fontSize: 14,
+                                                                fontSize: 16,
                                                                 color: colors.grey[100],
                                                             }} />
-                                                        {propertyInvestor.investor.userProfile.fullName}
+                                                        {propertyInvestor.investor.userProfile.identityUser.email}
                                                     </Stack>
                                                     <Stack direction="row" alignItems="center" gap={1}>
                                                         <Phone
                                                             sx={{
-                                                                fontSize: 14,
+                                                                fontSize: 16,
                                                                 color: colors.grey[100],
                                                             }} />
-                                                        {propertyInvestor.investor.userProfile.fullName}
+                                                        {propertyInvestor.investor.userProfile.phoneNumber}
+                                                    </Stack>
+                                                    <Stack direction="row" alignItems="center" gap={1}>
+                                                        <Place
+                                                            sx={{
+                                                                fontSize: 16,
+                                                                color: colors.grey[100],
+                                                            }} />
+                                                        {`${propertyInvestor.investor.userProfile.city}, ${propertyInvestor.investor.userProfile.state}`}
                                                     </Stack>
                                                 </Stack>
                                             }
