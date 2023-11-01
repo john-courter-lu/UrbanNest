@@ -12,6 +12,7 @@ import Header from "../../components/Header";
 import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import { useNavigate } from "react-router-dom";
+import LineChart from "../../components/LineChart.js";
 
 
 const Dashboard = () => {
@@ -198,10 +199,11 @@ const Dashboard = () => {
                     p="30px"
                 >
                     <Typography variant="h5" fontWeight="600">
-                        Pie Chart
+                        Revenue & Expense By Month
                     </Typography>
-
+                    <LineChart />
                 </Box>
+
                 <Box
                     gridColumn="span 4"
                     gridRow="span 2"
@@ -216,6 +218,7 @@ const Dashboard = () => {
                     </Typography>
 
                 </Box>
+
                 <Box
                     gridColumn="span 4"
                     gridRow="span 2"
@@ -232,6 +235,7 @@ const Dashboard = () => {
                     <Box height="200px">
 
                     </Box>
+
                 </Box>
             </Box>
         </Box>
