@@ -193,7 +193,7 @@ const Dashboard = () => {
 
                 {/* ROW 3 */}
                 <Box
-                    gridColumn="span 4"
+                    gridColumn="span 6"
                     gridRow="span 2"
                     backgroundColor={colors.primary[400]}
                     p="30px"
@@ -205,22 +205,7 @@ const Dashboard = () => {
                 </Box>
 
                 <Box
-                    gridColumn="span 4"
-                    gridRow="span 2"
-                    backgroundColor={colors.primary[400]}
-                >
-                    <Typography
-                        variant="h5"
-                        fontWeight="600"
-                        sx={{ padding: "30px 30px 0 30px" }}
-                    >
-                        More Chart
-                    </Typography>
-
-                </Box>
-
-                <Box
-                    gridColumn="span 4"
+                    gridColumn="span 6"
                     gridRow="span 2"
                     backgroundColor={colors.primary[400]}
                     padding="30px"
@@ -228,12 +213,12 @@ const Dashboard = () => {
                     <Typography
                         variant="h5"
                         fontWeight="600"
-                        sx={{ marginBottom: "15px" }}
+                        
                     >
                         More Chart
                     </Typography>
-                    <Box height="200px">
-
+                    <Box height="200px"> {/* control the chart's height */}
+                    <LineChart />
                     </Box>
 
                 </Box>
