@@ -42,11 +42,13 @@ public class PropertyController : ControllerBase
             .Include(p => p.Type)
             .Include(p => p.Agent) // will return "404 NOT FOUND" if newly created Property's AgentId is 0/ unassigned
                 .ThenInclude(a => a.UserProfile)
+                    .ThenInclude(u => u.IdentityUser) // to get the email
             .Include(p => p.Agent)
                 .ThenInclude(a => a.Properties.Where(prop => prop.IsActive)) // Filter active properties
             .Include(p => p.PropertyInvestors) // will be ok and return empty array if newly created Property's Investors is unassigned
                 .ThenInclude(pi => pi.Investor)
                     .ThenInclude(a => a.UserProfile)
+                        .ThenInclude(u => u.IdentityUser)
             .SingleOrDefault(p => p.Id == id);
 
         if (property == null || property.IsActive == false) //filter out non-active property, too; or use !property.IsActive 
