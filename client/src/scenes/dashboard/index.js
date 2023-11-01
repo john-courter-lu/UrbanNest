@@ -155,7 +155,7 @@ const Dashboard = () => {
                                 fontWeight="bold"
                                 color={colors.greenAccent[500]}
                             >
-                                $59,342.32
+                                $348,529.66
                             </Typography>
                         </Box>
                         <Box>
@@ -199,7 +199,7 @@ const Dashboard = () => {
                     p="30px"
                 >
                     <Typography variant="h5" fontWeight="600">
-                        Revenue & Expense By Month
+                        Revenue & Expenses Month By Month
                     </Typography>
                     <LineChart />
                 </Box>
