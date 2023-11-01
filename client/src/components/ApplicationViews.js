@@ -10,6 +10,7 @@ import CreateProperty from "../scenes/properties/CreateProperty.js";
 import EditProperty from "../scenes/properties/EditProperty.js";
 import Bar from "../scenes/bar-chart/index.js";
 import Dashboard from "../scenes/dashboard/index.js";
+import Line from "../scenes/line-chart/index.js";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser, searchTerm, setSearchTerm }) {
@@ -92,6 +93,16 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser, search
             </AuthorizedRoute>
           }
         />
+
+        <Route
+          path="line"
+          element={
+            <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+              <Line />
+            </AuthorizedRoute>
+          }
+        />
+        
         <Route
           path="login"
           element={<Login setLoggedInUser={setLoggedInUser} />}

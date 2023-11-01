@@ -1,3 +1,5 @@
+import { tokens } from "../theme";
+
 export const mockDataContacts = [
     {
         "id": 1,
@@ -1040,3 +1042,50 @@ export const mockBarData = [
         "Late FeesColor": "hsl(330, 70%, 50%)"
     }
 ]
+
+export const mockLineData = [
+    {
+        id: "Expense",
+        color: tokens("dark").greenAccent[500],
+        data: [
+            {
+                x: "April",
+                y: 32.04,
+            },
+            {
+                x: "May",
+                y: 30.15,
+            },
+            {
+                x: "June",
+                y: 46.26,
+            },
+            {
+                x: "July",
+                y: 43.37,
+            },
+            {
+                x: "August",
+                y: 48.48,
+            },
+            {
+                x: "September",
+                y: 38.59,
+            },
+            {
+                x: "October",
+                y: 33.10,
+            },
+        ],
+    },
+    {
+        id: "Revenue",
+        color: tokens("dark").blueAccent[300],
+        data: mockBarData.map(data => {
+            return {
+                x: data.Month,
+                y: data.Rent + data['Leasing Fees'] + data['Maintenance Fees'] + data['Repair Service Fees'] + data['Late Fees'],
+            };
+        }),
+    }
+];
