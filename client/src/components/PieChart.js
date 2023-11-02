@@ -43,65 +43,60 @@ const PieChart = ({ data }) => {
         <div style={{ background: 'rgba(255, 255, 255, 0.9)', padding: '8px', borderRadius: '4px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}>
           <strong style={{ color: 'blue' }}>{label}</strong>: <span style={{ color: 'red' }}>{value}</span>
         </div>
-      )}
+      )} // doesn't work, maybe because of the version
 
-      margin={{ top: 40, right: 80, bottom: 80, left: 80 }
-      }
+      valueFormat=" ^-$.2f"
+
+      margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
       innerRadius={0.5}
       padAngle={0.7}
       cornerRadius={3}
-      activeOuterRadiusOffset={8}
       borderColor={{
         from: "color",
         modifiers: [["darker", 0.2]],
       }}
+
+      activeInnerRadiusOffset={4}
+      activeOuterRadiusOffset={10}
+
       arcLinkLabelsSkipAngle={10}
+
       arcLinkLabelsTextColor={colors.grey[100]}
-      arcLinkLabelsThickness={2}
       arcLinkLabelsColor={{ from: "color" }}
+
+      arcLinkLabelsThickness={2}
+      arcLinkLabelsTextOffset={3}
+      arcLinkLabelsDiagonalLength={8}
+      arcLinkLabelsStraightLength={12}
+
+      enableArcLinkLabels={true}
+      arcLinkLabel={e => "$" + e.value}
+
       enableArcLabels={true}
+      arcLabel="id"
+
       arcLabelsRadiusOffset={0.4}
       arcLabelsSkipAngle={7}
       arcLabelsTextColor={{
         from: "color",
         modifiers: [["darker", 2]],
       }}
-      defs={
-        [
-          {
-            id: "dots",
-            type: "patternDots",
-            background: "inherit",
-            color: "rgba(255, 255, 255, 0.3)",
-            size: 4,
-            padding: 1,
-            stagger: true,
-          },
-          {
-            id: "lines",
-            type: "patternLines",
-            background: "inherit",
-            color: "rgba(255, 255, 255, 0.3)",
-            rotation: -45,
-            lineWidth: 6,
-            spacing: 10,
-          },
-        ]}
+
       legends={
         [
           {
             anchor: "bottom",
             direction: "row",
             justify: false,
-            translateX: 0,
-            translateY: 56,
+            translateX: 15, //change the x position
+            translateY: 56, //change the y position
             itemsSpacing: 0,
-            itemWidth: 100,
+            itemWidth: 95,
             itemHeight: 18,
             itemTextColor: "#999",
             itemDirection: "left-to-right",
             itemOpacity: 1,
-            symbolSize: 18,
+            symbolSize: 12,
             symbolShape: "circle",
             effects: [
               {
