@@ -81,7 +81,7 @@ const Agents = ({ loggedInUser }) => {
 
     ];
 
-    if (loggedInUser.id === 2) {
+    if (loggedInUser.roles.includes("Admin")) { // Admin only: deactivation
         columns.unshift({
             field: 'deactivate',
             headerName: 'Active Status',
