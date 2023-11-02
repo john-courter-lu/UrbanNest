@@ -13,9 +13,10 @@ import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import { useNavigate } from "react-router-dom";
 import LineChart from "../../components/LineChart.js";
-import { mockDataContacts } from "../../data/mockData.js";
+import { mockDataContacts, mockPieData } from "../../data/mockData.js";
 import { useEffect, useState } from "react";
 import { getAgents } from "../../managers/agentManager.js";
+import PieChart from "../../components/PieChart.js";
 
 
 const Dashboard = () => {
@@ -236,6 +237,7 @@ const Dashboard = () => {
                 </Box>
 
                 {/* ROW 3 */}
+                {/* Box 1 Line Chart */}
                 <Box
                     gridColumn="span 6"
                     gridRow="span 2"
@@ -249,7 +251,7 @@ const Dashboard = () => {
                         alignItems="center"
                     >
                         <Typography variant="h5" fontWeight="600">
-                            Revenue & Expenses
+                            Revenue and Expenses
                         </Typography>
 
                         <IconButton onClick={() => { navigate("/line") }}>
@@ -264,24 +266,36 @@ const Dashboard = () => {
                     </Box>
                 </Box>
 
+
+                {/* Box 2 Pie Chart */}
                 <Box
                     gridColumn="span 6"
                     gridRow="span 2"
                     backgroundColor={colors.primary[400]}
-                    padding="30px"
+                    p="30px"
                 >
-                    <Typography
-                        variant="h5"
-                        fontWeight="600"
-
+                    <Box
+                        mt="-10px"
+                        display="flex"
+                        justifyContent="space-between"
+                        alignItems="center"
                     >
-                        More Chart
-                    </Typography>
-                    <Box height="200px"> {/* control the chart's height */}
-                        <LineChart />
-                    </Box>
+                        <Typography variant="h5" fontWeight="600">
+                            Expenses Breakdown By Category
+                        </Typography>
 
+                        <IconButton onClick={() => { navigate("/pie") }}>
+                            <ReadMoreOutlinedIcon
+                                sx={{ fontSize: "22px", color: colors.greenAccent[500] }}
+                            />
+                        </IconButton>
+
+                    </Box>
+                    <Box height="300px" m="-10px 0 0 0">
+                        <PieChart data={mockPieData} isDashboard={true} />
+                    </Box>
                 </Box>
+
             </Box>
         </Box>
     );
