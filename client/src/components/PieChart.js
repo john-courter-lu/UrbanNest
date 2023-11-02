@@ -2,9 +2,58 @@ import { ResponsivePie } from "@nivo/pie";
 import { tokens } from "../theme";
 import { useTheme } from "@mui/material";
 
-const PieChart = ({ data, isDashboard = false }) => {
+const PieChart = ({ data, isDashboard = false, isPrimary = true }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  const legendMode = () => { // cannot use a direct if...else statement as a value when defining an object's property; so use an independent function
+    if (!isDashboard) {
+      return [ // for regular independent page
+        {
+          anchor: "bottom",
+          direction: "row",
+          justify: false,
+          translateX: 15, //change the x position
+          translateY: 56, //change the y position
+          itemsSpacing: 0,
+          itemWidth: 95,
+          itemHeight: 18,
+          itemTextColor: "#999",
+          itemDirection: "left-to-right",
+          itemOpacity: 1,
+          symbolSize: 12,
+          symbolShape: "circle",
+          effects: [
+            {
+              on: "hover",
+              style: {
+                itemTextColor: "#000",
+              },
+            },
+          ],
+        },
+      ]
+    } else if (isPrimary) {
+      return [ // for Dashboard and iPrimary
+        {
+          anchor: 'bottom-right',
+          direction: 'column',
+          justify: false,
+          translateX: 90,
+          translateY: 0,
+          itemWidth: 100,
+          itemHeight: 20,
+          itemsSpacing: 5,
+          symbolSize: 20,
+          symbolShape: "circle", //otherwise would be square
+          itemDirection: 'left-to-right'
+        }
+      ]
+    } else { // for Dashboard and non-Primary
+      return []
+    }
+  }
+
   return (
     <ResponsivePie
       data={data}
@@ -82,47 +131,8 @@ const PieChart = ({ data, isDashboard = false }) => {
         modifiers: [["darker", 2]],
       }}
 
-      legends={isDashboard ?
-        [ // different legends for dashboard
-          {
-            anchor: 'bottom-right',
-            direction: 'column',
-            justify: false,
-            translateX: 90,
-            translateY: 0,
-            itemWidth: 100,
-            itemHeight: 20,
-            itemsSpacing: 5,
-            symbolSize: 20,
-            symbolShape: "circle", //otherwise would be square
-            itemDirection: 'left-to-right'
-          }
-        ] :
-        [
-          {
-            anchor: "bottom",
-            direction: "row",
-            justify: false,
-            translateX: 15, //change the x position
-            translateY: 56, //change the y position
-            itemsSpacing: 0,
-            itemWidth: 95,
-            itemHeight: 18,
-            itemTextColor: "#999",
-            itemDirection: "left-to-right",
-            itemOpacity: 1,
-            symbolSize: 12,
-            symbolShape: "circle",
-            effects: [
-              {
-                on: "hover",
-                style: {
-                  itemTextColor: "#000",
-                },
-              },
-            ],
-          },
-        ]}
+      legends={legendMode()} // Have to call the function, not just the name 
+
     />
   );
 };

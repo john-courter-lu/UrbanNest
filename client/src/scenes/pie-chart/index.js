@@ -109,7 +109,7 @@ const Pie = () => {
                         </Box>
                     </Box>
                     <Box height="500px" m="20px 0 0 0">
-                        <PieChart data={mockPieData2} />
+                        <PieChart data={mockPieData2} isPrimary = {true} />
                     </Box>
                 </Box>
 
