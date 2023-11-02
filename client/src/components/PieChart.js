@@ -72,7 +72,7 @@ const PieChart = ({ data, isDashboard = false }) => {
       enableArcLinkLabels={true}
       arcLinkLabel={e => "$" + e.value}
 
-      enableArcLabels={true}
+      enableArcLabels={isDashboard ? false : true}
       arcLabel="id"
 
       arcLabelsRadiusOffset={0.4}
@@ -94,6 +94,7 @@ const PieChart = ({ data, isDashboard = false }) => {
             itemHeight: 20,
             itemsSpacing: 5,
             symbolSize: 20,
+            symbolShape: "circle", //otherwise would be square
             itemDirection: 'left-to-right'
           }
         ] :

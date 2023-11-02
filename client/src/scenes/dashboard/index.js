@@ -13,7 +13,7 @@ import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import { useNavigate } from "react-router-dom";
 import LineChart from "../../components/LineChart.js";
-import { mockDataContacts, mockPieData } from "../../data/mockData.js";
+import { mockDataContacts, mockPieData, mockPieData2 } from "../../data/mockData.js";
 import { useEffect, useState } from "react";
 import { getAgents } from "../../managers/agentManager.js";
 import PieChart from "../../components/PieChart.js";
@@ -291,11 +291,12 @@ const Dashboard = () => {
                         </IconButton>
 
                     </Box>
-                    <Box height="300px" m="-10px 0 0 0">
-                        <PieChart data={mockPieData} isDashboard={true} />
+                    {/* Pie Chart 1 & 2 */}
+                    <Box display="flex" height="300px" m="-10px 0 0 0">
+                        <PieChart data={mockPieData} isDashboard={true} /> <PieChart data={mockPieData2} isDashboard={true} />
                     </Box>
-                </Box>
 
+                </Box>
             </Box>
         </Box>
     );
