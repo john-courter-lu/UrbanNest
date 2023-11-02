@@ -34,7 +34,7 @@ const PieChart = ({ data, isDashboard = false, isPrimary = true }) => {
         },
       ]
     } else if (isPrimary) {
-      return [ // for Dashboard and iPrimary
+      return [ // for Dashboard and isPrimary
         {
           anchor: 'bottom-right',
           direction: 'column',
@@ -110,7 +110,10 @@ const PieChart = ({ data, isDashboard = false, isPrimary = true }) => {
 
       arcLinkLabelsSkipAngle={10}
 
-      arcLinkLabelsTextColor={colors.grey[100]}
+      arcLinkLabel={(e) => ( // render LinkLabel conditionally
+        isDashboard ? e.id : `$${e.value}`
+      )}
+      arcLinkLabelsTextColor={{ from: "color" }}
       arcLinkLabelsColor={{ from: "color" }}
 
       arcLinkLabelsThickness={2}
@@ -118,18 +121,12 @@ const PieChart = ({ data, isDashboard = false, isPrimary = true }) => {
       arcLinkLabelsDiagonalLength={8}
       arcLinkLabelsStraightLength={12}
 
-      enableArcLinkLabels={true}
-      arcLinkLabel={e => "$" + e.value}
-
       enableArcLabels={isDashboard ? false : true}
       arcLabel="id"
+      arcLabelsTextColor={colors.primary[400]}
 
       arcLabelsRadiusOffset={0.4}
       arcLabelsSkipAngle={7}
-      arcLabelsTextColor={{
-        from: "color",
-        modifiers: [["darker", 2]],
-      }}
 
       legends={legendMode()} // Have to call the function, not just the name 
 
