@@ -222,7 +222,7 @@ const Dashboard = () => {
                                 p="5px 10px"
                                 borderRadius="4px"
                             >
-                                {agent.properties.length} Properties
+                                {`${agent.properties.length} ${agent.properties.length === 1 ? "Property" : "Properties"}`}
                             </Box>
                         </Box>
                     ))}
