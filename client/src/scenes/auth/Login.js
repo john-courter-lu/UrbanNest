@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../managers/authManager";
 import {
@@ -26,6 +26,9 @@ export default function Login({ setLoggedInUser }) {
       }
     });
   };
+
+  useEffect(() => { setLoggedInUser(null) }, []);
+  /* to prevent sidebar and topbar still rendered when loggedin non-admin user try to navigate to admin-only path using web browser's URL address bar  */
 
   return (
     <Container component="main" maxWidth="sm" >
