@@ -10,6 +10,8 @@ import HomeWorkOutlinedIcon from '@mui/icons-material/HomeWorkOutlined';
 import ImportContactsOutlinedIcon from '@mui/icons-material/ImportContactsOutlined';
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
+import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
+import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
@@ -112,13 +114,15 @@ const Sidebar = ({ loggedInUser }) => {
                     )}
 
                     <Box paddingLeft={isCollapsed ? undefined : "10%"}>
-                        <Item
+
+                        {/* Dashboard */}
+                        {loggedInUser.roles.includes("Admin") && <Item
                             title="Dashboard"
                             to="/"
                             icon={<HomeOutlinedIcon />}
                             selected={selected}
                             setSelected={setSelected}
-                        />
+                        />}
 
                         {/* Resources */}
                         <Item
@@ -144,13 +148,31 @@ const Sidebar = ({ loggedInUser }) => {
                         />
 
                         {/* Finances */}
-                        <Item
-                            title="Bar Chart"
-                            to="/bar"
-                            icon={<BarChartOutlinedIcon />}
-                            selected={selected}
-                            setSelected={setSelected}
-                        />
+                        {loggedInUser.roles.includes("Admin") &&
+                            <>
+                                <Item
+                                    title="Bar Chart"
+                                    to="/bar"
+                                    icon={<BarChartOutlinedIcon />}
+                                    selected={selected}
+                                    setSelected={setSelected}
+                                />
+                                <Item
+                                    title="Line Chart"
+                                    to="/line"
+                                    icon={<TimelineOutlinedIcon />}
+                                    selected={selected}
+                                    setSelected={setSelected}
+                                />
+                                <Item
+                                    title="Pie Chart"
+                                    to="/pie"
+                                    icon={<PieChartOutlineOutlinedIcon />}
+                                    selected={selected}
+                                    setSelected={setSelected}
+                                />
+                            </>
+                        }
 
                         {/* My Profile */}
                         <Item

@@ -224,7 +224,7 @@ const Dashboard = () => {
                                 </Typography>
                             </Stack>
                             <Box color={colors.greenAccent[500]} flex={0.5}> {/* flex makes a flexbox inside, good for positioning */}
-                                {Array(5 - index).fill(<StarsOutlinedIcon />)}
+                                {Array(5 - index).fill(<StarsOutlinedIcon key={index} />)}
                             </Box>
                             <Box
                                 backgroundColor={colors.greenAccent[500]}
@@ -294,7 +294,9 @@ const Dashboard = () => {
                     </Box>
                     {/* Pie Chart 1 & 2 */}
                     <Box display="flex" height="300px" m="-10px 0 0 0">
+
                         {isLargeScreen && (<PieChart data={mockPieData} isDashboard={true} isPrimary={false} />)}
+                        
                         <PieChart data={mockPieData2} isDashboard={true} isPrimary={false} />
                     </Box>
 
