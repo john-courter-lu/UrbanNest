@@ -2,7 +2,7 @@ import { ResponsivePie } from "@nivo/pie";
 import { tokens } from "../theme";
 import { useTheme } from "@mui/material";
 
-const PieChart = ({ data }) => {
+const PieChart = ({ data, isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   return (
@@ -82,7 +82,21 @@ const PieChart = ({ data }) => {
         modifiers: [["darker", 2]],
       }}
 
-      legends={
+      legends={isDashboard ?
+        [ // different legends for dashboard
+          {
+            anchor: 'bottom-right',
+            direction: 'column',
+            justify: false,
+            translateX: 90,
+            translateY: 0,
+            itemWidth: 100,
+            itemHeight: 20,
+            itemsSpacing: 5,
+            symbolSize: 20,
+            itemDirection: 'left-to-right'
+          }
+        ] :
         [
           {
             anchor: "bottom",

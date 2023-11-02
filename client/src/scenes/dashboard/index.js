@@ -242,10 +242,26 @@ const Dashboard = () => {
                     backgroundColor={colors.primary[400]}
                     p="30px"
                 >
-                    <Typography variant="h5" fontWeight="600">
-                        Revenue & Expenses Month By Month
-                    </Typography>
-                    <LineChart />
+                    <Box
+                        mt="-10px"
+                        display="flex"
+                        justifyContent="space-between"
+                        alignItems="center"
+                    >
+                        <Typography variant="h5" fontWeight="600">
+                            Revenue & Expenses
+                        </Typography>
+
+                        <IconButton onClick={() => { navigate("/line") }}>
+                            <ReadMoreOutlinedIcon
+                                sx={{ fontSize: "22px", color: colors.greenAccent[500] }}
+                            />
+                        </IconButton>
+
+                    </Box>
+                    <Box height="250px" m="-20px 0 0 0">
+                        <LineChart isDashboard={true} />
+                    </Box>
                 </Box>
 
                 <Box
