@@ -14,6 +14,8 @@ import StatBox from "../../components/StatBox";
 import { useNavigate } from "react-router-dom";
 import LineChart from "../../components/LineChart.js";
 import { mockDataContacts } from "../../data/mockData.js";
+import { useEffect, useState } from "react";
+import { getAgents } from "../../managers/agentManager.js";
 
 
 const Dashboard = () => {
@@ -21,6 +23,11 @@ const Dashboard = () => {
     const colors = tokens(theme.palette.mode);
 
     const navigate = useNavigate();
+
+    const [agentsData, setAgentsData] = useState([]);
+    useEffect(() => {
+        getAgents().then(setAgentsData)
+    }, []);
 
     return (
         <Box m="20px">
@@ -190,7 +197,7 @@ const Dashboard = () => {
                             Top Agent
                         </Typography>
                     </Box>
-                    {mockDataContacts.slice(0, 5).map((agent, index) => (
+                    {agentsData.slice(0, 5).map((agent, index) => (
                         <Box
                             key={index}
                             display="flex"
