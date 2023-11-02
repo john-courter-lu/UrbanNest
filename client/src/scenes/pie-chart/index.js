@@ -47,14 +47,105 @@ const Pie = () => {
                                 fontWeight="bold"
                                 color={colors.greenAccent[500]}
                             >
-                                $33,100
+                                $48,479.26
                             </Typography>
                         </Box>
                         <Box>
                             <Typography
                                 variant="h5"
                                 fontWeight="600"
+                                backgroundColor={colors.greenAccent[500]}
+                                p="5px 10px"
+                                borderRadius="4px"
+                            >
+                                August
+                            </Typography>
+                        </Box>
+                    </Box>
+                    <Box height="500px" m="20px 0 0 0">
+                        <PieChart data={mockPieData3} />
+                    </Box>
+                </Box>
+
+                {/* September Expenses */}
+                <Box
+                    gridColumn="span 4"
+                    gridRow="span 4"
+                    backgroundColor={colors.primary[400]}
+                >
+                    <Box
+                        mt="25px"
+                        p="0 30px"
+                        display="flex"
+                        justifyContent="space-between"
+                        alignItems="center"
+                    >
+                        <Box>
+                            <Typography
+                                variant="h5"
+                                fontWeight="600"
                                 color={colors.grey[100]}
+                            >
+                                Total Expenses
+                            </Typography>
+                            <Typography
+                                variant="h3"
+                                fontWeight="bold"
+                                color={colors.greenAccent[500]}
+                            >
+                                $38,590.32
+                            </Typography>
+                        </Box>
+                        <Box>
+                            <Typography
+                                variant="h5"
+                                fontWeight="600"
+                                backgroundColor={colors.greenAccent[500]}
+                                p="5px 10px"
+                                borderRadius="4px"
+                            >
+                                September
+                            </Typography>
+                        </Box>
+                    </Box>
+                    <Box height="500px" m="20px 0 0 0">
+                        <PieChart data={mockPieData3} />
+                    </Box>
+                </Box>
+
+                {/* October Expenses*/}
+                <Box
+                    gridColumn="span 4"
+                    gridRow="span 4"
+                    backgroundColor={colors.primary[400]}
+                >
+                    <Box
+                        mt="25px"
+                        p="0 30px"
+                        display="flex"
+                        justifyContent="space-between"
+                        alignItems="center"
+                    >
+                        <Box>
+                            <Typography
+                                variant="h5"
+                                fontWeight="600"
+                                color={colors.grey[100]}
+                            >
+                                Total Expenses
+                            </Typography>
+                            <Typography
+                                variant="h3"
+                                fontWeight="bold"
+                                color={colors.greenAccent[500]}
+                            >
+                                $33,104.27
+                            </Typography>
+                        </Box>
+                        <Box>
+                            <Typography
+                                variant="h5"
+                                fontWeight="600"
                                 backgroundColor={colors.greenAccent[500]}
                                 p="5px 10px"
                                 borderRadius="4px"
