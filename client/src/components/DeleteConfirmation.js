@@ -2,10 +2,25 @@ import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Dialog
 
 export default function DeleteConfirmation({ open, handleClose, handleDelete }) {
     return (
-        <Dialog open={open} onClose={handleClose}>
+        <Dialog
+            open={open}
+            onClose={handleClose}
+            // scroll="paper" // no need, default
+            sx={{
+                "& .MuiDialog-container": {
+                    alignItems: "flex-start"
+                }
+            }}
+            PaperProps={{ sx: { mt: "150px" } }} // precise control
+        >
             <DialogTitle>Confirmation</DialogTitle>
 
-            <DialogContent>
+            <DialogContent
+                sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    minHeight: '8vh' // make the content has more margins
+                }}>
                 <DialogContentText>Are you sure you want to delete this property?</DialogContentText>
             </DialogContent>
 
