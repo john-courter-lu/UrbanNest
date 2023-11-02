@@ -25,8 +25,9 @@ public class AgentController : ControllerBase
         return Ok(_dbContext.Agents
          .Include(a => a.UserProfile)
             .ThenInclude(up => up.IdentityUser)
-         .Include(a => a.Properties)
-
+         .Include(a => a.Properties.Where(ps => ps.IsActive))
+         // Filter out active properties
+         .OrderByDescending(a => a.Properties.Where(ps => ps.IsActive).Count()) // sort by agent with the most active properties, needs .Where(), otherwise will still count inactive properties.
         .ToList());
     }
 

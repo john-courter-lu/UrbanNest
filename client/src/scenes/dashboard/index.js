@@ -1,4 +1,4 @@
-import { Box, Button, IconButton, Link, Typography, useTheme } from "@mui/material";
+import { Box, Button, IconButton, Link, Stack, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import ReadMoreOutlinedIcon from '@mui/icons-material/ReadMoreOutlined';
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
@@ -6,13 +6,16 @@ import AddHomeWorkOutlinedIcon from '@mui/icons-material/AddHomeWorkOutlined';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import HouseOutlinedIcon from '@mui/icons-material/HouseOutlined';
+import StarsOutlinedIcon from '@mui/icons-material/StarsOutlined';
+
 import Header from "../../components/Header";
-
-
 import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import { useNavigate } from "react-router-dom";
 import LineChart from "../../components/LineChart.js";
+import { mockDataContacts } from "../../data/mockData.js";
+import { useEffect, useState } from "react";
+import { getAgents } from "../../managers/agentManager.js";
 
 
 const Dashboard = () => {
@@ -20,6 +23,11 @@ const Dashboard = () => {
     const colors = tokens(theme.palette.mode);
 
     const navigate = useNavigate();
+
+    const [agentsData, setAgentsData] = useState([]);
+    useEffect(() => {
+        getAgents().then(setAgentsData)
+    }, []);
 
     return (
         <Box m="20px">
@@ -155,7 +163,7 @@ const Dashboard = () => {
                                 fontWeight="bold"
                                 color={colors.greenAccent[500]}
                             >
-                                $59,342.32
+                                $348,429.56
                             </Typography>
                         </Box>
                         <Box>
@@ -170,6 +178,7 @@ const Dashboard = () => {
                         <BarChart isDashboard={true} />
                     </Box>
                 </Box>
+                {/* Top Agent */}
                 <Box
                     gridColumn="span 4"
                     gridRow="span 2"
@@ -188,39 +197,59 @@ const Dashboard = () => {
                             Top Agent
                         </Typography>
                     </Box>
-
+                    {agentsData.slice(0, 5).map((agent, index) => (
+                        <Box
+                            key={index}
+                            display="flex"
+                            justifyContent="space-between"
+                            alignItems="center"
+                            borderBottom={`4px solid ${colors.primary[500]}`}
+                            p="15px"
+                        >
+                            <Stack flex={0.5}> {/* flex makes a flexbox inside, good for positioning */}
+                                <Typography
+                                    variant="h5"
+                                    fontWeight="600"
+                                    color={colors.greenAccent[500]}
+                                >
+                                    {index + 1}
+                                </Typography>
+                                <Typography
+                                    variant="h6"
+                                    color={colors.grey[100]}
+                                >
+                                    {agent.userProfile.fullName}
+                                </Typography>
+                            </Stack>
+                            <Box color={colors.greenAccent[500]} flex={0.5}> {/* flex makes a flexbox inside, good for positioning */}
+                                {Array(5 - index).fill(<StarsOutlinedIcon />)}
+                            </Box>
+                            <Box
+                                backgroundColor={colors.greenAccent[500]}
+                                p="5px 10px"
+                                borderRadius="4px"
+                            >
+                                {`${agent.properties.length} ${agent.properties.length === 1 ? "Property" : "Properties"}`}
+                            </Box>
+                        </Box>
+                    ))}
                 </Box>
 
                 {/* ROW 3 */}
                 <Box
-                    gridColumn="span 4"
+                    gridColumn="span 6"
                     gridRow="span 2"
                     backgroundColor={colors.primary[400]}
                     p="30px"
                 >
                     <Typography variant="h5" fontWeight="600">
-                        Revenue & Expense By Month
+                        Revenue & Expenses Month By Month
                     </Typography>
                     <LineChart />
                 </Box>
 
                 <Box
-                    gridColumn="span 4"
-                    gridRow="span 2"
-                    backgroundColor={colors.primary[400]}
-                >
-                    <Typography
-                        variant="h5"
-                        fontWeight="600"
-                        sx={{ padding: "30px 30px 0 30px" }}
-                    >
-                        More Chart
-                    </Typography>
-
-                </Box>
-
-                <Box
-                    gridColumn="span 4"
+                    gridColumn="span 6"
                     gridRow="span 2"
                     backgroundColor={colors.primary[400]}
                     padding="30px"
@@ -228,12 +257,12 @@ const Dashboard = () => {
                     <Typography
                         variant="h5"
                         fontWeight="600"
-                        sx={{ marginBottom: "15px" }}
+
                     >
                         More Chart
                     </Typography>
-                    <Box height="200px">
-
+                    <Box height="200px"> {/* control the chart's height */}
+                        <LineChart />
                     </Box>
 
                 </Box>

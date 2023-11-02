@@ -18,7 +18,7 @@ export const mockDataContacts = [
             "phoneNumber": "555-123-4567",
             "joinedDate": "2022-10-18T00:00:00",
             "isActive": true,
-            "avatarURL": "https://example.com/avatar/adam.png",
+            "avatarURL": null,
             "identityUserId": "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
             "identityUser": {
                 "id": "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
@@ -38,12 +38,48 @@ export const mockDataContacts = [
                 "accessFailedCount": 0
             },
             "roles": null,
-            "fullName": "Adam Welshman",
-            "investors": null,
-            "agents": [
-                null
-            ]
-        }
+            "fullName": "Adam Welshman"
+        },
+        "properties": [
+            {
+                "id": 23,
+                "agentId": 1,
+                "agent": null,
+                "address": "3909 Lebanon Pike",
+                "city": "Antoich",
+                "state": "TN",
+                "zipCode": "34826",
+                "isActive": true,
+                "isRentOut": false,
+                "imageURL": "https://a0.muscache.com/im/pictures/b180dbdb-50df-44b6-ad9f-138924ccd64c.jpg?im_w=1200",
+                "squareFeet": 5600,
+                "numberOfBedroom": 12,
+                "numberOfBathroom": 6,
+                "typeId": 6,
+                "type": null,
+                "cashflows": null,
+                "propertyInvestors": null
+            },
+            {
+                "id": 27,
+                "agentId": 1,
+                "agent": null,
+                "address": "111 Thistle Ln",
+                "city": "Hermitage",
+                "state": "TN",
+                "zipCode": "37076",
+                "isActive": true,
+                "isRentOut": false,
+                "imageURL": "",
+                "squareFeet": 21,
+                "numberOfBedroom": 2,
+                "numberOfBathroom": 2,
+                "typeId": 1,
+                "type": null,
+                "cashflows": null,
+                "propertyInvestors": null
+            }
+        ]
     },
     {
         "id": 2,
@@ -62,7 +98,7 @@ export const mockDataContacts = [
             "phoneNumber": "555-234-5678",
             "joinedDate": "2022-09-15T00:00:00",
             "isActive": true,
-            "avatarURL": "https://example.com/avatar/stacy.png",
+            "avatarURL": null,
             "identityUserId": "a5be3ea4-57cd-471e-9b1f-d1ac68843c71",
             "identityUser": {
                 "id": "a5be3ea4-57cd-471e-9b1f-d1ac68843c71",
@@ -82,56 +118,48 @@ export const mockDataContacts = [
                 "accessFailedCount": 0
             },
             "roles": null,
-            "fullName": "Stacy Lontoc",
-            "investors": null,
-            "agents": [
-                null
-            ]
-        }
-    },
-    {
-        "id": 3,
-        "realEstateLicenseNumber": 12345678,
-        "userProfileId": 3,
-        "userProfile": {
-            "id": 3,
-            "firstName": "John",
-            "lastName": "Doe",
-            "userName": null,
-            "email": null,
-            "address": "303 Oak Street",
-            "city": "Nashville",
-            "state": "Tennessee",
-            "zipCode": "37203",
-            "phoneNumber": "555-345-6789",
-            "joinedDate": "2022-08-15T00:00:00",
-            "isActive": true,
-            "avatarURL": "https://example.com/avatar/john.png",
-            "identityUserId": "a1a7f10d-4c4b-4a29-ba49-6ef932eafc9a",
-            "identityUser": {
-                "id": "a1a7f10d-4c4b-4a29-ba49-6ef932eafc9a",
-                "userName": "john.d",
-                "normalizedUserName": null,
-                "email": "john.doe@gmail.com",
-                "normalizedEmail": null,
-                "emailConfirmed": false,
-                "passwordHash": "AQAAAAEAACcQAAAAEHIhmuU62kqjYzlQrgo8sKKUuGv+g85SJW41pcLaQSbn6TFMah8kqVr4IxvGhsr9uA==",
-                "securityStamp": "fe8363b0-c7cd-4e87-9bf4-72dc9d6c5697",
-                "concurrencyStamp": "091da26c-8271-45f5-b15a-6702458b145f",
-                "phoneNumber": null,
-                "phoneNumberConfirmed": false,
-                "twoFactorEnabled": false,
-                "lockoutEnd": null,
-                "lockoutEnabled": false,
-                "accessFailedCount": 0
+            "fullName": "Stacy Lontoc"
+        },
+        "properties": [
+            {
+                "id": 25,
+                "agentId": 2,
+                "agent": null,
+                "address": "395 Lebanon Pike",
+                "city": "Hermitage",
+                "state": "TN",
+                "zipCode": "37076",
+                "isActive": true,
+                "isRentOut": false,
+                "imageURL": "",
+                "squareFeet": 3500,
+                "numberOfBedroom": 2,
+                "numberOfBathroom": 2,
+                "typeId": 1,
+                "type": null,
+                "cashflows": null,
+                "propertyInvestors": null
             },
-            "roles": null,
-            "fullName": "John Doe",
-            "investors": null,
-            "agents": [
-                null
-            ]
-        }
+            {
+                "id": 1,
+                "agentId": 2,
+                "agent": null,
+                "address": "123 Main St",
+                "city": "Nashville",
+                "state": "TN",
+                "zipCode": "37201",
+                "isActive": true,
+                "isRentOut": true,
+                "imageURL": "https://a0.muscache.com/im/pictures/prohost-api/Hosting-696370614119322432/original/f13f2957-a053-4880-b9b4-5624fdf0e575.jpeg?im_w=1200",
+                "squareFeet": 1500,
+                "numberOfBedroom": 2,
+                "numberOfBathroom": 2,
+                "typeId": 1,
+                "type": null,
+                "cashflows": null,
+                "propertyInvestors": null
+            }
+        ]
     },
     {
         "id": 4,
@@ -148,9 +176,9 @@ export const mockDataContacts = [
             "state": "Tennessee",
             "zipCode": "37204",
             "phoneNumber": "555-456-7890",
-            "joinedDate": "2022-07-15T00:00:00",
+            "joinedDate": "2023-10-30T00:00:00",
             "isActive": true,
-            "avatarURL": "https://example.com/avatar/jane.png",
+            "avatarURL": null,
             "identityUserId": "e1d0e366-1b4b-4c9c-8d99-3eefa7a6a430",
             "identityUser": {
                 "id": "e1d0e366-1b4b-4c9c-8d99-3eefa7a6a430",
@@ -170,12 +198,109 @@ export const mockDataContacts = [
                 "accessFailedCount": 0
             },
             "roles": null,
-            "fullName": "Jane Smith",
-            "investors": null,
-            "agents": [
-                null
-            ]
-        }
+            "fullName": "Jane Smith"
+        },
+        "properties": [
+            {
+                "id": 4,
+                "agentId": 4,
+                "agent": null,
+                "address": "101 Pine St",
+                "city": "Green Hill",
+                "state": "TN",
+                "zipCode": "37138",
+                "isActive": true,
+                "isRentOut": true,
+                "imageURL": "https://a0.muscache.com/im/pictures/miso/Hosting-849269160010350864/original/8e2090eb-ab09-4acb-8035-2d78095d1cdd.jpeg?im_w=1200",
+                "squareFeet": 1600,
+                "numberOfBedroom": 2,
+                "numberOfBathroom": 1,
+                "typeId": 4,
+                "type": null,
+                "cashflows": null,
+                "propertyInvestors": null
+            },
+            {
+                "id": 2,
+                "agentId": 4,
+                "agent": null,
+                "address": "456 Elm St",
+                "city": "Hermitage",
+                "state": "TN",
+                "zipCode": "37076",
+                "isActive": true,
+                "isRentOut": true,
+                "imageURL": "https://a0.muscache.com/im/pictures/prohost-api/Hosting-43380212/original/e0c46dbb-5ce4-4ffc-84bb-3602c7c3b3ce.jpeg?im_w=1200",
+                "squareFeet": 1800,
+                "numberOfBedroom": 3,
+                "numberOfBathroom": 2,
+                "typeId": 2,
+                "type": null,
+                "cashflows": null,
+                "propertyInvestors": null
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "realEstateLicenseNumber": 12345678,
+        "userProfileId": 3,
+        "userProfile": {
+            "id": 3,
+            "firstName": "John",
+            "lastName": "Doe",
+            "userName": null,
+            "email": null,
+            "address": "303 Oak Street",
+            "city": "Nashville",
+            "state": "Tennessee",
+            "zipCode": "37203",
+            "phoneNumber": "555-345-6789",
+            "joinedDate": "2022-08-15T00:00:00",
+            "isActive": true,
+            "avatarURL": null,
+            "identityUserId": "a1a7f10d-4c4b-4a29-ba49-6ef932eafc9a",
+            "identityUser": {
+                "id": "a1a7f10d-4c4b-4a29-ba49-6ef932eafc9a",
+                "userName": "john.d",
+                "normalizedUserName": null,
+                "email": "john.doe@gmail.com",
+                "normalizedEmail": null,
+                "emailConfirmed": false,
+                "passwordHash": "AQAAAAEAACcQAAAAEHIhmuU62kqjYzlQrgo8sKKUuGv+g85SJW41pcLaQSbn6TFMah8kqVr4IxvGhsr9uA==",
+                "securityStamp": "fe8363b0-c7cd-4e87-9bf4-72dc9d6c5697",
+                "concurrencyStamp": "091da26c-8271-45f5-b15a-6702458b145f",
+                "phoneNumber": null,
+                "phoneNumberConfirmed": false,
+                "twoFactorEnabled": false,
+                "lockoutEnd": null,
+                "lockoutEnabled": false,
+                "accessFailedCount": 0
+            },
+            "roles": null,
+            "fullName": "John Doe"
+        },
+        "properties": [
+            {
+                "id": 3,
+                "agentId": 3,
+                "agent": null,
+                "address": "789 Oak St",
+                "city": "Mt Juliet",
+                "state": "TN",
+                "zipCode": "37122",
+                "isActive": true,
+                "isRentOut": true,
+                "imageURL": "https://a0.muscache.com/im/pictures/miso/Hosting-998493796191559890/original/b01ad2eb-7471-482e-b51f-ed712a826246.jpeg?im_w=1200",
+                "squareFeet": 2000,
+                "numberOfBedroom": 4,
+                "numberOfBathroom": 3,
+                "typeId": 3,
+                "type": null,
+                "cashflows": null,
+                "propertyInvestors": null
+            }
+        ]
     },
     {
         "id": 5,
@@ -194,7 +319,7 @@ export const mockDataContacts = [
             "phoneNumber": "555-567-8901",
             "joinedDate": "2022-06-15T00:00:00",
             "isActive": true,
-            "avatarURL": "https://example.com/avatar/robert.png",
+            "avatarURL": null,
             "identityUserId": "9a67ebd4-8f67-4f5b-9b0b-91c53fca6a6e",
             "identityUser": {
                 "id": "9a67ebd4-8f67-4f5b-9b0b-91c53fca6a6e",
@@ -214,12 +339,29 @@ export const mockDataContacts = [
                 "accessFailedCount": 0
             },
             "roles": null,
-            "fullName": "Robert Johnson",
-            "investors": null,
-            "agents": [
-                null
-            ]
-        }
+            "fullName": "Robert Johnson"
+        },
+        "properties": [
+            {
+                "id": 5,
+                "agentId": 5,
+                "agent": null,
+                "address": "321 Oak Ln",
+                "city": "Franklin",
+                "state": "TN",
+                "zipCode": "37064",
+                "isActive": true,
+                "isRentOut": true,
+                "imageURL": "https://a0.muscache.com/im/pictures/miso/Hosting-849269160010350864/original/31e5cd29-f2d5-4447-a2d6-35d7bf13ccd8.jpeg?im_w=1200",
+                "squareFeet": 2200,
+                "numberOfBedroom": 3,
+                "numberOfBathroom": 2,
+                "typeId": 5,
+                "type": null,
+                "cashflows": null,
+                "propertyInvestors": null
+            }
+        ]
     },
     {
         "id": 6,
@@ -238,7 +380,7 @@ export const mockDataContacts = [
             "phoneNumber": "555-678-9012",
             "joinedDate": "2022-05-15T00:00:00",
             "isActive": true,
-            "avatarURL": "https://example.com/avatar/susan.png",
+            "avatarURL": null,
             "identityUserId": "d6ec1cb6-8a5d-4f8a-9b3d-ee69d5b39fa2",
             "identityUser": {
                 "id": "d6ec1cb6-8a5d-4f8a-9b3d-ee69d5b39fa2",
@@ -258,12 +400,29 @@ export const mockDataContacts = [
                 "accessFailedCount": 0
             },
             "roles": null,
-            "fullName": "Susan Miller",
-            "investors": null,
-            "agents": [
-                null
-            ]
-        }
+            "fullName": "Susan Miller"
+        },
+        "properties": [
+            {
+                "id": 6,
+                "agentId": 6,
+                "agent": null,
+                "address": "456 Willow Dr",
+                "city": "Nashville",
+                "state": "TN",
+                "zipCode": "37209",
+                "isActive": true,
+                "isRentOut": true,
+                "imageURL": "https://a0.muscache.com/im/pictures/miso/Hosting-747048779335417236/original/1da9b815-f9eb-4dda-a011-e2520c453b26.jpeg?im_w=1200",
+                "squareFeet": 4800,
+                "numberOfBedroom": 4,
+                "numberOfBathroom": 3,
+                "typeId": 6,
+                "type": null,
+                "cashflows": null,
+                "propertyInvestors": null
+            }
+        ]
     },
     {
         "id": 7,
@@ -282,7 +441,7 @@ export const mockDataContacts = [
             "phoneNumber": "555-789-0123",
             "joinedDate": "2022-04-15T00:00:00",
             "isActive": true,
-            "avatarURL": "https://example.com/avatar/david.png",
+            "avatarURL": null,
             "identityUserId": "f3c4a859-5076-4624-95a9-d65c13a93cc6",
             "identityUser": {
                 "id": "f3c4a859-5076-4624-95a9-d65c13a93cc6",
@@ -302,12 +461,29 @@ export const mockDataContacts = [
                 "accessFailedCount": 0
             },
             "roles": null,
-            "fullName": "David Clark",
-            "investors": null,
-            "agents": [
-                null
-            ]
-        }
+            "fullName": "David Clark"
+        },
+        "properties": [
+            {
+                "id": 7,
+                "agentId": 7,
+                "agent": null,
+                "address": "789 Elm St",
+                "city": "Hermitage",
+                "state": "TN",
+                "zipCode": "37076",
+                "isActive": true,
+                "isRentOut": true,
+                "imageURL": "https://a0.muscache.com/im/pictures/miso/Hosting-747048779335417236/original/90b1b875-ff29-4668-9597-5b25915ac722.jpeg?im_w=1200",
+                "squareFeet": 1800,
+                "numberOfBedroom": 3,
+                "numberOfBathroom": 2,
+                "typeId": 1,
+                "type": null,
+                "cashflows": null,
+                "propertyInvestors": null
+            }
+        ]
     },
     {
         "id": 8,
@@ -324,9 +500,9 @@ export const mockDataContacts = [
             "state": "Tennessee",
             "zipCode": "37208",
             "phoneNumber": "555-890-1234",
-            "joinedDate": "2022-03-15T00:00:00",
-            "isActive": true,
-            "avatarURL": "https://example.com/avatar/linda.png",
+            "joinedDate": "2023-10-27T00:00:00",
+            "isActive": false,
+            "avatarURL": null,
             "identityUserId": "7b499b14-0b71-4c2d-95fc-72585a4ce7d7",
             "identityUser": {
                 "id": "7b499b14-0b71-4c2d-95fc-72585a4ce7d7",
@@ -346,12 +522,29 @@ export const mockDataContacts = [
                 "accessFailedCount": 0
             },
             "roles": null,
-            "fullName": "Linda Jackson",
-            "investors": null,
-            "agents": [
-                null
-            ]
-        }
+            "fullName": "Linda Jackson"
+        },
+        "properties": [
+            {
+                "id": 8,
+                "agentId": 8,
+                "agent": null,
+                "address": "543 Birch Ave",
+                "city": "Nashville",
+                "state": "TN",
+                "zipCode": "37201",
+                "isActive": true,
+                "isRentOut": true,
+                "imageURL": "https://a0.muscache.com/im/pictures/miso/Hosting-1008929531192660808/original/749ec66e-ec54-49f7-9bbc-64b001749e36.jpeg?im_w=1200",
+                "squareFeet": 2500,
+                "numberOfBedroom": 4,
+                "numberOfBathroom": 2,
+                "typeId": 2,
+                "type": null,
+                "cashflows": null,
+                "propertyInvestors": null
+            }
+        ]
     },
     {
         "id": 9,
@@ -370,7 +563,7 @@ export const mockDataContacts = [
             "phoneNumber": "555-012-3456",
             "joinedDate": "2022-02-15T00:00:00",
             "isActive": true,
-            "avatarURL": "https://example.com/avatar/william.png",
+            "avatarURL": null,
             "identityUserId": "62cbf9d0-8bb4-4f5f-ae8b-8f66c2083b8c",
             "identityUser": {
                 "id": "62cbf9d0-8bb4-4f5f-ae8b-8f66c2083b8c",
@@ -390,12 +583,29 @@ export const mockDataContacts = [
                 "accessFailedCount": 0
             },
             "roles": null,
-            "fullName": "William Thomas",
-            "investors": null,
-            "agents": [
-                null
-            ]
-        }
+            "fullName": "William Thomas"
+        },
+        "properties": [
+            {
+                "id": 9,
+                "agentId": 9,
+                "agent": null,
+                "address": "101 Cedar St",
+                "city": "Mt Juliet",
+                "state": "TN",
+                "zipCode": "37122",
+                "isActive": true,
+                "isRentOut": true,
+                "imageURL": "https://a0.muscache.com/im/pictures/44f5da72-b8e3-4775-b102-4b617debaf0a.jpg?im_w=1200",
+                "squareFeet": 1800,
+                "numberOfBedroom": 3,
+                "numberOfBathroom": 2,
+                "typeId": 3,
+                "type": null,
+                "cashflows": null,
+                "propertyInvestors": null
+            }
+        ]
     },
     {
         "id": 10,
@@ -414,7 +624,7 @@ export const mockDataContacts = [
             "phoneNumber": "555-123-4567",
             "joinedDate": "2022-01-15T00:00:00",
             "isActive": true,
-            "avatarURL": "https://example.com/avatar/mary.png",
+            "avatarURL": null,
             "identityUserId": "7454e186-7dca-4db2-90bf-192e24d9aa88",
             "identityUser": {
                 "id": "7454e186-7dca-4db2-90bf-192e24d9aa88",
@@ -434,14 +644,31 @@ export const mockDataContacts = [
                 "accessFailedCount": 0
             },
             "roles": null,
-            "fullName": "Mary Roberts",
-            "investors": null,
-            "agents": [
-                null
-            ]
-        }
+            "fullName": "Mary Roberts"
+        },
+        "properties": [
+            {
+                "id": 10,
+                "agentId": 10,
+                "agent": null,
+                "address": "789 Oak St",
+                "city": "Franklin",
+                "state": "TN",
+                "zipCode": "37064",
+                "isActive": true,
+                "isRentOut": true,
+                "imageURL": "https://a0.muscache.com/im/pictures/monet/Select-29828980/original/51b43e46-5294-4d2e-b7f7-e34ee15c9399?im_w=1200",
+                "squareFeet": 2000,
+                "numberOfBedroom": 4,
+                "numberOfBathroom": 3,
+                "typeId": 4,
+                "type": null,
+                "cashflows": null,
+                "propertyInvestors": null
+            }
+        ]
     }
-];
+]
 
 export const mockDataProperties = [
     {
