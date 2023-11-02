@@ -1,4 +1,4 @@
-import { Box, Button, IconButton, Link, Stack, Typography, useTheme } from "@mui/material";
+import { Box, Button, IconButton, Link, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import ReadMoreOutlinedIcon from '@mui/icons-material/ReadMoreOutlined';
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
@@ -22,6 +22,7 @@ import PieChart from "../../components/PieChart.js";
 const Dashboard = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+    const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg')); // 'lg' corresponds to a screen width of 1200px or larger
 
     const navigate = useNavigate();
 
@@ -293,7 +294,8 @@ const Dashboard = () => {
                     </Box>
                     {/* Pie Chart 1 & 2 */}
                     <Box display="flex" height="300px" m="-10px 0 0 0">
-                        <PieChart data={mockPieData} isDashboard={true} /> <PieChart data={mockPieData2} isDashboard={true} />
+                        {isLargeScreen && (<PieChart data={mockPieData} isDashboard={true} />)}
+                        <PieChart data={mockPieData2} isDashboard={true} />
                     </Box>
 
                 </Box>
