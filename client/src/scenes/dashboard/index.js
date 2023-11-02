@@ -1,4 +1,4 @@
-import { Box, Button, IconButton, Link, Typography, useTheme } from "@mui/material";
+import { Box, Button, IconButton, Link, Stack, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import ReadMoreOutlinedIcon from '@mui/icons-material/ReadMoreOutlined';
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
@@ -6,9 +6,9 @@ import AddHomeWorkOutlinedIcon from '@mui/icons-material/AddHomeWorkOutlined';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import HouseOutlinedIcon from '@mui/icons-material/HouseOutlined';
+import StarsOutlinedIcon from '@mui/icons-material/StarsOutlined';
+
 import Header from "../../components/Header";
-
-
 import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import { useNavigate } from "react-router-dom";
@@ -171,6 +171,7 @@ const Dashboard = () => {
                         <BarChart isDashboard={true} />
                     </Box>
                 </Box>
+                {/* Top Agent */}
                 <Box
                     gridColumn="span 4"
                     gridRow="span 2"
@@ -189,7 +190,7 @@ const Dashboard = () => {
                             Top Agent
                         </Typography>
                     </Box>
-                    {mockDataContacts.map((agent, index) => (
+                    {mockDataContacts.slice(0, 5).map((agent, index) => (
                         <Box
                             key={index}
                             display="flex"
@@ -198,25 +199,30 @@ const Dashboard = () => {
                             borderBottom={`4px solid ${colors.primary[500]}`}
                             p="15px"
                         >
-                            <Box>
+                            <Stack flex={0.5}> {/* flex makes a flexbox inside, good for positioning */}
                                 <Typography
-                                    color={colors.greenAccent[500]}
                                     variant="h5"
                                     fontWeight="600"
+                                    color={colors.greenAccent[500]}
                                 >
                                     {index + 1}
                                 </Typography>
-                                <Typography color={colors.grey[100]}>
+                                <Typography
+                                    variant="h6"
+                                    color={colors.grey[100]}
+                                >
                                     {agent.userProfile.fullName}
                                 </Typography>
+                            </Stack>
+                            <Box color={colors.greenAccent[500]} flex={0.5}> {/* flex makes a flexbox inside, good for positioning */}
+                                {Array(5 - index).fill(<StarsOutlinedIcon />)}
                             </Box>
-                            <Box color={colors.grey[100]}>{agent.realEstateLicenseNumber}</Box>
                             <Box
                                 backgroundColor={colors.greenAccent[500]}
                                 p="5px 10px"
                                 borderRadius="4px"
                             >
-                                {agent.properties.length}
+                                {agent.properties.length} Properties
                             </Box>
                         </Box>
                     ))}
