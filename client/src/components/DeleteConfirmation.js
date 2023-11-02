@@ -2,7 +2,12 @@ import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Dialog
 
 export default function DeleteConfirmation({ open, handleClose, handleDelete }) {
     return (
-        <Dialog open={open} onClose={handleClose}>
+        <Dialog open={open} onClose={handleClose} sx={{
+            position: 'absolute',
+            top: '20%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+        }}>
             <DialogTitle>Confirmation</DialogTitle>
 
             <DialogContent>
