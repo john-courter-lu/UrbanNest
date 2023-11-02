@@ -12,6 +12,7 @@ import Dashboard from "../scenes/dashboard/index.js";
 import Bar from "../scenes/bar-chart/index.js";
 import Line from "../scenes/line-chart/index.js";
 import Pie from "../scenes/pie-chart/index.js";
+import { HomeRedirect } from "./HomeRedirect.js";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser, searchTerm, setSearchTerm }) {
@@ -22,7 +23,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser, search
           index
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-              <Dashboard />
+              <HomeRedirect roles={["Admin"]} loggedInUser={loggedInUser} />{/* Redirect Based on User Roles */}
             </AuthorizedRoute>
           }
         />
