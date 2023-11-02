@@ -2,9 +2,58 @@ import { ResponsivePie } from "@nivo/pie";
 import { tokens } from "../theme";
 import { useTheme } from "@mui/material";
 
-const PieChart = ({ data }) => {
+const PieChart = ({ data, isDashboard = false, isPrimary = true }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  const legendMode = () => { // cannot use a direct if...else statement as a value when defining an object's property; so use an independent function
+    if (!isDashboard) {
+      return [ // for regular independent page
+        {
+          anchor: "bottom",
+          direction: "row",
+          justify: false,
+          translateX: 15, //change the x position
+          translateY: 56, //change the y position
+          itemsSpacing: 0,
+          itemWidth: 95,
+          itemHeight: 18,
+          itemTextColor: "#999",
+          itemDirection: "left-to-right",
+          itemOpacity: 1,
+          symbolSize: 12,
+          symbolShape: "circle",
+          effects: [
+            {
+              on: "hover",
+              style: {
+                itemTextColor: "#000",
+              },
+            },
+          ],
+        },
+      ]
+    } else if (isPrimary) {
+      return [ // for Dashboard and isPrimary
+        {
+          anchor: 'bottom-right',
+          direction: 'column',
+          justify: false,
+          translateX: 120,
+          translateY: 0,
+          itemWidth: 100,
+          itemHeight: 20,
+          itemsSpacing: 2,
+          symbolSize: 20,
+          symbolShape: "circle", //otherwise would be square
+          itemDirection: 'left-to-right'
+        }
+      ]
+    } else { // for Dashboard and non-Primary
+      return []
+    }
+  }
+
   return (
     <ResponsivePie
       data={data}
@@ -61,7 +110,10 @@ const PieChart = ({ data }) => {
 
       arcLinkLabelsSkipAngle={10}
 
-      arcLinkLabelsTextColor={colors.grey[100]}
+      arcLinkLabel={(e) => ( // render LinkLabel conditionally
+        isDashboard ? e.id : `$${e.value}`
+      )}
+      arcLinkLabelsTextColor={{ from: "color" }}
       arcLinkLabelsColor={{ from: "color" }}
 
       arcLinkLabelsThickness={2}
@@ -69,45 +121,15 @@ const PieChart = ({ data }) => {
       arcLinkLabelsDiagonalLength={8}
       arcLinkLabelsStraightLength={12}
 
-      enableArcLinkLabels={true}
-      arcLinkLabel={e => "$" + e.value}
-
-      enableArcLabels={true}
+      enableArcLabels={isDashboard ? false : true}
       arcLabel="id"
+      arcLabelsTextColor={colors.primary[400]}
 
       arcLabelsRadiusOffset={0.4}
       arcLabelsSkipAngle={7}
-      arcLabelsTextColor={{
-        from: "color",
-        modifiers: [["darker", 2]],
-      }}
 
-      legends={
-        [
-          {
-            anchor: "bottom",
-            direction: "row",
-            justify: false,
-            translateX: 15, //change the x position
-            translateY: 56, //change the y position
-            itemsSpacing: 0,
-            itemWidth: 95,
-            itemHeight: 18,
-            itemTextColor: "#999",
-            itemDirection: "left-to-right",
-            itemOpacity: 1,
-            symbolSize: 12,
-            symbolShape: "circle",
-            effects: [
-              {
-                on: "hover",
-                style: {
-                  itemTextColor: "#000",
-                },
-              },
-            ],
-          },
-        ]}
+      legends={legendMode()} // Have to call the function, not just the name 
+
     />
   );
 };

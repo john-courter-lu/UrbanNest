@@ -1,4 +1,4 @@
-import { Box, Button, IconButton, Link, Stack, Typography, useTheme } from "@mui/material";
+import { Box, Button, IconButton, Link, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import ReadMoreOutlinedIcon from '@mui/icons-material/ReadMoreOutlined';
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
@@ -13,14 +13,16 @@ import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import { useNavigate } from "react-router-dom";
 import LineChart from "../../components/LineChart.js";
-import { mockDataContacts } from "../../data/mockData.js";
+import { mockDataContacts, mockPieData, mockPieData2 } from "../../data/mockData.js";
 import { useEffect, useState } from "react";
 import { getAgents } from "../../managers/agentManager.js";
+import PieChart from "../../components/PieChart.js";
 
 
 const Dashboard = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+    const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg')); // 'lg' corresponds to a screen width of 1200px or larger
 
     const navigate = useNavigate();
 
@@ -236,33 +238,64 @@ const Dashboard = () => {
                 </Box>
 
                 {/* ROW 3 */}
+                {/* Box 1 Line Chart */}
                 <Box
                     gridColumn="span 6"
                     gridRow="span 2"
                     backgroundColor={colors.primary[400]}
                     p="30px"
                 >
-                    <Typography variant="h5" fontWeight="600">
-                        Revenue & Expenses Month By Month
-                    </Typography>
-                    <LineChart />
+                    <Box
+                        mt="-10px"
+                        display="flex"
+                        justifyContent="space-between"
+                        alignItems="center"
+                    >
+                        <Typography variant="h5" fontWeight="600">
+                            Revenue and Expenses
+                        </Typography>
+
+                        <IconButton onClick={() => { navigate("/line") }}>
+                            <ReadMoreOutlinedIcon
+                                sx={{ fontSize: "22px", color: colors.greenAccent[500] }}
+                            />
+                        </IconButton>
+
+                    </Box>
+                    <Box height="250px" m="-20px 0 0 0">
+                        <LineChart isDashboard={true} />
+                    </Box>
                 </Box>
 
+
+                {/* Box 2 Pie Chart */}
                 <Box
                     gridColumn="span 6"
                     gridRow="span 2"
                     backgroundColor={colors.primary[400]}
-                    padding="30px"
+                    p="30px"
                 >
-                    <Typography
-                        variant="h5"
-                        fontWeight="600"
-
+                    <Box
+                        mt="-10px"
+                        display="flex"
+                        justifyContent="space-between"
+                        alignItems="center"
                     >
-                        More Chart
-                    </Typography>
-                    <Box height="200px"> {/* control the chart's height */}
-                        <LineChart />
+                        <Typography variant="h5" fontWeight="600">
+                            Expenses Breakdown By Category
+                        </Typography>
+
+                        <IconButton onClick={() => { navigate("/pie") }}>
+                            <ReadMoreOutlinedIcon
+                                sx={{ fontSize: "22px", color: colors.greenAccent[500] }}
+                            />
+                        </IconButton>
+
+                    </Box>
+                    {/* Pie Chart 1 & 2 */}
+                    <Box display="flex" height="300px" m="-10px 0 0 0">
+                        {isLargeScreen && (<PieChart data={mockPieData} isDashboard={true} isPrimary={false} />)}
+                        <PieChart data={mockPieData2} isDashboard={true} isPrimary={false} />
                     </Box>
 
                 </Box>
