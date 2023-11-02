@@ -39,11 +39,11 @@ const PieChart = ({ data, isDashboard = false, isPrimary = true }) => {
           anchor: 'bottom-right',
           direction: 'column',
           justify: false,
-          translateX: 90,
+          translateX: 120,
           translateY: 0,
           itemWidth: 100,
           itemHeight: 20,
-          itemsSpacing: 5,
+          itemsSpacing: 2,
           symbolSize: 20,
           symbolShape: "circle", //otherwise would be square
           itemDirection: 'left-to-right'

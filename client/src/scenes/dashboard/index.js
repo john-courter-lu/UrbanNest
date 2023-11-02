@@ -294,8 +294,8 @@ const Dashboard = () => {
                     </Box>
                     {/* Pie Chart 1 & 2 */}
                     <Box display="flex" height="300px" m="-10px 0 0 0">
-                        {isLargeScreen && (<PieChart data={mockPieData} isDashboard={true} />)}
-                        <PieChart data={mockPieData2} isDashboard={true} />
+                        {isLargeScreen && (<PieChart data={mockPieData} isDashboard={true} isPrimary={false} />)}
+                        <PieChart data={mockPieData2} isDashboard={true} isPrimary={false} />
                     </Box>
 
                 </Box>
