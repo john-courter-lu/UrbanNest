@@ -180,11 +180,20 @@ public class UrbanNestDbContext : IdentityDbContext<IdentityUser>
     },
 });
 
-        modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
-        {
-            RoleId = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
-            UserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f"
-        });
+        // data seeding: IdentityUser UserRole
+        modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>[]
+       {
+            new IdentityUserRole<string>
+            {
+                RoleId = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
+                UserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
+                UserId = "a5be3ea4-57cd-471e-9b1f-d1ac68843c71"
+            },
+       });
 
         // data seeding: UserProfile
         modelBuilder.Entity<UserProfile>().HasData(new UserProfile[]
