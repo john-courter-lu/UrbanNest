@@ -13,6 +13,7 @@ import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import { useNavigate } from "react-router-dom";
 import LineChart from "../../components/LineChart.js";
+import { mockDataContacts } from "../../data/mockData.js";
 
 
 const Dashboard = () => {
@@ -155,7 +156,7 @@ const Dashboard = () => {
                                 fontWeight="bold"
                                 color={colors.greenAccent[500]}
                             >
-                                $348,529.66
+                                $348,429.56
                             </Typography>
                         </Box>
                         <Box>
@@ -188,7 +189,37 @@ const Dashboard = () => {
                             Top Agent
                         </Typography>
                     </Box>
-
+                    {mockDataContacts.map((agent, index) => (
+                        <Box
+                            key={index}
+                            display="flex"
+                            justifyContent="space-between"
+                            alignItems="center"
+                            borderBottom={`4px solid ${colors.primary[500]}`}
+                            p="15px"
+                        >
+                            <Box>
+                                <Typography
+                                    color={colors.greenAccent[500]}
+                                    variant="h5"
+                                    fontWeight="600"
+                                >
+                                    {index + 1}
+                                </Typography>
+                                <Typography color={colors.grey[100]}>
+                                    {agent.userProfile.fullName}
+                                </Typography>
+                            </Box>
+                            <Box color={colors.grey[100]}>{agent.realEstateLicenseNumber}</Box>
+                            <Box
+                                backgroundColor={colors.greenAccent[500]}
+                                p="5px 10px"
+                                borderRadius="4px"
+                            >
+                                {agent.properties.length}
+                            </Box>
+                        </Box>
+                    ))}
                 </Box>
 
                 {/* ROW 3 */}
@@ -213,12 +244,12 @@ const Dashboard = () => {
                     <Typography
                         variant="h5"
                         fontWeight="600"
-                        
+
                     >
                         More Chart
                     </Typography>
                     <Box height="200px"> {/* control the chart's height */}
-                    <LineChart />
+                        <LineChart />
                     </Box>
 
                 </Box>
