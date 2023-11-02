@@ -27,10 +27,10 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser, search
           }
         />
         <Route
-          path="pathName1"
+          path="dashboard"
           element={
-            <AuthorizedRoute loggedInUser={loggedInUser}>
-              <p>PathName1</p>
+            <AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+              <Dashboard />
             </AuthorizedRoute>
           }
         />
@@ -103,7 +103,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser, search
             </AuthorizedRoute>
           }
         />
-        
+
         <Route
           path="pie"
           element={
