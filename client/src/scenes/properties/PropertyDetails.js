@@ -16,7 +16,7 @@ import { getPropertyById } from "../../managers/propertyManager.js";
 import MoreVertIcon from "@mui/icons-material/MoreVert.js";
 import AssignAgent from "./AssignAgent.js";
 
-const PropertyDetails = ({ loggedinUser, setSearchTerm }) => {
+const PropertyDetails = ({ loggedInUser, setSearchTerm }) => {
     const navigate = useNavigate();
 
     const { propertyId } = useParams();
@@ -133,12 +133,13 @@ const PropertyDetails = ({ loggedinUser, setSearchTerm }) => {
                         >
 
                             {/* IconButton on the top right of the Stack */}
-                            <IconButton
+                            {/* Admin only */}
+                            {loggedInUser.roles.includes("Admin") && <IconButton
                                 onClick={handleMenuOpen}
                                 style={{ position: 'absolute', top: 8, right: 8, backgroundColor: 'transparent' }}
                             >
                                 <MoreVertIcon />
-                            </IconButton>
+                            </IconButton>}
 
                             {/* Hidden Menu from MoreVertIcon */}
                             <Menu anchorEl={menuAnchor} open={Boolean(menuAnchor)} onClose={handleMenuClose}>
