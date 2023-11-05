@@ -8,7 +8,7 @@ import { getProperties } from '../../managers/propertyManager.js';
 import { useNavigate } from "react-router-dom";
 import Add from "@mui/icons-material/Add";
 
-export default function Properties({ searchTerm }) {
+export default function Properties({ searchTerm, notificationCount, setNotificationCount }) {
 
     const [propertiesData, setPropertiesData] = useState([]);
     useEffect(
@@ -60,6 +60,8 @@ export default function Properties({ searchTerm }) {
                     pd.agent.userProfile.fullName.toLowerCase().includes(searchTerm.toLowerCase()))
                     .map((property) => (
                         <PropertyCard
+                            notificationCount={notificationCount}
+                            setNotificationCount={setNotificationCount}
                             key={property.id}
                             id={property.id}
                             title={`${property.numberOfBedroom} bd |  ${property.numberOfBathroom} ba | ${property.squareFeet.toLocaleString()} sqft `}

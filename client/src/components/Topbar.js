@@ -12,7 +12,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import LogoutIcon from '@mui/icons-material/Logout';
 import ClearIcon from '@mui/icons-material/Clear';
 
-const Topbar = ({ loggedInUser, setLoggedInUser, searchTerm, setSearchTerm }) => {
+const Topbar = ({ loggedInUser, setLoggedInUser, searchTerm, setSearchTerm, notificationCount }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const colorMode = useContext(ColorModeContext);
@@ -65,7 +65,7 @@ const Topbar = ({ loggedInUser, setLoggedInUser, searchTerm, setSearchTerm }) =>
 
                 {/* Notification Badge */}
                 <IconButton>
-                    <Badge badgeContent={6} color="secondary">
+                    <Badge badgeContent={notificationCount} color="secondary">
                         <NotificationsOutlinedIcon />
                     </Badge>
                 </IconButton>
@@ -73,7 +73,7 @@ const Topbar = ({ loggedInUser, setLoggedInUser, searchTerm, setSearchTerm }) =>
                 <IconButton>
                     <SettingsOutlinedIcon />
                 </IconButton>
-                
+
                 <IconButton>
                     <PersonOutlinedIcon />
                 </IconButton>

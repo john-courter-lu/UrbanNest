@@ -16,7 +16,7 @@ import { getPropertyById } from "../../managers/propertyManager.js";
 import MoreVertIcon from "@mui/icons-material/MoreVert.js";
 import AssignAgent from "./AssignAgent.js";
 
-const PropertyDetails = ({ loggedInUser, setSearchTerm }) => {
+const PropertyDetails = ({ loggedInUser, setSearchTerm, notificationCount, setNotificationCount }) => {
     const navigate = useNavigate();
 
     const { propertyId } = useParams();
@@ -152,6 +152,8 @@ const PropertyDetails = ({ loggedInUser, setSearchTerm }) => {
                                 onClose={closeAssignDialog}
                                 property={property}
                                 setProperty={setProperty}
+                                notificationCount={notificationCount}
+                                setNotificationCount={setNotificationCount}
                             />
 
                             <Avatar

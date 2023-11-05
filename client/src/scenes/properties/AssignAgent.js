@@ -4,7 +4,7 @@ import { mockDataContacts } from '../../data/mockData.js';
 import { getPropertyById, updateProperty } from '../../managers/propertyManager.js';
 import Notification from '../../components/Notification.js';
 
-export default function AssignAgent({ open, onClose, property, setProperty }) {
+export default function AssignAgent({ open, onClose, property, setProperty, notificationCount, setNotificationCount }) {
 
     const [agentsData, setAgentsData] = useState([]);
 
@@ -38,7 +38,8 @@ export default function AssignAgent({ open, onClose, property, setProperty }) {
                 // Set the notification message after a brief delay (Important: because state is updating).
                 setTimeout(() => {
                     setNotificationMessage('Agent was updated successfully!');
-                }, 300);
+                    setNotificationCount(notificationCount + 1)
+                }, 200);
             })
             .catch((error) => {
                 // Handle any errors that occur during the process.
