@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { deactivateAgent, getAgents } from "../../managers/agentManager.js";
 import Notification from "../../components/Notification.js";
 
-const Agents = ({ loggedInUser }) => {
+const Agents = ({ loggedInUser, notificationCount, setNotificationCount }) => {
 
     const [agentsData, setAgentsData] = useState([]);
     useEffect(
@@ -123,7 +123,8 @@ const Agents = ({ loggedInUser }) => {
                 // Set the notification message after a brief delay (Important: because state is updating).
                 setTimeout(() => {
                     setNotificationMessage('Agent status was changed successfully!');
-                }, 300);
+                    setNotificationCount(notificationCount + 1)
+                }, 200);
 
             }
         )

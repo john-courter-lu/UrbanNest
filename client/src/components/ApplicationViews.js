@@ -15,7 +15,7 @@ import Pie from "../scenes/pie-chart/index.js";
 import { HomeRedirect } from "./HomeRedirect.js";
 
 
-export default function ApplicationViews({ loggedInUser, setLoggedInUser, searchTerm, setSearchTerm }) {
+export default function ApplicationViews({ loggedInUser, setLoggedInUser, searchTerm, setSearchTerm, notificationCount, setNotificationCount }) {
   return (
     <Routes>
       <Route path="/">
@@ -47,7 +47,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser, search
           path="agents"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-              <Agents loggedInUser={loggedInUser} />
+              <Agents loggedInUser={loggedInUser} notificationCount={notificationCount} setNotificationCount={setNotificationCount} />
             </AuthorizedRoute>
           }
         />
@@ -57,7 +57,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser, search
             index
             element={
               <AuthorizedRoute loggedInUser={loggedInUser} searchTerm={searchTerm}>
-                <Properties searchTerm={searchTerm} />
+                <Properties searchTerm={searchTerm} notificationCount={notificationCount} setNotificationCount={setNotificationCount} />
               </AuthorizedRoute>
             }
           />
@@ -65,7 +65,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser, search
             path=":propertyId"
             element={
               <AuthorizedRoute loggedInUser={loggedInUser} setSearchTerm={setSearchTerm}>
-                <PropertyDetails loggedInUser={loggedInUser} setSearchTerm={setSearchTerm} />
+                <PropertyDetails loggedInUser={loggedInUser} setSearchTerm={setSearchTerm} notificationCount={notificationCount} setNotificationCount={setNotificationCount} />
               </AuthorizedRoute>
             }
           />
@@ -73,7 +73,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser, search
             path="create"
             element={
               <AuthorizedRoute loggedInUser={loggedInUser}>
-                <CreateProperty loggedInUser={loggedInUser} />
+                <CreateProperty loggedInUser={loggedInUser} notificationCount={notificationCount} setNotificationCount={setNotificationCount} />
               </AuthorizedRoute>
             }
           />
@@ -81,7 +81,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser, search
             path=":propertyId/edit"
             element={
               <AuthorizedRoute loggedInUser={loggedInUser}>
-                <EditProperty loggedInUser={loggedInUser} />
+                <EditProperty loggedInUser={loggedInUser} notificationCount={notificationCount} setNotificationCount={setNotificationCount} />
               </AuthorizedRoute>
             }
           />

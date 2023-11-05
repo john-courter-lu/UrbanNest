@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import { getPropertyById, updateProperty } from "../../managers/propertyManager.js";
 import Notification from "../../components/Notification.js";
 
-const EditProperty = () => {
+const EditProperty = ({ notificationCount, setNotificationCount }) => {
     const isNonMobile = useMediaQuery("(min-width:600px");
 
     const { propertyId } = useParams();
@@ -46,7 +46,9 @@ const EditProperty = () => {
         event.preventDefault();
         // Handle form submission (send data to the server).
         updateProperty(propertyId, property)
-            .then(setNotificationMessage('Property was updated successfully!'))
+            .then(() => {
+                setNotificationMessage('Property was updated successfully!'); setNotificationCount(notificationCount + 1)
+            })
     };
 
     if (!property) { return null; }

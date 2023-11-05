@@ -9,7 +9,7 @@ import Notification from './Notification'; // Import notification component
 import { deleteProperty } from "../managers/propertyManager.js";
 
 
-const PropertyCard = ({ id, title, location, type, photo, cardWidth }) => {
+const PropertyCard = ({ id, title, location, type, photo, cardWidth, notificationCount, setNotificationCount }) => {
 
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
@@ -55,9 +55,11 @@ const PropertyCard = ({ id, title, location, type, photo, cardWidth }) => {
         deleteProperty(id)
             .then(setIsVisible(false))
             .then(() => {
-                // Display a notification
+                // Display a notification & Update the badge
                 setNotificationMessage('This property is deleted');
+                setNotificationCount(notificationCount + 1);
             })
+
     };
 
     return (

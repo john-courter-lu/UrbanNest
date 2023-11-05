@@ -1,5 +1,5 @@
 import { logout } from "../managers/authManager.js";
-import { Box, IconButton, useTheme } from "@mui/material";
+import { Badge, Box, IconButton, useTheme } from "@mui/material";
 import { useContext } from "react";
 import { ColorModeContext, tokens } from "../theme.js";
 import InputBase from "@mui/material/InputBase";
@@ -12,7 +12,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import LogoutIcon from '@mui/icons-material/Logout';
 import ClearIcon from '@mui/icons-material/Clear';
 
-const Topbar = ({ loggedInUser, setLoggedInUser, searchTerm, setSearchTerm }) => {
+const Topbar = ({ loggedInUser, setLoggedInUser, searchTerm, setSearchTerm, notificationCount }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const colorMode = useContext(ColorModeContext);
@@ -63,12 +63,17 @@ const Topbar = ({ loggedInUser, setLoggedInUser, searchTerm, setSearchTerm }) =>
                     )}
                 </IconButton>
 
+                {/* Notification Badge */}
                 <IconButton>
-                    <NotificationsOutlinedIcon />
+                    <Badge badgeContent={notificationCount} color="secondary">
+                        <NotificationsOutlinedIcon />
+                    </Badge>
                 </IconButton>
+
                 <IconButton>
                     <SettingsOutlinedIcon />
                 </IconButton>
+
                 <IconButton>
                     <PersonOutlinedIcon />
                 </IconButton>

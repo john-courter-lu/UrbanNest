@@ -19,6 +19,8 @@ function App() {
   const [loggedInUser, setLoggedInUser] = useState();
   // for search bar's functionality in Topbar
   const [searchTerm, setSearchTerm] = useState("");
+  // for notification badge
+  const [notificationCount, setNotificationCount] = useState(0);
 
   useEffect(() => {
     // user will be null if not authenticated
@@ -49,7 +51,9 @@ function App() {
               setLoggedInUser={setLoggedInUser}
               setIsSidebar={setIsSidebar}
               searchTerm={searchTerm}
-              setSearchTerm={setSearchTerm} />
+              setSearchTerm={setSearchTerm}
+              notificationCount={notificationCount}
+            />
 
             <div className="content">
               <ApplicationViews
@@ -57,6 +61,8 @@ function App() {
                 setLoggedInUser={setLoggedInUser}
                 searchTerm={searchTerm}
                 setSearchTerm={setSearchTerm}
+                notificationCount={notificationCount}
+                setNotificationCount={setNotificationCount}
               />
             </div>
 
